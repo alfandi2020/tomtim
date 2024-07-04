@@ -638,7 +638,7 @@ class Administrator extends CI_Controller
                 'tanggal' => $tanggal,
                 'nomor_struk' => $nomor_struk,
             ];
-            // $this->db->insert('tb_cetak', $data);
+            $this->db->insert('tb_cetak', $data);
 
                         $token = "rasJFCC37ewayax21uu2Caog9CCqyT3KSwBWFqQAbQMdMAefxa";
                         $phone = $get_registrasi['kontak']; //untuk group pakai groupid contoh: 62812xxxxxx-xxxxx

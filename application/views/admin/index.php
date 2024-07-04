@@ -61,7 +61,7 @@
                                                         $thnx = date('Y');
 
                                                         $bulan = indonesian_date($tanggal, 'F');
-                                                          $keuangan = $this->db->query("SELECT sum(a.tagihan) + sum(a.addon1) + sum(a.addon2) + sum(a.addon3) - sum(a.tagihan_diskon) as total,periode,b.lokasi from tb_cetak as a left join tb_registrasi as b on(a.id_registrasi = b.id_registrasi) where periode='$bulan' and thn='$thnx' and lokasi='TomTimNet'")->result();
+                                                          $keuangan = $this->db->query("SELECT sum(a.tagihan) + sum(a.addon1) + sum(a.addon2) + sum(a.addon3) - sum(a.tagihan_diskon) as total,periode,b.lokasi from tb_cetak as a left join tb_registrasi as b on(a.id_registrasi = b.id_registrasi) where periode='Juni' and thn='$thnx' and lokasi='TomTimNet'")->result();
                                                             foreach ($keuangan as $row) {
                                                                 $total = number_format($row->total, 0, '.', '.'); ?>
                                                         <?php if ($this->session->userdata('level') == 'admin') { ?>
