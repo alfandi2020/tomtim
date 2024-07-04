@@ -1,0 +1,1225 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<tv generator-info-name="WebGrab+Plus/w MDB &amp; REX Postprocess -- version V3.1.5.0 -- Jan van Straaten" generator-info-url="http://www.webgrabplus.com">
+  <channel id="NetTV.MACAN">
+    <display-name lang="id">Net.</display-name>
+    <icon src="https://images.useetv.com/logo_net_small1.png?v=2.0.0.13" />
+    <url>http://www.useetv.com</url>
+  </channel>
+  <channel id="Indosiar.MACAN">
+    <display-name lang="id">Indosiar</display-name>
+    <icon src="https://images.useetv.com/logogrey/grey_logo_indosiar_small1.png?v=2.0.0.15" />
+    <url>http://www.useetv.com</url>
+  </channel>
+  <channel id="SCTV.MACAN">
+    <display-name lang="id">SCTV</display-name>
+    <icon src="https://images.useetv.com/logogrey/grey_logo_sctv_small1.png?v=2.0.0.15" />
+    <url>http://www.useetv.com</url>
+  </channel>
+  <channel id="Trans7.MACAN">
+    <display-name lang="id">Trans7</display-name>
+    <icon src="https://images.useetv.com/logo_trans7_small1.png?v=2.0.0.13" />
+    <url>http://www.useetv.com</url>
+  </channel>
+  <channel id="TransTV.MACAN">
+    <display-name lang="id">TransTV</display-name>
+    <icon src="https://images.useetv.com/logo_transtv_small1.png?v=2.0.0.13" />
+    <url>http://www.useetv.com</url>
+  </channel>
+  <channel id="CNNIndonesia.MACAN">
+    <display-name lang="id">CNN Indonesia</display-name>
+    <icon src="https://images.useetv.com/logogrey/grey_logo_cnnindonesia_small1.png?v=2.0.0.13" />
+    <url>http://www.useetv.com</url>
+  </channel>
+  <channel id="CNBCIndonesia.MACAN">
+    <display-name lang="id">CNBC Indonesia</display-name>
+    <icon src="https://images.useetv.com/logogrey/grey_logo_cnbcid_small.png" />
+    <url>http://www.useetv.com</url>
+  </channel>
+  <channel id="RTV.MACAN">
+    <display-name lang="id">RTV</display-name>
+    <icon src="http://www.transvision.co.id/images/channel/rajawali.png" />
+    <url>http://www.transvision.co.id</url>
+  </channel>
+  <channel id="ANTV.MACAN">
+    <display-name lang="id">ANTV</display-name>
+    <icon src="http://www.transvision.co.id/images/channel/antv.png" />
+    <url>http://www.transvision.co.id</url>
+  </channel>
+  <channel id="TVOne.MACAN">
+    <display-name lang="id">tvOne</display-name>
+    <icon src="http://www.transvision.co.id/images/channel/tv_one.png" />
+    <url>http://www.transvision.co.id</url>
+  </channel>
+  <channel id="KompasTv.MACAN">
+    <display-name lang="id">Kompas TV</display-name>
+    <icon src="https://images.useetv.com/logo_kompastv_small.png?v=2.0.0.13" />
+    <url>http://www.useetv.com</url>
+  </channel>
+  <channel id="MetroTV.MACAN">
+    <display-name lang="id">Metro TV</display-name>
+    <icon src="https://images.useetv.com/logo_metrotv_small1.png?v=2.0.0.13" />
+    <url>http://www.useetv.com</url>
+  </channel>
+  <channel id="BeritaSatu.MACAN">
+    <display-name lang="id">Berita Satu</display-name>
+    <icon src="https://images.useetv.com/logo_beritasatu_small1.png?v=2.0.0.13" />
+    <url>http://www.useetv.com</url>
+  </channel>
+  <channel id="IDX.MACAN">
+    <display-name lang="id">IDX</display-name>
+    <icon src="https://images.useetv.com/logo_idx_small.png" />
+    <url>http://www.useetv.com</url>
+  </channel>
+  <channel id="DaaiTv.MACAN">
+    <display-name lang="id">Daai TV</display-name>
+    <icon src="https://images.useetv.com/logo_daaitv_small1.png?v=2.0.0.13" />
+    <url>http://www.useetv.com</url>
+  </channel>
+  <channel id="JTV.MACAN">
+    <display-name lang="id">JTV</display-name>
+    <icon src="https://images.useetv.com/logo_jtv_small1.png?v=2.0.0.13" />
+    <url>http://www.useetv.com</url>
+  </channel>
+  <channel id="JakTV.MACAN">
+    <display-name lang="id">JakTV</display-name>
+    <icon src="https://images.useetv.com/logo_jaktv_small1.png?v=2.0.0.13" />
+    <url>http://www.useetv.com</url>
+  </channel>
+  <channel id="TVRI.MACAN">
+    <display-name lang="id">TVRI</display-name>
+    <icon src="https://images.useetv.com/logo_tvri_small1.png?v=2.0.0.13" />
+    <url>http://www.useetv.com</url>
+  </channel>
+  <channel id="AntaraTV.MACAN">
+    <display-name lang="id">Antara</display-name>
+    <icon src="https://images.useetv.com/logo_antara_small1.png?v=2.0.0.13" />
+    <url>http://www.useetv.com</url>
+  </channel>
+  <channel id="AlQuranAlKareem.MACAN">
+    <display-name lang="id">AlQuran Kareem</display-name>
+    <icon src="https://images.useetv.com/logo_alquran_small1.png?v=2.0.0.13" />
+    <url>http://www.useetv.com</url>
+  </channel>
+  <channel id="DuniaAnak.MACAN">
+    <display-name lang="id">Dunia anak</display-name>
+    <icon src="https://images.useetv.com/logogrey/grey_logo_duniaanak_small1.png?v=2.0.0.13" />
+    <url>http://www.useetv.com</url>
+  </channel>
+  <channel id="DisneyChannel.MACAN">
+    <display-name lang="id">Disney Channel HD</display-name>
+    <url>http://www.transvision.co.id</url>
+  </channel>
+  <channel id="DisneyJunior.MACAN">
+    <display-name lang="id">Disney Junior</display-name>
+    <url>http://www.transvision.co.id</url>
+  </channel>
+  <channel id="CartoonNetwork.MACAN">
+    <display-name lang="id">Cartoon Network</display-name>
+    <icon src="https://images.useetv.com/logogrey/grey_logo_cartoonnetwork_small.png" />
+    <url>http://www.useetv.com</url>
+  </channel>
+  <channel id="Boomerang.MACAN">
+    <display-name lang="id">Boomerang</display-name>
+    <url>http://www.mncvision.id.E</url>
+  </channel>
+  <channel id="Dreamworks.MACAN">
+    <display-name lang="id">Dreamworks</display-name>
+    <url>http://www.useetv.com</url>
+  </channel>
+  <channel id="Nickelodeon.MACAN">
+    <display-name lang="id">Nickelodeon</display-name>
+    <url>http://www.useetv.com</url>
+  </channel>
+  <channel id="NickelodeonJr.MACAN">
+    <display-name lang="id">Nick Junior</display-name>
+    <url>http://www.useetv.com</url>
+  </channel>
+  <channel id="BabyTV.MACAN">
+    <display-name lang="id">BabyTV</display-name>
+    <url>http://www.mncvision.id.E</url>
+  </channel>
+  <channel id="besmart.MACAN">
+    <display-name lang="id">besmart</display-name>
+    <url>http://www.mncvision.id.E</url>
+  </channel>
+  <channel id="Channel[V].MACAN">
+    <display-name lang="id">Channel [V] HD</display-name>
+    <url>http://www.transvision.co.id</url>
+  </channel>
+  <channel id="MTVLive.nl">
+    <display-name lang="id">MTV Live</display-name>
+    <url>http://www.useetv.com</url>
+  </channel>
+  <channel id="HistoryChannel.id">
+    <display-name lang="id">History</display-name>
+    <url>http://www.useetv.com</url>
+  </channel>
+  <channel id="HGTV.MACAN">
+    <display-name lang="id">HGTV</display-name>
+    <url>http://www.mncvision.id.E</url>
+  </channel>
+  <channel id="AsianFoodChannel.MACAN">
+    <display-name lang="id">Asian Food Network</display-name>
+    <url>http://www.useetv.com</url>
+  </channel>
+  <channel id="TLC.MACAN">
+    <display-name lang="id">TLC</display-name>
+    <url>http://www.mncvision.id.E</url>
+  </channel>
+  <channel id="BBCEarth.MACAN">
+    <display-name lang="id">BBC Earth</display-name>
+    <url>http://www.mncvision.id.E</url>
+  </channel>
+  <channel id="AnimalPlanet.MACAN">
+    <display-name lang="id">Animal Planet</display-name>
+    <url>http://www.mncvision.id.E</url>
+  </channel>
+  <channel id="DiscoveryChannel.MACAN">
+    <display-name lang="id">Discovery Channel</display-name>
+    <url>http://www.useetv.com</url>
+  </channel>
+  <channel id="Discovery Channel">
+    <display-name lang="id">Discovery Channel</display-name>
+    <url>http://www.useetv.com</url>
+  </channel>
+  <channel id="Discovery Asia">
+    <display-name lang="en">DISCOVERY ASIA</display-name>
+    <url>http://www.firstmedia.com</url>
+  </channel>
+  <channel id="NationalGeographicChannel.MACAN">
+    <display-name lang="id">Nat Geo</display-name>
+    <url>http://www.useetv.com</url>
+  </channel>
+  <channel id="NationalGeographicPeople.MACAN">
+    <display-name lang="id">Nat Geo People</display-name>
+    <url>http://www.useetv.com</url>
+  </channel>
+  <channel id="NationalGeographicWild.MACAN">
+    <display-name lang="id">Nat Geo Wild</display-name>
+    <url>http://www.useetv.com</url>
+  </channel>
+  <channel id="WarnerTV.MACAN">
+    <display-name lang="id">WarnerTV</display-name>
+    <url>http://www.mncvision.id.E</url>
+  </channel>
+  <channel id="Lifetime.MACAN">
+    <display-name lang="id">Lifetime</display-name>
+    <url>http://www.useetv.com</url>
+  </channel>
+  <channel id="BlueAntEntertainment.id">
+    <display-name lang="id">Blue Ant</display-name>
+    <url>http://www.useetv.com</url>
+  </channel>
+  <channel id="BlueAntExtreme.id">
+    <display-name lang="id">Blue Ant Extreme</display-name>
+    <url>http://www.useetv.com</url>
+  </channel>
+  <channel id="Techstorm.MACAN">
+    <display-name lang="id">Techstorm</display-name>
+    <url>http://www.useetv.com</url>
+  </channel>
+  <channel id="Paramount.MACAN">
+    <display-name lang="id">Paramount</display-name>
+    <url>http://www.useetv.com</url>
+  </channel>
+  <channel id="myfamilychannel.MACAN">
+    <display-name lang="id">myfamilychannel</display-name>
+    <url>http://www.useetv.com</url>
+  </channel>
+  <channel id="mycinema.MACAN">
+    <display-name lang="id">mycinema</display-name>
+    <url>http://www.useetv.com</url>
+  </channel>
+  <channel id="mycinemaasia.MACAN">
+    <display-name lang="id">mycinemaasia</display-name>
+    <url>http://www.useetv.com</url>
+  </channel>
+  <channel id="AXNHD.MACAN">
+    <display-name lang="id">AXN</display-name>
+    <url>http://www.useetv.com</url>
+  </channel>
+  <channel id="HBOHD.MACAN">
+    <display-name lang="id">HBO HD</display-name>
+    <url>http://www.transvision.co.id</url>
+  </channel>
+  <channel id="HBOFamilyHD.MACAN">
+    <display-name lang="id">HBO Family HD</display-name>
+    <url>http://www.transvision.co.id</url>
+  </channel>
+  <channel id="HBOHitsHD.MACAN">
+    <display-name lang="id">HBO Hits HD</display-name>
+    <url>http://www.transvision.co.id</url>
+  </channel>
+  <channel id="HBOSignatureHD.MACAN">
+    <display-name lang="id">HBO Signature HD</display-name>
+    <url>http://www.transvision.co.id</url>
+  </channel>
+  <channel id="CINEMAX.MACAN">
+    <display-name lang="id">CINEMAX HD</display-name>
+    <url>http://www.transvision.co.id</url>
+  </channel>
+  <channel id="CrimeInvestigation.MACAN">
+    <display-name lang="id">Crime Investigation</display-name>
+    <url>http://www.mncvision.id.E</url>
+  </channel>
+  <channel id="Hits.MACAN">
+    <display-name lang="id">Hits</display-name>
+    <url>http://www.mncvision.id.E</url>
+  </channel>
+  <channel id="HITSMovies.MACAN">
+    <display-name lang="id">HITS Movies</display-name>
+    <url>http://www.mncvision.id.E</url>
+  </channel>
+  <channel id="FashionTV.id">
+    <display-name lang="id">Fashion TV HD</display-name>
+    <url>http://www.transvision.co.id</url>
+  </channel>
+  <channel id="Arirang.MACAN">
+    <display-name lang="id">Arirang</display-name>
+    <url>http://www.useetv.com</url>
+  </channel>
+  <channel id="TVN.MACAN">
+    <display-name lang="id">TVN</display-name>
+    <url>http://www.useetv.com</url>
+  </channel>
+  <channel id="TVNMovies.MACAN">
+    <display-name lang="id">TVN Movies</display-name>
+    <url>http://www.mncvision.id.E</url>
+  </channel>
+  <channel id="KBS World">
+    <display-name lang="id">KBS World</display-name>
+    <url>http://www.useetv.com</url>
+  </channel>
+  <channel id="KPlus.id">
+    <display-name lang="id">Kplus</display-name>
+    <url>http://www.useetv.com</url>
+  </channel>
+  <channel id="Animax.MACAN">
+    <display-name lang="id">Animax</display-name>
+    <url>http://www.transvision.co.id</url>
+  </channel>
+  <channel id="Aniplus.id">
+    <display-name lang="id">AniPlus</display-name>
+    <url>http://www.transvision.co.id</url>
+  </channel>
+  <channel id="WAKUWAKUJAPAN.MACAN">
+    <display-name lang="id">Waku Waku Japan</display-name>
+    <url>http://www.useetv.com</url>
+  </channel>
+  <channel id="GEMChannel.id">
+    <display-name lang="id">SGEM</display-name>
+    <url>http://www.useetv.com</url>
+  </channel>
+  <channel id="KIX.MACAN">
+    <display-name lang="id">KIX</display-name>
+    <url>http://www.mncvision.id.E</url>
+  </channel>
+  <channel id="CelestialMovies.MACAN">
+    <display-name lang="id">Celestial Movies</display-name>
+    <url>http://www.mncvision.id.E</url>
+  </channel>
+  <channel id="SCM.MACAN">
+    <display-name lang="id">STAR Chinese Movies HD</display-name>
+    <url>http://www.transvision.co.id</url>
+  </channel>
+  <channel id="ZeeCinema.MACAN">
+    <display-name lang="en">ZEE CINEMA</display-name>
+    <url>http://www.firstmedia.com</url>
+  </channel>
+  <channel id="ZeeTV.MACAN">
+    <display-name lang="id">Zee</display-name>
+    <url>http://www.mncvision.id.E</url>
+  </channel>
+  <channel id="TV1.my">
+    <display-name lang="en">TV1 HD</display-name>
+    <url>http://www.astro.com.my</url>
+  </channel>
+  <channel id="TV2.my">
+    <display-name lang="en">TV2 HD</display-name>
+    <url>http://www.astro.com.my</url>
+  </channel>
+  <channel id="TV3.my">
+    <display-name lang="en">TV3</display-name>
+    <url>http://www.astro.com.my</url>
+  </channel>
+  <channel id="NTV7.my">
+    <display-name lang="en">NTV7</display-name>
+    <url>http://www.astro.com.my</url>
+  </channel>
+  <channel id="8TV.my">
+    <display-name lang="en">8TV</display-name>
+    <url>http://www.astro.com.my</url>
+  </channel>
+  <channel id="TV9.my">
+    <display-name lang="en">TV9</display-name>
+    <url>http://www.astro.com.my</url>
+  </channel>
+  <channel id="AstroAwani.my">
+    <display-name lang="en">Astro Arena</display-name>
+    <url>http://www.astro.com.my</url>
+  </channel>
+  <channel id="AstroAEC.my">
+    <display-name lang="en">Astro AEC HD</display-name>
+    <url>http://www.astro.com.my</url>
+  </channel>
+  <channel id="Astro Awani HD">
+    <display-name lang="en">Astro Awani HD</display-name>
+    <url>http://www.astro.com.my</url>
+  </channel>
+  <channel id="AstroCeria.my">
+    <display-name lang="en">Astro Ceria HD</display-name>
+    <url>http://www.astro.com.my</url>
+  </channel>
+  <channel id="AstroOasis.my">
+    <display-name lang="en">Astro Oasis HD</display-name>
+    <url>http://www.astro.com.my</url>
+  </channel>
+  <channel id="AstroPrima.my">
+    <display-name lang="en">Astro Prima HD</display-name>
+    <url>http://www.astro.com.my</url>
+  </channel>
+  <channel id="AstroRia.my">
+    <display-name lang="en">Astro Ria HD</display-name>
+    <url>http://www.astro.com.my</url>
+  </channel>
+  <channel id="AstroWarna.my">
+    <display-name lang="en">Astro Warna HD</display-name>
+    <url>http://www.astro.com.my</url>
+  </channel>
+  <channel id="AstroNaura.my">
+    <display-name lang="en">Naura HD</display-name>
+    <url>http://www.astro.com.my</url>
+  </channel>
+  <channel id="AstroAura.my">
+    <display-name lang="en">Astro Aura HD</display-name>
+    <url>http://www.astro.com.my</url>
+  </channel>
+  <channel id="AstroRania.my">
+    <display-name lang="en">Astro Rania HD</display-name>
+    <url>http://www.astro.com.my</url>
+  </channel>
+  <channel id="AstroCitra.my">
+    <display-name lang="en">Astro Citra HD</display-name>
+    <url>http://www.astro.com.my</url>
+  </channel>
+  <channel id="AstroBollyone.my">
+    <display-name lang="en">BollyOne HD</display-name>
+    <url>http://www.astro.com.my</url>
+  </channel>
+  <channel id="AstroVinmeen.my">
+    <display-name lang="en">Astro Vinmeen HD</display-name>
+    <url>http://www.astro.com.my</url>
+  </channel>
+  <channel id="AstroDiscScience.my">
+    <display-name lang="en">DMAX HD</display-name>
+    <url>http://www.astro.com.my</url>
+  </channel>
+  <channel id="NHKWorld.MACAN">
+    <display-name lang="id">nhk world Japan</display-name>
+    <url>http://www.useetv.com</url>
+  </channel>
+  <channel id="NHKWorldPremium.id">
+    <display-name lang="id">NHK World Premium</display-name>
+    <url>http://www.useetv.com</url>
+  </channel>
+  <channel id="CNNInternational.MACAN">
+    <display-name lang="id">CNN International</display-name>
+    <url>http://www.useetv.com</url>
+  </channel>
+  <channel id="ChannelNewsAsia.MACAN">
+    <display-name lang="id">News Asia</display-name>
+    <url>http://www.useetv.com</url>
+  </channel>
+  <channel id="Bloomberg.MACAN">
+    <display-name lang="en">BLOOMBERG HD</display-name>
+    <url>http://www.firstmedia.com</url>
+  </channel>
+  <channel id="FightSports.MACAN">
+    <display-name lang="id">Fight Sports HD</display-name>
+    <url>http://www.transvision.co.id</url>
+  </channel>
+  <channel id="beINSports1.MACAN">
+    <display-name lang="id">beIN Sports 1</display-name>
+    <url>http://www.useetv.com</url>
+  </channel>
+  <channel id="beINSports2.MACAN">
+    <display-name lang="id">beIN Sports 2</display-name>
+    <url>http://www.useetv.com</url>
+  </channel>
+  <channel id="UseeSports.MACAN">
+    <display-name lang="id">Useesports 1</display-name>
+    <url>http://www.useetv.com</url>
+  </channel>
+  <channel id="UseeSports2.MACAN">
+    <display-name lang="id">Useesports 2</display-name>
+    <url>http://www.useetv.com</url>
+  </channel>
+  <channel id="Champions1.MACAN">
+    <display-name lang="id">Champion TV 1</display-name>
+    <url>http://www.useetv.com</url>
+  </channel>
+  <channel id="Champions2.MACAN">
+    <display-name lang="id">Champion TV 2</display-name>
+    <url>http://www.useetv.com</url>
+  </channel>
+  <channel id="FOXSportsHD.MACAN">
+    <display-name lang="id">Fox Sport 1</display-name>
+    <url>http://www.useetv.com</url>
+  </channel>
+  <channel id="FOXSports2.MACAN">
+    <display-name lang="id">Fox Sport 2</display-name>
+    <url>http://www.useetv.com</url>
+  </channel>
+  <channel id="FOXSports3.MACAN">
+    <display-name lang="id">Fox Sport 3</display-name>
+    <url>http://www.useetv.com</url>
+  </channel>
+  <channel id="NBCGolf.MACAN">
+    <display-name lang="id">Golf</display-name>
+    <url>http://www.useetv.com</url>
+  </channel>
+  <channel id="NBATV.id">
+    <display-name lang="id">NBA</display-name>
+    <url>http://www.useetv.com</url>
+  </channel>
+  <channel id="seatoday.MACAN">
+    <display-name lang="id">SEA Today</display-name>
+    <url>http://www.useetv.com</url>
+  </channel>
+  <channel id="DW.MACAN">
+    <display-name lang="en">DW-TV</display-name>
+    <url>http://www.dens.tv</url>
+  </channel>
+  <channel id="RCTI.MACAN">
+    <display-name lang="id">RCTI</display-name>
+    <url>http://www.mncvision.id.E</url>
+  </channel>
+  <channel id="GTV.MACAN">
+    <display-name lang="id">GTV</display-name>
+    <url>http://www.mncvision.id.E</url>
+  </channel>
+  <channel id="MNCTV.MACAN">
+    <display-name lang="id">MNC TV</display-name>
+    <url>http://www.mncvision.id.E</url>
+  </channel>
+  <channel id="iNewsTV.MACAN">
+    <display-name lang="id">iNews</display-name>
+    <url>http://www.mncvision.id.E</url>
+  </channel>
+  <channel id="BaliTV.MACAN">
+    <display-name lang="id">Bali TV</display-name>
+    <url>http://www.useetv.com</url>
+  </channel>
+  <channel id="Galaxy.MACAN">
+    <display-name lang="id">Galaxy</display-name>
+    <url>http://www.useetv.com</url>
+  </channel>
+  <channel id="GalaxyPremium.id">
+    <display-name lang="id">Galaxy Premium</display-name>
+    <url>http://www.useetv.com</url>
+  </channel>
+  <channel id="IMC.MACAN">
+    <display-name lang="id">IMC</display-name>
+    <url>http://www.useetv.com</url>
+  </channel>
+  <channel id="CinemaWorld.MACAN">
+    <display-name lang="id">Cinema World</display-name>
+    <url>http://www.useetv.com</url>
+  </channel>
+  <channel id="BioskopIndonesia.MACAN">
+    <display-name lang="id">Bioskop Indonesia</display-name>
+    <url>http://www.useetv.com</url>
+  </channel>
+  <channel id="tv9.MACAN">
+    <display-name lang="id">TV9 NU</display-name>
+    <url>http://www.useetv.com</url>
+  </channel>
+  <channel id="MTATV.MACAN">
+    <display-name lang="id">MTATV</display-name>
+    <url>http://www.useetv.com</url>
+  </channel>
+  <channel id="RodjaTV.MACAN">
+    <display-name lang="id">Rodja TV</display-name>
+    <url>http://www.useetv.com</url>
+  </channel>
+  <channel id="UChannel.MACAN">
+    <display-name lang="id">UChannel</display-name>
+    <url>http://www.useetv.com</url>
+  </channel>
+  <channel id="TawafTV.MACAN">
+    <display-name lang="id">Tawaf TV</display-name>
+    <url>http://www.useetv.com</url>
+  </channel>
+  <channel id="CitraDangdut.MACAN">
+    <display-name lang="id">Citra Dangdut</display-name>
+    <url>http://www.useetv.com</url>
+  </channel>
+  <channel id="CitraDrama.MACAN">
+    <display-name lang="id">Citra Drama</display-name>
+    <url>http://www.useetv.com</url>
+  </channel>
+  <channel id="DuniaLain.MACAN">
+    <display-name lang="id">Dunia Lain</display-name>
+    <url>http://www.useetv.com</url>
+  </channel>
+  <channel id="horee.MACAN">
+    <display-name lang="id">Horee</display-name>
+    <url>http://www.useetv.com</url>
+  </channel>
+  <channel id="Lingua.MACAN">
+    <display-name lang="id">Lingua</display-name>
+    <url>http://www.useetv.com</url>
+  </channel>
+  <channel id="Mykidz.MACAN">
+    <display-name lang="id">My Kids</display-name>
+    <url>http://www.useetv.com</url>
+  </channel>
+  <channel id="DaVinci.MACAN">
+    <display-name lang="id">Da Vinci Learning</display-name>
+    <url>http://www.useetv.com</url>
+  </channel>
+  <channel id="DuckTV.MACAN">
+    <display-name lang="id">Duck TV</display-name>
+    <url>http://www.useetv.com</url>
+  </channel>
+  <channel id="BabyFirst.MACAN">
+    <display-name lang="id">Baby First</display-name>
+    <url>http://www.useetv.com</url>
+  </channel>
+  <channel id="EKonser.id">
+    <display-name lang="id">I-Konser</display-name>
+    <url>http://www.useetv.com</url>
+  </channel>
+  <channel id="Prambors.id">
+    <display-name lang="id">Prambors</display-name>
+    <url>http://www.useetv.com</url>
+  </channel>
+  <channel id="Flik">
+    <display-name lang="id">Flik</display-name>
+    <url>http://www.useetv.com</url>
+  </channel>
+  <channel id="Thrill.MACAN">
+    <display-name lang="id">Thrill</display-name>
+    <url>http://www.useetv.com</url>
+  </channel>
+  <channel id="FashionOne.id">
+    <display-name lang="id">Fashion One</display-name>
+    <url>http://www.useetv.com</url>
+  </channel>
+  <channel id="SonyOneHD.MACAN">
+    <display-name lang="id">SONE</display-name>
+    <url>http://www.useetv.com</url>
+  </channel>
+  <channel id="eGG.MACAN">
+    <display-name lang="id">egg network</display-name>
+    <url>http://www.useetv.com</url>
+  </channel>
+  <channel id="ChineseDrama.MACAN">
+    <display-name lang="id">Chinese Drama</display-name>
+    <url>http://www.useetv.com</url>
+  </channel>
+  <channel id="Formosa.MACAN">
+    <display-name lang="id">Formosa</display-name>
+    <url>http://www.useetv.com</url>
+  </channel>
+  <channel id="BBCWorldNews.MACAN">
+    <display-name lang="en">BBC World News HD</display-name>
+    <url>http://www.astro.com.my</url>
+  </channel>
+  <channel id="AlJazeera.MACAN">
+    <display-name lang="en">Al Jazeera English HD</display-name>
+    <url>http://www.astro.com.my</url>
+  </channel>
+  <channel id="NBC Golf">
+    <display-name lang="id">Golf</display-name>
+    <url>http://www.useetv.com</url>
+  </channel>
+  <channel id="bein1MY.MACAN">
+    <display-name lang="en">beIN Sports HD</display-name>
+    <url>http://www.astro.com.my</url>
+  </channel>
+  <channel id="beinMaxMY.MACAN">
+    <display-name lang="en">beIN Sports MAX HD</display-name>
+    <url>http://www.astro.com.my</url>
+  </channel>
+  <channel id="Arena.id">
+    <display-name lang="en">Astro Arena HD</display-name>
+    <url>http://www.astro.com.my</url>
+  </channel>
+  <channel id="Arena2.id">
+    <display-name lang="en">Astro Arena HD 2</display-name>
+    <url>http://www.astro.com.my</url>
+  </channel>
+  <channel id="ASSP1.my">
+    <display-name lang="en">Astro SuperSport HD</display-name>
+    <url>http://www.astro.com.my</url>
+  </channel>
+  <channel id="ASSP2.my">
+    <display-name lang="en">Astro SuperSport 2 HD</display-name>
+    <url>http://www.astro.com.my</url>
+  </channel>
+  <channel id="ASSP3.my">
+    <display-name lang="en">Astro SuperSport 3 HD</display-name>
+    <url>http://www.astro.com.my</url>
+  </channel>
+  <channel id="ASSP4.my">
+    <display-name lang="en">Astro SuperSport 4 HD</display-name>
+    <url>http://www.astro.com.my</url>
+  </channel>
+  <channel id="ASSP5.my">
+    <display-name lang="en">Astro SuperSport 5 HD</display-name>
+    <url>http://www.astro.com.my</url>
+  </channel>
+  <channel id="Live1.id">
+    <display-name lang="en">Astro SuperSport HD</display-name>
+    <url>http://www.astro.com.my</url>
+  </channel>
+  <channel id="Live2.id">
+    <display-name lang="en">Astro SuperSport 2 HD</display-name>
+    <url>http://www.astro.com.my</url>
+  </channel>
+  <channel id="Live3.id">
+    <display-name lang="en">Astro SuperSport 3 HD</display-name>
+    <url>http://www.astro.com.my</url>
+  </channel>
+  <channel id="Live4.id">
+    <display-name lang="en">Astro SuperSport 4 HD</display-name>
+    <url>http://www.astro.com.my</url>
+  </channel>
+  <channel id="Live5.id">
+    <display-name lang="en">Astro SuperSport 5 HD</display-name>
+    <url>http://www.astro.com.my</url>
+  </channel>
+  <channel id="SPOTV.MACAN">
+    <display-name lang="en">SPOTV</display-name>
+    <url>http://www.astro.com.my</url>
+  </channel>
+  <programme start="20220620000000 +0700" stop="20220620010000 +0700" channel="RTV.MACAN">
+    <title lang="id">Mega Aksi</title>
+    <sub-title lang="id">Misteri Gunung Merapi</sub-title>
+    <desc lang="id">Mega Aksi adalah program yang menampilkan berbagai film pilihan yang akan menemani hari istirahat Anda.(n)</desc>
+  </programme>
+  <programme start="20220620010000 +0700" stop="20220620013000 +0700" channel="RTV.MACAN">
+    <title lang="id">Cermin Hati</title>
+    <desc lang="id">Cermin Hati adalah program rohani yang akan menjadi berkat bagi pemirsa, dipandu oleh Pendeta Gilbert Lumoindong.(n)</desc>
+  </programme>
+  <programme start="20220620013000 +0700" stop="20220620020000 +0700" channel="RTV.MACAN">
+    <title lang="id">Monster Knockout</title>
+    <desc lang="id">Para petarung ternama didunia siap tunjukkan kekuatannya. Jangan lewatkan aksi kuat mereka, Monster Knockout.(n)</desc>
+  </programme>
+  <programme start="20220620020000 +0700" stop="20220620030000 +0700" channel="RTV.MACAN">
+    <title lang="id">Ludruk Kekinian</title>
+    <desc lang="id">Ingin tahu bagaimana keseruan Tessy, Polo, Kadir, Tarsan dan Ribut? Ikuti program acara Ludruk Kekinian.(n)</desc>
+  </programme>
+  <programme start="20220620030000 +0700" stop="20220620043000 +0700" channel="RTV.MACAN">
+    <title lang="id">Movinesia</title>
+    <desc lang="id">Movinesia adalah Film TV pilihan dengan para aktor dan aktris ternama di indonesia yang akan menemani istirahat Anda.(n)</desc>
+  </programme>
+  <programme start="20220620043000 +0700" stop="20220620050000 +0700" channel="RTV.MACAN">
+    <title lang="id">Lensa Indonesia Pagi</title>
+    <desc lang="id">Lensa Indonesia Pagi membawakan berita pagi yang menghadirkan siaran langsung dari tempat kejadian dan langsung dari reporter kami dan para ahli yang melaporkan analisisnya.(n)</desc>
+  </programme>
+  <programme start="20220620050000 +0700" stop="20220620063000 +0700" channel="RTV.MACAN">
+    <title lang="id">Santri Boy</title>
+    <desc lang="id">Serial animasi dengan latar belakang kehidupan para santri beserta lingkungannya dan juga mempertahankan moral keagamaan dan menjaga adat istiadat.(n)</desc>
+  </programme>
+  <programme start="20220620063000 +0700" stop="20220620080000 +0700" channel="RTV.MACAN">
+    <title lang="id">Sinema Ceria</title>
+    <sub-title lang="id">Pj Mask</sub-title>
+    <desc lang="id">Kami menghadirkan Sinema Ceria, sebuah program animasi yang akan menemani hari Anda.(n)</desc>
+  </programme>
+  <programme start="20220620080000 +0700" stop="20220620083000 +0700" channel="RTV.MACAN">
+    <title lang="id">Luna Main Mata</title>
+    <desc lang="id">Keseharian Luna Maya dengan segudang aktivitasnya pasti menarik dan sayang untuk dilewatkan. Saksikan dalam program Luna Main Mata.(n)</desc>
+  </programme>
+  <programme start="20220620083000 +0700" stop="20220620090000 +0700" channel="RTV.MACAN">
+    <title lang="id">Unik Enak</title>
+    <desc lang="id">Saksikan program Unik Enak, Inspirasi masak-memasak di seluruh dunia, yang pastinya unik &amp; enak. Ada juga kegiatan masak yang bikin kita ngakak.(n)</desc>
+  </programme>
+  <programme start="20220620090000 +0700" stop="20220620093000 +0700" channel="RTV.MACAN">
+    <title lang="id">Caca Marica</title>
+    <desc lang="id">Saksikan Caca Marica yang pastinya kita akan dikasih info-info yang sedang viral saat ini.(n)</desc>
+  </programme>
+  <programme start="20220620093000 +0700" stop="20220620103000 +0700" channel="RTV.MACAN">
+    <title lang="id">Sinema Ceria</title>
+    <sub-title lang="id">Thomas &amp; Friend</sub-title>
+    <desc lang="id">Kami menghadirkan Sinema Ceria, sebuah program animasi yang akan menemani hari Anda.(n)</desc>
+  </programme>
+  <programme start="20220620103000 +0700" stop="20220620110000 +0700" channel="RTV.MACAN">
+    <title lang="id">CSI</title>
+    <sub-title lang="id">Catatan Seputar Investigasi</sub-title>
+    <desc lang="id">Catatan Seputar Investigasi menguak berbagai modus kejahatan dan kriminalitas sehingga menjadi panduan bagi Anda dalam bertindak lebih hati-hati dan preventif agar terhindar dari berbagai tindak kejahatan dalam kehidupan sehari-hari.(n)</desc>
+  </programme>
+  <programme start="20220620110000 +0700" stop="20220620113000 +0700" channel="RTV.MACAN">
+    <title lang="id">Lensa Indonesia Siang</title>
+    <desc lang="id">Liputan berita terkini di Indonesia dan dunia dengan analisa dan wawancara yang mendalam serta berita terkini dari olahraga, cuaca dan seni.(n)</desc>
+  </programme>
+  <programme start="20220620113000 +0700" stop="20220620130000 +0700" channel="RTV.MACAN">
+    <title lang="id">Sinema Ceria</title>
+    <sub-title lang="id">Barbie Dreamhouse</sub-title>
+    <desc lang="id">Kami menghadirkan Sinema Ceria, sebuah program animasi yang akan menemani hari Anda.(n)</desc>
+  </programme>
+  <programme start="20220620130000 +0700" stop="20220620140000 +0700" channel="RTV.MACAN">
+    <title lang="id">Sinema Keluarga</title>
+    <sub-title lang="id">Pokemon Journey</sub-title>
+    <desc lang="id">Kami menghadirkan Sinema Keluarga, sebuah program animasi yang akan menemani hari Anda.(n)</desc>
+  </programme>
+  <programme start="20220620140000 +0700" stop="20220620143000 +0700" channel="RTV.MACAN">
+    <title lang="id">Sinema Keluarga</title>
+    <sub-title lang="id">Bola Kampung X</sub-title>
+    <desc lang="id">Kami menghadirkan Sinema Keluarga, sebuah program animasi yang akan menemani hari Anda.(n)</desc>
+  </programme>
+  <programme start="20220620143000 +0700" stop="20220620150000 +0700" channel="RTV.MACAN">
+    <title lang="id">Dinasti Tambun</title>
+    <desc lang="id">Yang ditunggu-tunggu sudah datang. Ini dia sultan dari Tambun yang akan menemani waktu luang Anda.(n)</desc>
+  </programme>
+  <programme start="20220620150000 +0700" stop="20220620163000 +0700" channel="RTV.MACAN">
+    <title lang="id">Oddbods</title>
+    <desc lang="id">Oddbods mengisahkan kehidupan sehari-hari melalui perwujudan tujuh kepribadian berbeda dalam kostum berbulu cerah. Dengan perwujudan cinta, tawa, kehancuran, dan drama, persiapkan diri Anda untuk apa saja.(n)</desc>
+  </programme>
+  <programme start="20220620163000 +0700" stop="20220620180000 +0700" channel="RTV.MACAN">
+    <title lang="id">Sinema Keluarga</title>
+    <sub-title lang="id">Time Traveler Luke</sub-title>
+    <desc lang="id">Kami menghadirkan Sinema Keluarga, sebuah program animasi yang akan menemani hari Anda.(n)</desc>
+  </programme>
+  <programme start="20220620180000 +0700" stop="20220620183000 +0700" channel="RTV.MACAN">
+    <title lang="id">Riko The Series</title>
+    <desc lang="id">Awali hari dengan cerita seru yang penuh nilai kebaikan dari Riko dan mari perkaya pengetahuan dengan cara yang menyenangkan.?(n)</desc>
+  </programme>
+  <programme start="20220620183000 +0700" stop="20220620190000 +0700" channel="RTV.MACAN">
+    <title lang="id">Sinema Keluarga</title>
+    <sub-title lang="id">Riska &amp; Si Gembul</sub-title>
+    <desc lang="id">Kami menghadirkan Sinema Keluarga, sebuah program animasi yang akan menemani hari Anda.(n)</desc>
+  </programme>
+  <programme start="20220620190000 +0700" stop="20220620210000 +0700" channel="RTV.MACAN">
+    <title lang="id">Sinema Keluarga</title>
+    <sub-title lang="id">Adit Sopo Jarwo</sub-title>
+    <desc lang="id">Kami menghadirkan Sinema Keluarga, sebuah program animasi yang akan menemani hari Anda.(n)</desc>
+  </programme>
+  <programme start="20220620210000 +0700" stop="20220620230000 +0700" channel="RTV.MACAN">
+    <title lang="id">Layar Lebar Indonesia</title>
+    <desc lang="id">Menghadirkan program-program terbaik spesial untuk Anda.(n)</desc>
+  </programme>
+  <programme start="20220620230000 +0700" stop="20220621000000 +0700" channel="RTV.MACAN">
+    <title lang="id">Mega Aksi</title>
+    <sub-title lang="id">Misteri Gunung Merapi</sub-title>
+    <desc lang="id">Mega Aksi adalah program yang menampilkan berbagai film pilihan yang akan menemani hari istirahat Anda.(n)</desc>
+  </programme>
+  <programme start="20220621000000 +0700" stop="20220621003000 +0700" channel="RTV.MACAN">
+    <title lang="id">Turn Back Crime</title>
+    <desc lang="id">Turn Back Crime adalah program tentang jaringan kepolisian negara-negara sedunia yang mengkampanyekan kesadaran masyarakat untuk bersama melawan kejahatan terorganisir di sekeliling mereka.(n)</desc>
+  </programme>
+  <programme start="20220621003000 +0700" stop="20220621010000 +0700" channel="RTV.MACAN">
+    <title lang="id">Strong Man</title>
+    <desc lang="id">Kompetisi yang menghadirkan orang-orang terkuat di dunia akan segera hadir.(n)</desc>
+  </programme>
+  <programme start="20220621010000 +0700" stop="20220621013000 +0700" channel="RTV.MACAN">
+    <title lang="id">Cermin Hati</title>
+    <desc lang="id">Cermin Hati adalah program rohani yang akan menjadi berkat bagi pemirsa, dipandu oleh Pendeta Gilbert Lumoindong.(n)</desc>
+  </programme>
+  <programme start="20220621013000 +0700" stop="20220621020000 +0700" channel="RTV.MACAN">
+    <title lang="id">Jalan Jalan Gaes</title>
+    <desc lang="id">Program yang satu ini cocok banget untuk kalian yang senang mengeksplorasi tempat-tempat keren dan banyak referensi objek wisata menarik lainnya.(n)</desc>
+  </programme>
+  <programme start="20220621020000 +0700" stop="20220621030000 +0700" channel="RTV.MACAN">
+    <title lang="id">Ludruk Kekinian</title>
+    <desc lang="id">Ingin tahu bagaimana keseruan Tessy, Polo, Kadir, Tarsan dan Ribut? Ikuti program acara Ludruk Kekinian.(n)</desc>
+  </programme>
+  <programme start="20220621030000 +0700" stop="20220621043000 +0700" channel="RTV.MACAN">
+    <title lang="id">Movinesia</title>
+    <desc lang="id">Movinesia adalah Film TV pilihan dengan para aktor dan aktris ternama di indonesia yang akan menemani istirahat Anda.(n)</desc>
+  </programme>
+  <programme start="20220621043000 +0700" stop="20220621050000 +0700" channel="RTV.MACAN">
+    <title lang="id">Lensa Indonesia Pagi</title>
+    <desc lang="id">Lensa Indonesia Pagi membawakan berita pagi yang menghadirkan siaran langsung dari tempat kejadian dan langsung dari reporter kami dan para ahli yang melaporkan analisisnya.(n)</desc>
+  </programme>
+  <programme start="20220621050000 +0700" stop="20220621063000 +0700" channel="RTV.MACAN">
+    <title lang="id">Santri Boy</title>
+    <desc lang="id">Serial animasi dengan latar belakang kehidupan para santri beserta lingkungannya dan juga mempertahankan moral keagamaan dan menjaga adat istiadat.(n)</desc>
+  </programme>
+  <programme start="20220621063000 +0700" stop="20220621080000 +0700" channel="RTV.MACAN">
+    <title lang="id">Sinema Ceria</title>
+    <sub-title lang="id">Pj Mask</sub-title>
+    <desc lang="id">Kami menghadirkan Sinema Ceria, sebuah program animasi yang akan menemani hari Anda.(n)</desc>
+  </programme>
+  <programme start="20220621080000 +0700" stop="20220621083000 +0700" channel="RTV.MACAN">
+    <title lang="id">Luna Main Mata</title>
+    <desc lang="id">Keseharian Luna Maya dengan segudang aktivitasnya pasti menarik dan sayang untuk dilewatkan. Saksikan dalam program Luna Main Mata.(n)</desc>
+  </programme>
+  <programme start="20220621083000 +0700" stop="20220621090000 +0700" channel="RTV.MACAN">
+    <title lang="id">Unik Enak</title>
+    <desc lang="id">Saksikan program Unik Enak, Inspirasi masak-memasak di seluruh dunia, yang pastinya unik &amp; enak. Ada juga kegiatan masak yang bikin kita ngakak.(n)</desc>
+  </programme>
+  <programme start="20220621090000 +0700" stop="20220621093000 +0700" channel="RTV.MACAN">
+    <title lang="id">Caca Marica</title>
+    <desc lang="id">Saksikan Caca Marica yang pastinya kita akan dikasih info-info yang sedang viral saat ini.(n)</desc>
+  </programme>
+  <programme start="20220621093000 +0700" stop="20220621103000 +0700" channel="RTV.MACAN">
+    <title lang="id">Sinema Ceria</title>
+    <sub-title lang="id">Thomas &amp; Friend</sub-title>
+    <desc lang="id">Kami menghadirkan Sinema Ceria, sebuah program animasi yang akan menemani hari Anda.(n)</desc>
+  </programme>
+  <programme start="20220621103000 +0700" stop="20220621110000 +0700" channel="RTV.MACAN">
+    <title lang="id">CSI</title>
+    <sub-title lang="id">Catatan Seputar Investigasi</sub-title>
+    <desc lang="id">Catatan Seputar Investigasi menguak berbagai modus kejahatan dan kriminalitas sehingga menjadi panduan bagi Anda dalam bertindak lebih hati-hati dan preventif agar terhindar dari berbagai tindak kejahatan dalam kehidupan sehari-hari.(n)</desc>
+  </programme>
+  <programme start="20220621110000 +0700" stop="20220621113000 +0700" channel="RTV.MACAN">
+    <title lang="id">Lensa Indonesia Siang</title>
+    <desc lang="id">Liputan berita terkini di Indonesia dan dunia dengan analisa dan wawancara yang mendalam serta berita terkini dari olahraga, cuaca dan seni.(n)</desc>
+  </programme>
+  <programme start="20220621113000 +0700" stop="20220621130000 +0700" channel="RTV.MACAN">
+    <title lang="id">Sinema Ceria</title>
+    <sub-title lang="id">Barbie Dreamhouse</sub-title>
+    <desc lang="id">Kami menghadirkan Sinema Ceria, sebuah program animasi yang akan menemani hari Anda.(n)</desc>
+  </programme>
+  <programme start="20220621130000 +0700" stop="20220621140000 +0700" channel="RTV.MACAN">
+    <title lang="id">Sinema Keluarga</title>
+    <sub-title lang="id">Pokemon Journey</sub-title>
+    <desc lang="id">Kami menghadirkan Sinema Keluarga, sebuah program animasi yang akan menemani hari Anda.(n)</desc>
+  </programme>
+  <programme start="20220621140000 +0700" stop="20220621143000 +0700" channel="RTV.MACAN">
+    <title lang="id">Sinema Keluarga</title>
+    <sub-title lang="id">Bola Kampung X</sub-title>
+    <desc lang="id">Kami menghadirkan Sinema Keluarga, sebuah program animasi yang akan menemani hari Anda.(n)</desc>
+  </programme>
+  <programme start="20220621143000 +0700" stop="20220621150000 +0700" channel="RTV.MACAN">
+    <title lang="id">Dinasti Tambun</title>
+    <desc lang="id">Yang ditunggu-tunggu sudah datang. Ini dia sultan dari Tambun yang akan menemani waktu luang Anda.(n)</desc>
+  </programme>
+  <programme start="20220621150000 +0700" stop="20220621163000 +0700" channel="RTV.MACAN">
+    <title lang="id">Oddbods</title>
+    <desc lang="id">Oddbods mengisahkan kehidupan sehari-hari melalui perwujudan tujuh kepribadian berbeda dalam kostum berbulu cerah. Dengan perwujudan cinta, tawa, kehancuran, dan drama, persiapkan diri Anda untuk apa saja.(n)</desc>
+  </programme>
+  <programme start="20220621163000 +0700" stop="20220621180000 +0700" channel="RTV.MACAN">
+    <title lang="id">Sinema Keluarga</title>
+    <sub-title lang="id">Time Traveler Luke</sub-title>
+    <desc lang="id">Kami menghadirkan Sinema Keluarga, sebuah program animasi yang akan menemani hari Anda.(n)</desc>
+  </programme>
+  <programme start="20220621180000 +0700" stop="20220621183000 +0700" channel="RTV.MACAN">
+    <title lang="id">Riko The Series</title>
+    <desc lang="id">Awali hari dengan cerita seru yang penuh nilai kebaikan dari Riko dan mari perkaya pengetahuan dengan cara yang menyenangkan.?(n)</desc>
+  </programme>
+  <programme start="20220621183000 +0700" stop="20220621190000 +0700" channel="RTV.MACAN">
+    <title lang="id">Sinema Keluarga</title>
+    <sub-title lang="id">Riska &amp; Si Gembul</sub-title>
+    <desc lang="id">Kami menghadirkan Sinema Keluarga, sebuah program animasi yang akan menemani hari Anda.(n)</desc>
+  </programme>
+  <programme start="20220621190000 +0700" stop="20220621210000 +0700" channel="RTV.MACAN">
+    <title lang="id">Sinema Keluarga</title>
+    <sub-title lang="id">Adit Sopo Jarwo</sub-title>
+    <desc lang="id">Kami menghadirkan Sinema Keluarga, sebuah program animasi yang akan menemani hari Anda.(n)</desc>
+  </programme>
+  <programme start="20220621210000 +0700" stop="20220621220000 +0700" channel="RTV.MACAN">
+    <title lang="id">Mega Klasik</title>
+    <sub-title lang="id">Gajah Mada</sub-title>
+    <desc lang="id">Mega Klasik akan membawa Anda kembali ke tahun 90-an. Kenang kembali memori dan aksi paling seru di Mega Klasik Indonesia.(n)</desc>
+  </programme>
+  <programme start="20220620010000 +0700" stop="20220620013000 +0700" channel="ANTV.MACAN">
+    <title lang="id">Merah Putih Peristiwa</title>
+    <desc lang="id">Nia adalah seorang gadis yatim piatu yang mengalami kebutaan saat menginjak bangku SMA. Namun, Hal itu berubah seketika ketika dia menerima donor mata dari seorang dokter bernama Mona yang meninggal dunia akibat kecelakaan.(n)</desc>
+  </programme>
+  <programme start="20220620013000 +0700" stop="20220620020000 +0700" channel="ANTV.MACAN">
+    <title lang="id">Jejak Kriminal</title>
+    <desc lang="id">Jejak Kriminal adalah drama reality yang diangkat dari kisah sebuah peristiwa kriminal terkait konflik, intrik serta asmara yang berujung kekejian.(n)</desc>
+  </programme>
+  <programme start="20220620020000 +0700" stop="20220620033000 +0700" channel="ANTV.MACAN">
+    <title lang="id">Kumpulan Kisah Ngeri</title>
+    <desc lang="id">Kumpulan Kisah Ngeri merupakan suatu cerita mitos/kisah nyata yg seram dan menakutkan.(n)</desc>
+  </programme>
+  <programme start="20220620033000 +0700" stop="20220620040000 +0700" channel="ANTV.MACAN">
+    <title lang="id">Ashoka</title>
+    <desc lang="id">Asoka adalah putra maharaja Maurya, Bindusara dari seorang selir yang pangkatnya agak rendah dan bernama subhadrangi yang akhir nya disebut Dharma karena ia mengikuti jalan kebenaran. Asoka memiliki beberapa kakak dan hanya satu adik, Drupadh.(n)</desc>
+  </programme>
+  <programme start="20220620040000 +0700" stop="20220620053000 +0700" channel="ANTV.MACAN">
+    <title lang="id">Oscar's Oasis</title>
+    <desc lang="id">Seekor kadal yang bernama Oscar selalu mendapatkan masalah dari temannya,tinggal di gurun pasir yang terdapat di beberapa adegan ia kehausan dan mencari minum. Dia juga memiliki pacar sejenis kadal yang cantik.(n)</desc>
+  </programme>
+  <programme start="20220620053000 +0700" stop="20220620063000 +0700" channel="ANTV.MACAN">
+    <title lang="id">Rabbids Invasion</title>
+    <desc lang="id">Rabbids Invasion merupakan serial animasi yang mengisahkan sekolompok kelinci yang dipimpin oleh Mad Rabbid yang melakukan perjalanan dengan kapal selam terbang mencari surga pretzel.(n)</desc>
+  </programme>
+  <programme start="20220620063000 +0700" stop="20220620080000 +0700" channel="ANTV.MACAN">
+    <title lang="id">Masha &amp; the Bear</title>
+    <desc lang="id">Masha and The Bear menceritakan tentang Masha yang merupakan seorang gadis kecil yang super aktif dan cenderung memiliki sifat yang agak jahil.(n)</desc>
+  </programme>
+  <programme start="20220620080000 +0700" stop="20220620090000 +0700" channel="ANTV.MACAN">
+    <title lang="id">Gopi</title>
+    <desc lang="id">' Gopi' menceritakan perjalanan kehidupannya sebagai gadis yatim piatu yang lugu dan harus bertahan menjalani hidup bersama keluarga yang mengadopsinya.(n)</desc>
+  </programme>
+  <programme start="20220620090000 +0700" stop="20220620123000 +0700" channel="ANTV.MACAN">
+    <title lang="id">Mega Bollywood Dari Gangga</title>
+    <desc lang="id">Mega Bollywood menghadirkan serial India, dengan cerita yang berbeda-beda setiap minggunya.(n)</desc>
+  </programme>
+  <programme start="20220620123000 +0700" stop="20220620143000 +0700" channel="ANTV.MACAN">
+    <title lang="id">Gangaa</title>
+    <desc lang="id">Gangaa Shukhla adalah gadis kecil yang hidup bersama sang ayah, Varun. Pada saat usianya tujuh tahun, Gangaa dinikahkan dengan bocah sepantarannya, sesuai dengan tradisi yang ada di daerah mereka.(n)</desc>
+  </programme>
+  <programme start="20220620143000 +0700" stop="20220620170000 +0700" channel="ANTV.MACAN">
+    <title lang="id">Balika Vadhu</title>
+    <desc lang="id">Kisah Anandi dimulai dalam kehidupannya yang jauh dari sederhana di sebuah desa kecil di kawasan Rajastan. Ia tinggal bersama keluarga kecilnya.Kesempatan Anandhi ersekolah tertutup rapat. Ia dipaksa menikah dengan Jagdish, anak dari Sumitra dan Bhairav.(n)</desc>
+  </programme>
+  <programme start="20220620170000 +0700" stop="20220620190000 +0700" channel="ANTV.MACAN">
+    <title lang="id">Terpaksa Menikahi Tuan Muda</title>
+    <desc lang="id">Kinanti, gadis cantik jelita terpaksa harus menikahi Abhimana menggantikan adik tirinya, Sarah. Semua bermula dari Herman, Ayah Kinanti, yang membutuhkan dana cukup banyak untuk membayar hutang dan menyelesaikan proyek yang meledak dan terbakar.(n)</desc>
+  </programme>
+  <programme start="20220620190000 +0700" stop="20220620220000 +0700" channel="ANTV.MACAN">
+    <title lang="id">Suami Pengganti</title>
+    <desc lang="id">Suami Pengganti mengisahkan persahabatan dua remaja bernama Ariana dan Celine yang teranjam rusak karena mereka saling menyukai orang yang sama.(n)</desc>
+  </programme>
+  <programme start="20220620220000 +0700" stop="20220621000000 +0700" channel="ANTV.MACAN">
+    <title lang="id">Kumpulan Kisah Ngeri</title>
+    <desc lang="id">Kumpulan Kisah Ngeri merupakan suatu cerita mitos/kisah nyata yg seram dan menakutkan.(n)</desc>
+  </programme>
+  <programme start="20220621000000 +0700" stop="20220621010000 +0700" channel="ANTV.MACAN">
+    <title lang="id">Ada Si Manis di Jembatan</title>
+    <desc lang="id">Si Manis Di Jembatan menceritakan seorang penyanyi dangdut pantura yang hampir menikah dengan kekasihnya, hanya saja impian si Manis pupus saat dia harus tewas di tangan sekelompok orang yang tidak dikenali.(n)</desc>
+  </programme>
+  <programme start="20220621010000 +0700" stop="20220621013000 +0700" channel="ANTV.MACAN">
+    <title lang="id">Merah Putih Peristiwa</title>
+    <desc lang="id">Nia adalah seorang gadis yatim piatu yang mengalami kebutaan saat menginjak bangku SMA. Namun, Hal itu berubah seketika ketika dia menerima donor mata dari seorang dokter bernama Mona yang meninggal dunia akibat kecelakaan.(n)</desc>
+  </programme>
+  <programme start="20220621013000 +0700" stop="20220621020000 +0700" channel="ANTV.MACAN">
+    <title lang="id">AGC Trust Homshop</title>
+  </programme>
+  <programme start="20220621020000 +0700" stop="20220621033000 +0700" channel="ANTV.MACAN">
+    <title lang="id">Kumpulan Kisah Ngeri</title>
+    <desc lang="id">Kumpulan Kisah Ngeri merupakan suatu cerita mitos/kisah nyata yg seram dan menakutkan.(n)</desc>
+  </programme>
+  <programme start="20220621033000 +0700" stop="20220621040000 +0700" channel="ANTV.MACAN">
+    <title lang="id">Ashoka</title>
+    <desc lang="id">Asoka adalah putra maharaja Maurya, Bindusara dari seorang selir yang pangkatnya agak rendah dan bernama subhadrangi yang akhir nya disebut Dharma karena ia mengikuti jalan kebenaran. Asoka memiliki beberapa kakak dan hanya satu adik, Drupadh.(n)</desc>
+  </programme>
+  <programme start="20220621040000 +0700" stop="20220621053000 +0700" channel="ANTV.MACAN">
+    <title lang="id">Oscar's Oasis</title>
+    <desc lang="id">Seekor kadal yang bernama Oscar selalu mendapatkan masalah dari temannya,tinggal di gurun pasir yang terdapat di beberapa adegan ia kehausan dan mencari minum. Dia juga memiliki pacar sejenis kadal yang cantik.(n)</desc>
+  </programme>
+  <programme start="20220621053000 +0700" stop="20220621063000 +0700" channel="ANTV.MACAN">
+    <title lang="id">Rabbids Invasion</title>
+    <desc lang="id">Rabbids Invasion merupakan serial animasi yang mengisahkan sekolompok kelinci yang dipimpin oleh Mad Rabbid yang melakukan perjalanan dengan kapal selam terbang mencari surga pretzel.(n)</desc>
+  </programme>
+  <programme start="20220621063000 +0700" stop="20220621080000 +0700" channel="ANTV.MACAN">
+    <title lang="id">Masha &amp; the Bear</title>
+    <desc lang="id">Masha and The Bear menceritakan tentang Masha yang merupakan seorang gadis kecil yang super aktif dan cenderung memiliki sifat yang agak jahil.(n)</desc>
+  </programme>
+  <programme start="20220621080000 +0700" stop="20220621090000 +0700" channel="ANTV.MACAN">
+    <title lang="id">Gopi</title>
+    <desc lang="id">' Gopi' menceritakan perjalanan kehidupannya sebagai gadis yatim piatu yang lugu dan harus bertahan menjalani hidup bersama keluarga yang mengadopsinya.(n)</desc>
+  </programme>
+  <programme start="20220621090000 +0700" stop="20220621123000 +0700" channel="ANTV.MACAN">
+    <title lang="id">Mega Bollywood Dari Gangga</title>
+    <desc lang="id">Mega Bollywood menghadirkan serial India, dengan cerita yang berbeda-beda setiap minggunya.(n)</desc>
+  </programme>
+  <programme start="20220621123000 +0700" stop="20220621143000 +0700" channel="ANTV.MACAN">
+    <title lang="id">Gangaa</title>
+    <desc lang="id">Gangaa Shukhla adalah gadis kecil yang hidup bersama sang ayah, Varun. Pada saat usianya tujuh tahun, Gangaa dinikahkan dengan bocah sepantarannya, sesuai dengan tradisi yang ada di daerah mereka.(n)</desc>
+  </programme>
+  <programme start="20220621143000 +0700" stop="20220621170000 +0700" channel="ANTV.MACAN">
+    <title lang="id">Balika Vadhu</title>
+    <desc lang="id">Kisah Anandi dimulai dalam kehidupannya yang jauh dari sederhana di sebuah desa kecil di kawasan Rajastan. Ia tinggal bersama keluarga kecilnya.Kesempatan Anandhi ersekolah tertutup rapat. Ia dipaksa menikah dengan Jagdish, anak dari Sumitra dan Bhairav.(n)</desc>
+  </programme>
+  <programme start="20220621170000 +0700" stop="20220621190000 +0700" channel="ANTV.MACAN">
+    <title lang="id">Terpaksa Menikahi Tuan Muda</title>
+    <desc lang="id">Kinanti, gadis cantik jelita terpaksa harus menikahi Abhimana menggantikan adik tirinya, Sarah. Semua bermula dari Herman, Ayah Kinanti, yang membutuhkan dana cukup banyak untuk membayar hutang dan menyelesaikan proyek yang meledak dan terbakar.(n)</desc>
+  </programme>
+  <programme start="20220620000000 +0700" stop="20220620010000 +0700" channel="TVOne.MACAN">
+    <title lang="id">Ragam Perkara</title>
+    <desc lang="id">Saksikan program yang mengangkat tema kriminal dengan lebih mendalam.(n)</desc>
+  </programme>
+  <programme start="20220620010000 +0700" stop="20220620020000 +0700" channel="TVOne.MACAN">
+    <title lang="id">AB Shop</title>
+    <desc lang="id">AB Shop merupakan program home shopping yang menawarkan kegiatan berbelanja bagi Anda yang tidak memiliki banyak waktu untuk keluar rumah. Siapkan telepon Anda dan pilih barang-barang yang Anda perlukan sekarang juga di AB Shop.(n)</desc>
+  </programme>
+  <programme start="20220620020000 +0700" stop="20220620023000 +0700" channel="TVOne.MACAN">
+    <title lang="id">Kabar Petang Pilihan</title>
+    <desc lang="id">Kabar Petang merupakan program buletin berita yang membahas secara mendalam segala peristiwa atau isu-isu yang sedang berkembang saat ini. Program ini memiliki segmen dialog yang mengedepankan eksklusifitas narasumber dan kedalaman isu bahasan.(n)</desc>
+  </programme>
+  <programme start="20220620023000 +0700" stop="20220620033000 +0700" channel="TVOne.MACAN">
+    <title lang="id">Kabar Petang</title>
+    <desc lang="id">Kabar Petang merupakan program buletin berita yang membahas secara mendalam segala peristiwa atau isu-isu yang sedang berkembang saat ini. Program ini memiliki segmen dialog yang mengedepankan eksklusifitas narasumber dan kedalaman isu bahasan.(n)</desc>
+  </programme>
+  <programme start="20220620033000 +0700" stop="20220620040000 +0700" channel="TVOne.MACAN">
+    <title lang="id">Ragam Perkara</title>
+    <desc lang="id">Saksikan program yang mengangkat tema kriminal dengan lebih mendalam.(n)</desc>
+  </programme>
+  <programme start="20220620040000 +0700" stop="20220620043000 +0700" channel="TVOne.MACAN">
+    <title lang="id">Assalamualaikum Nusantara</title>
+    <desc lang="id">Program religi yang akan menemani pagi anda dengan info-info tentang Islam.(n)</desc>
+  </programme>
+  <programme start="20220620043000 +0700" stop="20220620060000 +0700" channel="TVOne.MACAN">
+    <title lang="id">Kabar Pagi</title>
+    <desc lang="id">Kabar pagi menghadirkan berbagai berita dari dunia politik, ekonomi, hukum, sosial dan budaya yang terjadi di hari sebelumnya.(n)</desc>
+  </programme>
+  <programme start="20220620060000 +0700" stop="20220620063000 +0700" channel="TVOne.MACAN">
+    <title lang="id">Kabar Arena Pagi</title>
+    <desc lang="id">Kabar Arena merupakan program berita olahraga yang mengusung informasi terbaru seputar olahraga baik dalam dan luar negeri, serta mengedepankan analisa terhadap event olahraga dunia yang akan berlangsung.(n)</desc>
+  </programme>
+  <programme start="20220620063000 +0700" stop="20220620080000 +0700" channel="TVOne.MACAN">
+    <title lang="id">Apa Kabar Indonesia Pagi</title>
+    <desc lang="id">Apa Kabar Indonesia Pagi adalah program yang menggabungkan konsep berita dan talk show dalam sebuah acara, menyajikan berbagai berita dari dunia politik, ekonomi, hukum, sosial dan budaya.(n)</desc>
+  </programme>
+  <programme start="20220620080000 +0700" stop="20220620090000 +0700" channel="TVOne.MACAN">
+    <title lang="id">Rumah Mamah Dedeh</title>
+    <desc lang="id">Rumah Mamah Dedeh menghadirkan tausiah Dedeh Rosidah alias Mamah Dedeh yang InsyaAllah sesuai dengan ajaran Islam dari Qur'an dan Hadist. Selama satu jam Mamah Dedeh akan ditemani oleh Bedu Tohar dan Musdalifah.(n)</desc>
+  </programme>
+  <programme start="20220620090000 +0700" stop="20220620100000 +0700" channel="TVOne.MACAN">
+    <title lang="id">Hidup Sehat</title>
+    <desc lang="id">Hidup Sehat merupakan sebuah program yang akan memberikan kiat-kiat hidup sehat untuk Anda.(n)</desc>
+  </programme>
+  <programme start="20220620100000 +0700" stop="20220620103000 +0700" channel="TVOne.MACAN">
+    <title lang="id">AB Shop</title>
+    <desc lang="id">AB Shop merupakan program home shopping yang menawarkan kegiatan berbelanja bagi Anda yang tidak memiliki banyak waktu untuk keluar rumah. Siapkan telepon Anda dan pilih barang-barang yang Anda perlukan sekarang juga di AB Shop.(n)</desc>
+  </programme>
+  <programme start="20220620103000 +0700" stop="20220620110000 +0700" channel="TVOne.MACAN">
+    <title lang="id">Sidik Jari</title>
+    <desc lang="id">Program yang mengangkat tema kriminal dengan lebih mendalam, adanya kamera tersembunyi dapat menjadi alat bukti untuk mendapatkan pengakuan jujur dari tersangka / pelaku kriminal.(n)</desc>
+  </programme>
+  <programme start="20220620110000 +0700" stop="20220620130000 +0700" channel="TVOne.MACAN">
+    <title lang="id">Kabar Siang</title>
+    <desc lang="id">Kabar Siang merupakan program buletin berita yang mengedepankan berita-berita terkini atau sedang terjadi hari ini. Disampaikan baik melalui paket berita maupun laporan langsung dari lokasi kejadian.(n)</desc>
+  </programme>
+  <programme start="20220620130000 +0700" stop="20220620140000 +0700" channel="TVOne.MACAN">
+    <title lang="id">Damai Indonesiaku</title>
+    <desc lang="id">Program ber-genre tablik akbar ditampilkan dari masjid, sekolah, mall dan tempat-tempat keramaian, yang membahas isu-isu hangat dan diselingi dengan pertunjukan musik.(n)</desc>
+  </programme>
+  <programme start="20220620140000 +0700" stop="20220620143000 +0700" channel="TVOne.MACAN">
+    <title lang="id">Spektakuler</title>
+    <desc lang="id">Spektakuler, program yang merangkum hal-hal unik, menarik, spektakuler,dan keren yang ada di sekitar kita bahkan di seluruh dunia.(n)</desc>
+  </programme>
+  <programme start="20220620143000 +0700" stop="20220620150000 +0700" channel="TVOne.MACAN">
+    <title lang="id">Kabar Pasar Sore</title>
+    <desc lang="id">Kabar Pasar adalah program berita yang menghadirkan beragam berita serta liputan menarik seputar dunia ekonomi.(n)</desc>
+  </programme>
+  <programme start="20220620150000 +0700" stop="20220620160000 +0700" channel="TVOne.MACAN">
+    <title lang="id">Ragam Perkara</title>
+    <desc lang="id">Saksikan program yang mengangkat tema kriminal dengan lebih mendalam.(n)</desc>
+  </programme>
+  <programme start="20220620160000 +0700" stop="20220620170000 +0700" channel="TVOne.MACAN">
+    <title lang="id">Kabar Petang Pilihan</title>
+    <desc lang="id">Kabar Petang merupakan program buletin berita yang membahas secara mendalam segala peristiwa atau isu-isu yang sedang berkembang saat ini. Program ini memiliki segmen dialog yang mengedepankan eksklusifitas narasumber dan kedalaman isu bahasan.(n)</desc>
+  </programme>
+  <programme start="20220620170000 +0700" stop="20220620183000 +0700" channel="TVOne.MACAN">
+    <title lang="id">Kabar Petang</title>
+    <desc lang="id">Kabar Petang merupakan program buletin berita yang membahas secara mendalam segala peristiwa atau isu-isu yang sedang berkembang saat ini. Program ini memiliki segmen dialog yang mengedepankan eksklusifitas narasumber dan kedalaman isu bahasan.(n)</desc>
+  </programme>
+  <programme start="20220620183000 +0700" stop="20220620200000 +0700" channel="TVOne.MACAN">
+    <title lang="id">Apa Kabar Indonesia Malam</title>
+    <desc lang="id">Talkshow yang mengupas berita yang sedang menjadi Headline atau Isue besar. Program dialog ini dibuat lebih berisi dengan narasumber yang kompeten di bidangnya.(n)</desc>
+  </programme>
+  <programme start="20220620200000 +0700" stop="20220620210000 +0700" channel="TVOne.MACAN">
+    <title lang="id">Fakta</title>
+    <desc lang="id">Talkshow bergaya investigasi yang dibawakan oleh Balques Manisang ini akan membahas berbagai masalah sosial yang hangat diperbincangkan di masyarakat.(n)</desc>
+  </programme>
+  <programme start="20220620210000 +0700" stop="20220620220000 +0700" channel="TVOne.MACAN">
+    <title lang="id">Kabar Utama</title>
+    <desc lang="id">Kabar Utama merupakan program yang menyajikan liputan berita aktual yang terjadi dari pagi hingga sore hari.(n)</desc>
+  </programme>
+  <programme start="20220620220000 +0700" stop="20220620223000 +0700" channel="TVOne.MACAN">
+    <title lang="id">Menyingkap Tabir</title>
+    <desc lang="id">Menyingkap Tabir merupakan program yang mengangkat tema criminal dengan lebih mendalam, adanya kamera tersembunyi sehingga mendapatkan pengakuan jujur dari tersangka atau pelaku, ataupun mendapatkan video saat penggerebekan.(n)</desc>
+  </programme>
+  <programme start="20220620223000 +0700" stop="20220620233000 +0700" channel="TVOne.MACAN">
+    <title lang="id">Kabar Hari Ini</title>
+    <desc lang="id">Kabar Hari Ini adalah program berita pilihan yang hadir setiap hari Senin hingga Jumat.(n)</desc>
+  </programme>
+  <programme start="20220620233000 +0700" stop="20220621000000 +0700" channel="TVOne.MACAN">
+    <title lang="id">Kabar Arena Malam</title>
+    <desc lang="id">Kabar Arena merupakan program berita olahraga yang mengusung informasi terbaru seputar olahraga baik dalam dan luar negeri, serta mengedepankan analisa terhadap event olahraga dunia yang akan berlangsung.(n)</desc>
+  </programme>
+  <programme start="20220621000000 +0700" stop="20220621010000 +0700" channel="TVOne.MACAN">
+    <title lang="id">Kabar Dunia</title>
+    <desc lang="id">Kabar Dunia merupakan program berita yang akan menghadirkan beragam berita aktual dan terkini mengenai berbagai peristiwa yang terjadi di seluruh dunia, baik dari bidang ekonomi, politik, sosial dan budaya.(n)</desc>
+  </programme>
+  <programme start="20220621010000 +0700" stop="20220621020000 +0700" channel="TVOne.MACAN">
+    <title lang="id">AB Shop</title>
+    <desc lang="id">AB Shop merupakan program home shopping yang menawarkan kegiatan berbelanja bagi Anda yang tidak memiliki banyak waktu untuk keluar rumah. Siapkan telepon Anda dan pilih barang-barang yang Anda perlukan sekarang juga di AB Shop.(n)</desc>
+  </programme>
+  <programme start="20220621020000 +0700" stop="20220621023000 +0700" channel="TVOne.MACAN">
+    <title lang="id">Kabar Petang Pilihan</title>
+    <desc lang="id">Kabar Petang merupakan program buletin berita yang membahas secara mendalam segala peristiwa atau isu-isu yang sedang berkembang saat ini. Program ini memiliki segmen dialog yang mengedepankan eksklusifitas narasumber dan kedalaman isu bahasan.(n)</desc>
+  </programme>
+  <programme start="20220621023000 +0700" stop="20220621033000 +0700" channel="TVOne.MACAN">
+    <title lang="id">Kabar Petang</title>
+    <desc lang="id">Kabar Petang merupakan program buletin berita yang membahas secara mendalam segala peristiwa atau isu-isu yang sedang berkembang saat ini. Program ini memiliki segmen dialog yang mengedepankan eksklusifitas narasumber dan kedalaman isu bahasan.(n)</desc>
+  </programme>
+  <programme start="20220621033000 +0700" stop="20220621040000 +0700" channel="TVOne.MACAN">
+    <title lang="id">Ragam Perkara</title>
+    <desc lang="id">Saksikan program yang mengangkat tema kriminal dengan lebih mendalam.(n)</desc>
+  </programme>
+  <programme start="20220621040000 +0700" stop="20220621043000 +0700" channel="TVOne.MACAN">
+    <title lang="id">Assalamualaikum Nusantara</title>
+    <desc lang="id">Program religi yang akan menemani pagi anda dengan info-info tentang Islam.(n)</desc>
+  </programme>
+  <programme start="20220621043000 +0700" stop="20220621060000 +0700" channel="TVOne.MACAN">
+    <title lang="id">Kabar Pagi</title>
+    <desc lang="id">Kabar pagi menghadirkan berbagai berita dari dunia politik, ekonomi, hukum, sosial dan budaya yang terjadi di hari sebelumnya.(n)</desc>
+  </programme>
+  <programme start="20220621060000 +0700" stop="20220621063000 +0700" channel="TVOne.MACAN">
+    <title lang="id">Kabar Arena Pagi</title>
+    <desc lang="id">Kabar Arena merupakan program berita olahraga yang mengusung informasi terbaru seputar olahraga baik dalam dan luar negeri, serta mengedepankan analisa terhadap event olahraga dunia yang akan berlangsung.(n)</desc>
+  </programme>
+  <programme start="20220621063000 +0700" stop="20220621080000 +0700" channel="TVOne.MACAN">
+    <title lang="id">Apa Kabar Indonesia Pagi</title>
+    <desc lang="id">Apa Kabar Indonesia Pagi adalah program yang menggabungkan konsep berita dan talk show dalam sebuah acara, menyajikan berbagai berita dari dunia politik, ekonomi, hukum, sosial dan budaya.(n)</desc>
+  </programme>
+  <programme start="20220621080000 +0700" stop="20220621090000 +0700" channel="TVOne.MACAN">
+    <title lang="id">Rumah Mamah Dedeh</title>
+    <desc lang="id">Rumah Mamah Dedeh menghadirkan tausiah Dedeh Rosidah alias Mamah Dedeh yang InsyaAllah sesuai dengan ajaran Islam dari Qur'an dan Hadist. Selama satu jam Mamah Dedeh akan ditemani oleh Bedu Tohar dan Musdalifah.(n)</desc>
+  </programme>
+  <programme start="20220621090000 +0700" stop="20220621100000 +0700" channel="TVOne.MACAN">
+    <title lang="id">Hidup Sehat</title>
+    <desc lang="id">Hidup Sehat merupakan sebuah program yang akan memberikan kiat-kiat hidup sehat untuk Anda.(n)</desc>
+  </programme>
+  <programme start="20220621100000 +0700" stop="20220621103000 +0700" channel="TVOne.MACAN">
+    <title lang="id">Tantangan Hidup</title>
+    <desc lang="id">Program yang mengangkat kisah kehidupan &amp; menginspirasi kita untuk bersyukur pada keadaan.(n)</desc>
+  </programme>
+  <programme start="20220621103000 +0700" stop="20220621110000 +0700" channel="TVOne.MACAN">
+    <title lang="id">Sidik Jari</title>
+    <desc lang="id">Program yang mengangkat tema kriminal dengan lebih mendalam, adanya kamera tersembunyi dapat menjadi alat bukti untuk mendapatkan pengakuan jujur dari tersangka / pelaku kriminal.(n)</desc>
+  </programme>
+  <programme start="20220621110000 +0700" stop="20220621130000 +0700" channel="TVOne.MACAN">
+    <title lang="id">Kabar Siang</title>
+    <desc lang="id">Kabar Siang merupakan program buletin berita yang mengedepankan berita-berita terkini atau sedang terjadi hari ini. Disampaikan baik melalui paket berita maupun laporan langsung dari lokasi kejadian.(n)</desc>
+  </programme>
+  <programme start="20220621130000 +0700" stop="20220621140000 +0700" channel="TVOne.MACAN">
+    <title lang="id">Damai Indonesiaku</title>
+    <desc lang="id">Program ber-genre tablik akbar ditampilkan dari masjid, sekolah, mall dan tempat-tempat keramaian, yang membahas isu-isu hangat dan diselingi dengan pertunjukan musik.(n)</desc>
+  </programme>
+  <programme start="20220621140000 +0700" stop="20220621143000 +0700" channel="TVOne.MACAN">
+    <title lang="id">Spektakuler</title>
+    <desc lang="id">Spektakuler, program yang merangkum hal-hal unik, menarik, spektakuler,dan keren yang ada di sekitar kita bahkan di seluruh dunia.(n)</desc>
+  </programme>
+  <programme start="20220621143000 +0700" stop="20220621150000 +0700" channel="TVOne.MACAN">
+    <title lang="id">Kabar Pasar Sore</title>
+    <desc lang="id">Kabar Pasar adalah program berita yang menghadirkan beragam berita serta liputan menarik seputar dunia ekonomi.(n)</desc>
+  </programme>
+  <programme start="20220621150000 +0700" stop="20220621160000 +0700" channel="TVOne.MACAN">
+    <title lang="id">Ragam Perkara</title>
+    <desc lang="id">Saksikan program yang mengangkat tema kriminal dengan lebih mendalam.(n)</desc>
+  </programme>
+  <programme start="20220621160000 +0700" stop="20220621170000 +0700" channel="TVOne.MACAN">
+    <title lang="id">Kabar Petang Pilihan</title>
+    <desc lang="id">Kabar Petang merupakan program buletin berita yang membahas secara mendalam segala peristiwa atau isu-isu yang sedang berkembang saat ini. Program ini memiliki segmen dialog yang mengedepankan eksklusifitas narasumber dan kedalaman isu bahasan.(n)</desc>
+  </programme>
+  <programme start="20220621170000 +0700" stop="20220621183000 +0700" channel="TVOne.MACAN">
+    <title lang="id">Kabar Petang</title>
+    <desc lang="id">Kabar Petang merupakan program buletin berita yang membahas secara mendalam segala peristiwa atau isu-isu yang sedang berkembang saat ini. Program ini memiliki segmen dialog yang mengedepankan eksklusifitas narasumber dan kedalaman isu bahasan.(n)</desc>
+  </programme>
+  <programme start="20220621183000 +0700" stop="20220621200000 +0700" channel="TVOne.MACAN">
+    <title lang="id">Apa Kabar Indonesia Malam</title>
+    <desc lang="id">Talkshow yang mengupas berita yang sedang menjadi Headline atau Isue besar. Program dialog ini dibuat lebih berisi dengan narasumber yang kompeten di bidangnya.(n)</desc>
+  </programme>
+  <programme start="20220621200000 +0700" stop="20220621213000 +0700" channel="TVOne.MACAN">
+    <title lang="id">Catatan Demokrasi</title>
+    <desc lang="id">Dari kontroversi hingga saling lempar wewenang institusi. Apa yang terjadi? Saksikan Catatan Demokrasi hanya di tvOne.(n)</desc>
+  </programme>
+  <programme start="20220621213000 +0700" stop="20220621220000 +0700" channel="TVOne.MACAN">
+    <title lang="id">Kabar Utama</title>
+    <desc lang="id">Kabar Utama merupakan program yang menyajikan liputan berita aktual yang terjadi dari pagi hingga sore hari.(n)</desc>
+  </programme>
+  <programme start="20220621220000 +0700" stop="20220621223000 +0700" channel="TVOne.MACAN">
+    <title lang="id">Buru Sergap</title>
+    <desc lang="id">Program yang mengangkat tema kriminal dengan lebih mendalam, adanya kamera tersembunyi dapat menjadi alat bukti untuk mendapatkan pengakuan jujur dari tersangka / pelaku kriminal.(n)</desc>
+  </programme>
+</tv>
