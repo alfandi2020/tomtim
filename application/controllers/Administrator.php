@@ -116,9 +116,6 @@ class Administrator extends CI_Controller
         return round($bytes, $precision) . ' ' . $units[$pow];
     }
     function getReport(){
-        echo 11;
-        ini_set('display_errors', 1);
-        error_reporting(-1);
         $postData = $this->input->post();
         $data = $this->M_admin->ListReport($postData);
         echo json_encode($data);
@@ -681,7 +678,9 @@ class Administrator extends CI_Controller
     }
     public function cetak()
     {
-        $data['struk'] = $this->M_admin->get_struk();
+        ini_set('display_errors', 1);
+        error_reporting(-1);
+        // $data['struk'] = $this->M_admin->get_struk();
         $data['pelanggan'] = $this->db->query("SELECT * FROM tb_registrasi")->num_rows();
         $data['pakettt'] = $this->db->query("SELECT * FROM tb_paket")->num_rows();
         $data['pelanggann'] = $this->M_admin->get_pelanggan();
