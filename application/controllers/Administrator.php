@@ -154,14 +154,10 @@ class Administrator extends CI_Controller
         $pesan = $this->input->post('pesan');
         $url = $this->input->post('url');
         $nomor = $this->input->post('nomor');
-        $sender = "tommy";
-        if ($pesan == true & $url == true & $nomor == true) {
-                $ex = explode(',',$nomor);
-                foreach ($ex as $x_nomor) {
-                    sleep(2);
-                    $curl = curl_init();
-                    curl_setopt_array($curl, array(
-                    CURLOPT_URL => 'http://103.171.85.211:8000/send-media',
+        if ($pesan == true & $nomor == true) {
+                $curl = curl_init();
+                curl_setopt_array($curl, array(
+                    CURLOPT_URL => 'http://103.171.85.211:8000/send-message',
                     CURLOPT_RETURNTRANSFER => true,
                     CURLOPT_ENCODING => '',
                     CURLOPT_MAXREDIRS => 10,
@@ -169,11 +165,18 @@ class Administrator extends CI_Controller
                     CURLOPT_FOLLOWLOCATION => true,
                     CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
                     CURLOPT_CUSTOMREQUEST => 'POST',
-                    CURLOPT_POSTFIELDS => 'sender='.$sender.'&number='.$x_nomor.'&file='.$url.'&caption='.$pesan.'',
-                    ));
-                    
-                    $response = curl_exec($curl);
-                }
+                    CURLOPT_POSTFIELDS => '{
+                                                        "api_key": "iEQRRY8J4UUAkWKW78iPja2hc8rjlcCK",
+                                                        "sender": "6285961403102",
+                                                        "number": "' . $nomor . '",
+                                                        "message" : "' . $pesan . '"
+                                                        }',
+                    CURLOPT_HTTPHEADER => array(
+                        'Content-Type: application/json'
+                    ),
+                )
+                );
+                $response = curl_exec($curl);
                 curl_close($curl);
                 $o = json_decode($response);
                 if (json_encode($o->status) == true) {
@@ -185,7 +188,7 @@ class Administrator extends CI_Controller
                 }
             
         } 
-        if($pesan == true & $nomor == true){
+        if($pesan == true & $nomor == true & $url == true){
             $ex = explode(',',$nomor);
             foreach ($ex as $x_nomor) {
                 sleep(2);
