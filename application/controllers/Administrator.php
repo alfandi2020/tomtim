@@ -169,7 +169,7 @@ class Administrator extends CI_Controller
                                                         "api_key": "iEQRRY8J4UUAkWKW78iPja2hc8rjlcCK",
                                                         "sender": "6285961403102",
                                                         "number": "' . $nomor . '",
-                                                        "message" : '.$pesan.'
+                                                        "message" : "' . $pesan . '"
                                                         }',
                     CURLOPT_HTTPHEADER => array(
                         'Content-Type: application/json'
