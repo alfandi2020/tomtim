@@ -63,7 +63,7 @@ class M_admin extends CI_Model
         $this->db->select('count(*) as allcount');
         $this->db->from('tb_cetak as a');
         $this->db->join('tb_paket as b', 'a.internet = b.id_wireless','left');
-        $this->db->order_by('a.id_cetak','desc');
+        $this->db->order_by('a.tanggal','desc');
         $records = $this->db->get()->result();
         $totalRecords = $records[0]->allcount;
 
@@ -71,7 +71,7 @@ class M_admin extends CI_Model
         if($searchQuery != '')
             $this->db->where($searchQuery);
             // $this->db->like('nama',$searchValue);
-        $this->db->order_by('id_cetak', 'desc');
+        $this->db->order_by('tanggal', 'desc');
         $records = $this->db->get('tb_cetak')->result();
         $totalRecordwithFilter = $records[0]->allcount;
 
@@ -84,7 +84,7 @@ class M_admin extends CI_Model
         $this->db->or_like('a.periode',$searchValue);
         $this->db->or_like('a.tanggal',$searchValue);
         //  $this->db->order_by('tanggal', 'desc');
-        $this->db->order_by('a.id_cetak', 'desc');
+        $this->db->order_by('a.tanggal', 'desc');
         $this->db->order_by($columnName, $columnSortOrder);
         $this->db->limit($rowperpage, $start);
         //  $records = $this->db->query("SELECT a.id_cetak,a.nama,b.paket,a.tagihan,a.penerima,a.periode,a.tanggal,a.nomor_struk FROM tb_cetak as a left join tb_paket as b on(a.internet = b.id_wireless) where '$searchQuery' order by '$columnName' asc limit $rowperpage")->result();
