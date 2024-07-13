@@ -193,7 +193,7 @@ class Administrator extends CI_Controller
                 curl_setopt_array(
                     $curl2,
                     array(
-                        CURLOPT_URL => 'http://103.171.85.211:8000/send-message',
+                        CURLOPT_URL => 'http://103.171.85.211:8000/send-media',
                         CURLOPT_RETURNTRANSFER => true,
                         CURLOPT_ENCODING => '',
                         CURLOPT_MAXREDIRS => 10,
