@@ -35,26 +35,26 @@
                             <h4>Status Pembayaran bulan <span class="badge badge-primary"><?php
                                                                                             $tanggal = time();
                                                                                             $bulan = indonesian_date($tanggal, 'F');
-                                                                                            echo $bulan;
-                                                                                            echo date('Y')  ?></span> <?php ?></h4>
-                            <form method="GET">
+                                                                                            echo $this->session->userdata('bln');
+                                                                                            echo ' '. date('Y')  ?></span> <?php ?></h4>
+                            <form method="POST" action="<?= base_url('administrator/set_sort') ?>">
                                 <div class="row">
                                     <div class="col-xl-3">
                                         <label> Filter Berdasarkan Bulan dan tahun:</label>
                                         <select name="bulan" id="" class="form-control select22">
                                             <option disabled selected>Pilih Bulan</option>
-                                            <option value="Januari">Januari</option>
-                                            <option value="Februari">Februari</option>
-                                            <option value="Maret">Maret</option>
-                                            <option value="April">April</option>
-                                            <option value="Mei">Mei</option>
-                                            <option value="Juni">Juni</option>
-                                            <option value="Juli">Juli</option>
-                                            <option value="Agustus">Agustus</option>
-                                            <option value="September">September</option>
-                                            <option value="Oktober">Oktober</option>
-                                            <option value="November">November</option>
-                                            <option value="Desember">Desember</option>
+                                            <option <?= $this->session->userdata('bln') == 'Januari' ? 'selected' : '' ?> value="Januari">Januari</option>
+                                            <option <?= $this->session->userdata('bln') == 'Februari' ? 'selected' : '' ?> value="Februari">Februari</option>
+                                            <option <?= $this->session->userdata('bln') == 'Maret' ? 'selected' : '' ?> value="Maret">Maret</option>
+                                            <option <?= $this->session->userdata('bln') == 'April' ? 'selected' : '' ?> value="April">April</option>
+                                            <option <?= $this->session->userdata('bln') == 'Maret' ? 'selected' : '' ?> value="Mei">Mei</option>
+                                            <option <?= $this->session->userdata('bln') == 'Juni' ? 'selected' : '' ?> value="Juni">Juni</option>
+                                            <option <?= $this->session->userdata('bln') == 'Juli' ? 'selected' : '' ?> value="Juli">Juli</option>
+                                            <option <?= $this->session->userdata('bln') == 'Agustus' ? 'selected' : '' ?> value="Agustus">Agustus</option>
+                                            <option <?= $this->session->userdata('bln') == 'September' ? 'selected' : '' ?> value="September">September</option>
+                                            <option <?= $this->session->userdata('bln') == 'Oktober' ? 'selected' : '' ?> value="Oktober">Oktober</option>
+                                            <option <?= $this->session->userdata('bln') == 'November' ? 'selected' : '' ?> value="November">November</option>
+                                            <option <?= $this->session->userdata('bln') == 'Desember' ? 'selected' : '' ?> value="Desember">Desember</option>
                                         </select>
 
                                     </div>
@@ -66,7 +66,15 @@
                                             <option value="<?php echo date('Y') - 1 ?>"><?php echo date('Y') - 1 ?></option>
                                             <option value="<?php echo date('Y') ?>" selected><?php echo date('Y') ?></option>
                                            <option value="<?= date('Y')+1 ?>"><?= date('Y')+1 ?></option>
-					</select>
+					                    </select>
+                                    </div>
+                                    <div class="col-xl-2">
+                                        <label>Lokasi :</label>
+                                        <select name="lokasi" id="" class="form-control select22">
+
+                                            <option <?= $this->session->userdata('lokasi') == 'TomTimNet' ? 'selected' : '' ?> value="TomTimNet">TomTimNet</option>
+                                            <option <?= $this->session->userdata('lokasi') == 'Otista' ? 'selected' : '' ?> value="Otista">Otista</option>
+                                        </select>
                                     </div>
                                     <div class="col-xl-3">
                                         <p></p>
@@ -87,7 +95,7 @@
                         <form action="<?php echo base_url('administrator/simpanCetak') ?>" method="POST">
                             <div class="card-body">
                                 <div class="table-responsive">
-                                    <table id="table-user" class="display table table-striped table-hover">
+                                    <table id="table-status1" class="display table table-striped table-hover">
                                         <thead>
                                             <tr>
                                                 <th>No</th>
@@ -105,40 +113,7 @@
                                                 <th>Status Pembayaran</th>
                                             </tr>
                                         </tfoot>
-                                        <tbody>
-                                            <?php
-                                            $no = 1;
-                                            $query = $this->db->query("SELECT * FROM tb_registrasi where lokasi='TomTimNet'")->result();
-                                            foreach ($query as $row) {
-                                            ?>
-                                                <tr>
-
-                                                    <td> <?php echo $no++ ?> </td>
-                                                    <td> <?php echo $row->nama ?> </td>
-                                                    <td> <?php echo $row->alamat ?> </td>
-                                                <?php
-
-                                                $get_bulan = $this->input->get('bulan');
-                                                $get_thn = $this->input->get('tahun');
-                                                $thnn =date('Y');
-                                                $tanggal = time();
-                                                $bulan = indonesian_date($tanggal, 'F');
-                                                if ($get_bulan) {
-                                                    $xquery = $this->db->query("SELECT * FROM tb_cetak where id_registrasi='$row->id_registrasi' and periode='$get_bulan' and thn='$get_thn'  ")->num_rows();
-                                                } else {
-                                                    $xquery = $this->db->query("SELECT * FROM tb_cetak where id_registrasi='$row->id_registrasi' and periode='$bulan' and thn='$thnn'")->num_rows();
-                                                }
-
-
-                                                if ($xquery == true) {
-                                                    echo '<td><span  class="btn btn-primary"><i style="font-size:21px" class="fas fa-check"></i> Sudah bayar </span></td>';
-                                                } else {
-                                                    echo '<td><span  class="btn btn-danger"><i style="font-size:21px" class="far fa-times-circle"></i> Belum bayar</span></td>';
-                                                }
-                                            }
-                                                ?>
-                                                </tr>
-                                        </tbody>
+                                       
                                     </table>
                                 </div>
                             </div>
@@ -147,125 +122,7 @@
 
                 </div>
             </div>
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="card">
-
-                        <div class="card-header">
-                            <div class="card-title">Table Cek Status Pembayaran Otista </div>
-                            <h4>Status Pembayaran bulan <span class="badge badge-primary"><?php
-                                                                                            $tanggal = time();
-                                                                                            $bulan = indonesian_date($tanggal, 'F');
-                                                                                            echo $bulan;
-                                                                                            echo date('Y')  ?></span> <?php ?></h4>
-                            <form method="GET">
-                                <div class="row">
-                                    <div class="col-xl-3">
-                                        <label> Filter Berdasarkan Bulan dan tahun:</label>
-                                        <select name="bulan2" id="" class="form-control select22">
-                                            <option disabled selected>Pilih Bulan</option>
-                                            <option value="Januari">Januari</option>
-                                            <option value="Februari">Februari</option>
-                                            <option value="Maret">Maret</option>
-                                            <option value="April">April</option>
-                                            <option value="Mei">Mei</option>
-                                            <option value="Juni">Juni</option>
-                                            <option value="Juli">Juli</option>
-                                            <option value="Agustus">Agustus</option>
-                                            <option value="September">September</option>
-                                            <option value="Oktober">Oktober</option>
-                                            <option value="November">November</option>
-                                            <option value="Desember">Desember</option>
-                                        </select>
-
-                                    </div>
-                                    <div class="col-xl-3">
-                                        <label>Tahun:</label>
-                                        <select name="tahun2" id="" class="form-control select22">
-
-                                            <option value="<?php echo date('Y') - 2 ?>"><?php echo date('Y') - 2 ?></option>
-                                            <option value="<?php echo date('Y') - 1 ?>"><?php echo date('Y') - 1 ?></option>
-                                            <option value="<?php echo date('Y') ?>" selected><?php echo date('Y') ?></option>
-                                        	<option value="<?= date('Y') + 1 ?>"><?= date('Y') + 1 ?></option>
-					</select>
-                                    </div>
-                                    <div class="col-xl-3">
-                                        <p></p>
-                                        <button type="submit" class="btn btn-danger"> <i class="fas fa-filter"></i> Sortir</button>
-                                        <a href="<?php echo base_url('administrator/cekPembayaran') ?>" class="btn btn-primary"><i class="fas fa-sync-alt"></i> Reset</a>
-
-                                    </div>
-                                </div>
-                                <h4><b> <?php
-                                        if ($this->input->get('bulan2')) {
-                                            echo "Sortir bulan " . $this->input->get('bulan2');
-                                        }
-                                        ?></b></h4>
-                            </form>
-                        </div>
-
-                        <?php echo $this->session->flashdata('massage') ?>
-                            <div class="card-body">
-                                <div class="table-responsive">
-                                    <table id="table-user2" class="display table table-striped table-hover">
-                                        <thead>
-                                            <tr>
-                                                <th>No</th>
-                                                <th>Nama</th>
-                                                <th>alamat</th>
-                                                <th>Status Pembayaran</th>
-
-                                            </tr>
-                                        </thead>
-                                        <tfoot>
-                                            <tr>
-                                                <th>No</th>
-                                                <th>Nama</th>
-                                                <th>alamat</th>
-                                                <th>Status Pembayaran</th>
-                                            </tr>
-                                        </tfoot>
-                                        <tbody>
-                                            <?php
-                                            $no = 1;
-                                            $query = $this->db->query("SELECT * FROM tb_registrasi where lokasi='otista'")->result();
-                                            foreach ($query as $row) {
-                                            ?>
-                                                <tr>
-
-                                                    <td> <?php echo $no++ ?> </td>
-                                                    <td> <?php echo $row->nama ?> </td>
-                                                    <td> <?php echo $row->alamat ?> </td>
-                                                <?php
-
-                                                $get_bulan = $this->input->get('bulan2');
-                                                $get_thn = $this->input->get('tahun2');
-
-                                                $tanggal = time();
-                                                $bulan = indonesian_date($tanggal, 'F');
-                                                if ($get_bulan) {
-                                                    $xquery = $this->db->query("SELECT * FROM tb_cetak where id_registrasi='$row->id_registrasi' and periode='$get_bulan' and thn='$get_thn'  ")->num_rows();
-                                                } else {
-                                                    $xquery = $this->db->query("SELECT * FROM tb_cetak where id_registrasi='$row->id_registrasi' and periode='$bulan' and thn=date('Y')")->num_rows();
-                                                }
-
-
-                                                if ($xquery == true) {
-                                                    echo '<td><span  class="btn btn-primary"><i style="font-size:21px" class="fas fa-check"></i> Sudah bayar </span></td>';
-                                                } else {
-                                                    echo '<td><span  class="btn btn-danger"><i style="font-size:21px" class="far fa-times-circle"></i> Belum bayar</span></td>';
-                                                }
-                                            }
-                                                ?>
-                                                </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                    </div>
-
-                </div>
-            </div>
+            
         </div>
     </div>
 </div>

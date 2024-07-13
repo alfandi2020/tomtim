@@ -671,7 +671,25 @@
         });
     });
     $(document).ready(function() {
-        $('#table-user').DataTable({});
+        // $('#table-user').DataTable({});
+    $('#table-status1').DataTable({
+      'processing': true,
+      'serverSide': true,
+      'serverMethod': 'post',
+      'ajax': {
+         'url':'getStatus1'
+      },
+      'columns': [
+        {data: 'no'},
+         { data: 'nama' },
+         { data: 'alamat' },
+         { data: 'status' },
+
+      ],
+      
+      "sScrollX": "100%",
+      
+    });
     });
     $(document).ready(function() {
         $('#table-user2').DataTable({});

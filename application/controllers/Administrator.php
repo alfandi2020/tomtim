@@ -55,7 +55,13 @@ class Administrator extends CI_Controller
             
         }
     }
-    
+    function set_sort()
+    {
+        $this->session->set_userdata('bln',$this->input->post('bulan'));
+        $this->session->set_userdata('thn', $this->input->post('tahun'));
+        $this->session->set_userdata('lokasi', $this->input->post('lokasi'));
+        redirect('administrator/cekPembayaran');
+    }
 
     public function createUser()
     {
@@ -114,6 +120,18 @@ class Administrator extends CI_Controller
         // $bytes /= (1 << (10 * $pow));
 
         return round($bytes, $precision) . ' ' . $units[$pow];
+    }
+    function getStatus1()
+    {
+        $postData = $this->input->post();
+        $data = $this->M_admin->list_status1($postData);
+        echo json_encode($data);
+    }
+    function getStatus2()
+    {
+        $postData = $this->input->post();
+        $data = $this->M_admin->list_status2($postData);
+        echo json_encode($data);
     }
     function getReport(){
         $postData = $this->input->post();
@@ -570,8 +588,8 @@ class Administrator extends CI_Controller
         $data['user'] = $data['user'] = $this->db->get_where('tb_user', ['username' => $this->session->userdata('username')])->row_array();
         $data['pelanggan'] = $this->db->query("SELECT * FROM tb_registrasi")->num_rows();
         $data['pakettt'] = $this->db->query("SELECT * FROM tb_paket")->num_rows();
-        $data['cek'] = $this->db->query("SELECT * FROM tb_registrasi")->result();
-        $data['cek_cetak'] = $this->db->query("SELECT * FROM tb_cetak")->result();
+        // $data['cek'] = $this->db->query("SELECT * FROM tb_registrasi")->result();
+        // $data['cek_cetak'] = $this->db->query("SELECT * FROM tb_cetak")->result();
         $this->load->view('admin/head');
         $this->load->view('admin/cek', $data);
         $this->load->view('admin/footer');

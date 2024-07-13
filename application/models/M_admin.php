@@ -2,6 +2,107 @@
 
 class M_admin extends CI_Model
 {
+    public function indonesian_date($timestamp = '', $date_format = 'd F Y', $suffix = '')
+    {
+        if ($timestamp == null) {
+            return '-';
+        }
+
+        if ($timestamp == '1970-01-01' || $timestamp == '0000-00-00' || $timestamp == '-25200') {
+            return '-';
+        }
+
+
+        if (trim($timestamp) == '') {
+            $timestamp = time();
+        } elseif (!ctype_digit($timestamp)) {
+            $timestamp = strtotime($timestamp);
+        }
+        # remove S (st,nd,rd,th) there are no such things in indonesia :p
+        $date_format = preg_replace("/S/", "", $date_format);
+        $pattern = array(
+            '/Mon[^day]/',
+            '/Tue[^sday]/',
+            '/Wed[^nesday]/',
+            '/Thu[^rsday]/',
+            '/Fri[^day]/',
+            '/Sat[^urday]/',
+            '/Sun[^day]/',
+            '/Monday/',
+            '/Tuesday/',
+            '/Wednesday/',
+            '/Thursday/',
+            '/Friday/',
+            '/Saturday/',
+            '/Sunday/',
+            '/Jan[^uary]/',
+            '/Feb[^ruary]/',
+            '/Mar[^ch]/',
+            '/Apr[^il]/',
+            '/May/',
+            '/Jun[^e]/',
+            '/Jul[^y]/',
+            '/Aug[^ust]/',
+            '/Sep[^tember]/',
+            '/Oct[^ober]/',
+            '/Nov[^ember]/',
+            '/Dec[^ember]/',
+            '/January/',
+            '/February/',
+            '/March/',
+            '/April/',
+            '/June/',
+            '/July/',
+            '/August/',
+            '/September/',
+            '/October/',
+            '/November/',
+            '/December/',
+        );
+        $replace = array(
+            'Sen',
+            'Sel',
+            'Rab',
+            'Kam',
+            'Jum',
+            'Sab',
+            'Min',
+            'Senin',
+            'Selasa',
+            'Rabu',
+            'Kamis',
+            'Jumat',
+            'Sabtu',
+            'Minggu',
+            'Jan',
+            'Feb',
+            'Mar',
+            'Apr',
+            'Mei',
+            'Jun',
+            'Jul',
+            'Ags',
+            'Sep',
+            'Okt',
+            'Nov',
+            'Des',
+            'Januari',
+            'Februari',
+            'Maret',
+            'April',
+            'Juni',
+            'Juli',
+            'Agustus',
+            'September',
+            'Oktober',
+            'November',
+            'Desember',
+        );
+        $date = date($date_format, $timestamp);
+        $date = preg_replace($pattern, $replace, $date);
+        $date = "{$date} {$suffix}";
+        return $date;
+    }
     function get_pelanggan()
     {
         $query = $this->db->query("SELECT * FROM tb_registrasi");
@@ -106,6 +207,111 @@ class M_admin extends CI_Model
             "tanggal"=>$record->tanggal,
             "nomor_struk"=> "#".$record->nomor_struk,
             "id" => $record->id_cetak
+            );
+        }
+
+        //response
+        $response = array(
+            "draw" => intval($draw),
+            "iTotalRecords" => $totalRecords,
+            "iTotalDisplayRecords" => $totalRecordwithFilter,
+            "aaData" => $data
+        );
+
+        return $response;
+    }
+    function list_status1($postData)
+    {
+        $response = array();
+
+        //value
+        $draw = $postData['draw'];
+        $start = $postData['start'];
+        $rowperpage = $postData['length'];
+        $columnIndex = $postData['order'][0]['column'];
+        $columnName = 'a.nama';
+        $columnSortOrder = $postData['order'][0]['dir'];
+        $searchValue = $postData['search']['value'];
+
+
+        //search
+        $searchQuery = "";
+        if ($searchValue != '') {
+            $searchQuery = "(nama like '%" . $searchValue . "%' or kontak like '%" . $searchValue . "%' or alamat like '%" . $searchValue . "%') ";
+        }
+        $searchQuery2 = "";
+        if ($searchValue != '') {
+            $searchQuery2 = "(a.nama like '%" . $searchValue . "%' or a.kontak like '%" . $searchValue . "%' or a.alamat like '%" . $searchValue . "%')";
+        }
+
+        $this->db->select('count(*) as allcount');
+        $this->db->from('tb_registrasi as a');
+        $this->db->join('tb_paket as b', 'a.speed = b.id_wireless');
+        if ($this->session->userdata('lokasi') == 'TomTimNet') {
+            $this->db->where('a.lokasi', 'TomTimNet');
+        } else {
+            $this->db->where('a.lokasi', 'Otista');
+        }
+        $records = $this->db->get()->result();
+        $totalRecords = $records[0]->allcount;
+
+        $this->db->select('count(*) as allcount');
+        if ($searchQuery != '')
+            $this->db->where($searchQuery);
+        //             $this->db->like('nama',$searchValue);
+        // $this->db->where('lokasi', 'TomTimNet');
+        if ($this->session->userdata('lokasi') == 'TomTimNet') {
+            $this->db->where('lokasi', 'TomTimNet');
+        } else {
+            $this->db->where('lokasi', 'Otista');
+        }
+        $records = $this->db->get('tb_registrasi')->result();
+        $totalRecordwithFilter = $records[0]->allcount;
+
+        if ($searchQuery != '')
+            $this->db->select('*');
+        $this->db->from('tb_registrasi as a');
+        $this->db->join('tb_paket as b', 'a.speed = b.id_wireless');
+        if ($searchValue == true) {
+            $this->db->where($searchQuery2);
+        }
+        // $this->db->where('a.lokasi', 'TomTimNet');
+        if ($this->session->userdata('lokasi') == 'TomTimNet') {
+            $this->db->where('a.lokasi', 'TomTimNet');
+        } else {
+            $this->db->where('a.lokasi', 'Otista');
+        }
+        //  $this->db->order_by('tanggal', 'desc');
+        $this->db->order_by($columnName, $columnSortOrder);
+        $this->db->limit($rowperpage, $start);
+        //  $records = $this->db->query("SELECT a.id_cetak,a.nama,b.paket,a.tagihan,a.penerima,a.periode,a.tanggal,a.nomor_struk FROM tb_cetak as a left join tb_paket as b on(a.internet = b.id_wireless) where '$searchQuery' order by '$columnName' asc limit $rowperpage")->result();
+
+        $records = $this->db->get()->result();
+        $data = array();
+        $no =1;
+        foreach ($records as $record) {
+            $get_bulan = $this->session->userdata('bln');
+            $get_thn = $this->session->userdata('thn');
+
+            $tanggal = time();
+            $bulan = $this->indonesian_date($tanggal, 'F');
+            if ($get_bulan) {
+                $xquery = $this->db->query("SELECT * FROM tb_cetak where id_registrasi='$record->id_registrasi' and periode='$get_bulan' and thn='$get_thn'  ")->num_rows();
+            } else {
+                $xquery = $this->db->query("SELECT * FROM tb_cetak where id_registrasi='$record->id_registrasi' and periode='$bulan' and thn=date('Y')")->num_rows();
+            }
+
+
+            if ($xquery == true) {
+                $xx = '<td><span  class="btn btn-primary"><i style="font-size:21px" class="fas fa-check"></i> Sudah bayar </span></td>';
+            } else {
+                $xx = '<td><span  class="btn btn-danger"><i style="font-size:21px" class="far fa-times-circle"></i> Belum bayar</span></td>';
+            }
+            $data[] = array(
+                "no"=>$no++,
+                "nama" => $record->nama,
+                "alamat" => $record->alamat,
+                "status" => $xx,
             );
         }
 

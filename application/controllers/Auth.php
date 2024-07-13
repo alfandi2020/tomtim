@@ -38,7 +38,8 @@ class Auth extends CI_Controller
                     'id_user' => $user['id_user'],
                     'nama' => $user['nama'],
                     'username' => $user['username'],
-                    'level' => $user['level']
+                    'level' => $user['level'],
+                    'lokasi' => 'TomTimNet'
                 ];
                 $this->session->set_userdata($data);
                 $this->session->set_flashdata('massage', '<div class="alert alert-success" role="alert">Login Berhasil !</div>');
