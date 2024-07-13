@@ -116,6 +116,8 @@ class Administrator extends CI_Controller
         return round($bytes, $precision) . ' ' . $units[$pow];
     }
     function getReport(){
+        ini_set('display_errors', 1);
+        error_reporting(-1);
         $postData = $this->input->post();
         $data = $this->M_admin->ListReport($postData);
         echo json_encode($data);
