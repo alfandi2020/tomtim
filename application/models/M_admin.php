@@ -43,6 +43,8 @@ class M_admin extends CI_Model
         return $query->result();
     }
     function ListReport($postData){
+        ini_set('display_errors', 1);
+        error_reporting(-1);
         $response = array();
 
         //value
