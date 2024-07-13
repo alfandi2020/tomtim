@@ -116,6 +116,7 @@ class Administrator extends CI_Controller
         return round($bytes, $precision) . ' ' . $units[$pow];
     }
     function getReport(){
+        echo 11;
         ini_set('display_errors', 1);
         error_reporting(-1);
         $postData = $this->input->post();
