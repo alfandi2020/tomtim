@@ -29,7 +29,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="card">
-<?php echo $this->session->flashdata('massage') ?>
+                <?php echo $this->session->flashdata('massage') ?>
                         <div class="card-header">
                             <div class="d-flex align-items-center">
                                 <h4 class="card-title">WhatsApp Blast</h4>

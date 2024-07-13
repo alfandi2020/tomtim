@@ -169,7 +169,7 @@ class Administrator extends CI_Controller
                                                         "api_key": "iEQRRY8J4UUAkWKW78iPja2hc8rjlcCK",
                                                         "sender": "6285961403102",
                                                         "number": "' . $nomor . '",
-                                                        "message" : "' . $pesan . '"
+                                                        "message" : '.$pesan.'
                                                         }',
                     CURLOPT_HTTPHEADER => array(
                         'Content-Type: application/json'
@@ -188,43 +188,43 @@ class Administrator extends CI_Controller
                 }
             
         } 
-        if($pesan == true & $nomor == true & $url == true){
-                $curl2 = curl_init();
-                curl_setopt_array(
-                    $curl2,
-                    array(
-                        CURLOPT_URL => 'http://103.171.85.211:8000/send-media',
-                        CURLOPT_RETURNTRANSFER => true,
-                        CURLOPT_ENCODING => '',
-                        CURLOPT_MAXREDIRS => 10,
-                        CURLOPT_TIMEOUT => 0,
-                        CURLOPT_FOLLOWLOCATION => true,
-                        CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-                        CURLOPT_CUSTOMREQUEST => 'POST',
-                        CURLOPT_POSTFIELDS => '{
-                                                            "api_key": "iEQRRY8J4UUAkWKW78iPja2hc8rjlcCK",
-                                                            "sender": "6285961403102",
-                                                            "number": "' . $nomor . '",
-                                                            "media_type": "image",
-                                                            "caption" : "' . $pesan . '"
-                                                            "url": "'.$url.'"
-                                                            }',
-                        CURLOPT_HTTPHEADER => array(
-                            'Content-Type: application/json'
-                        ),
-                    )
-                );
-                $response2 = curl_exec($curl2);
-                curl_close($curl2);
-                    $o = json_decode($response2);
-                    if (json_encode($o->status) == true){
-                        $this->session->set_flashdata('massage', '<div class="alert alert-success" role="alert"></i> Pesan Berhasil dikirim </div>');
-                        redirect('administrator/whatsapp');
-                    }else{
-                        $this->session->set_flashdata('massage', '<div class="alert alert-alert" role="alert"></i> Pesan gagal dikirim </div>');
-                     redirect('administrator/whatsapp');
-                    }
-        }
+        // if($pesan == true & $nomor == true & $url == true){
+        //         $curl2 = curl_init();
+        //         curl_setopt_array(
+        //             $curl2,
+        //             array(
+        //                 CURLOPT_URL => 'http://103.171.85.211:8000/send-media',
+        //                 CURLOPT_RETURNTRANSFER => true,
+        //                 CURLOPT_ENCODING => '',
+        //                 CURLOPT_MAXREDIRS => 10,
+        //                 CURLOPT_TIMEOUT => 0,
+        //                 CURLOPT_FOLLOWLOCATION => true,
+        //                 CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+        //                 CURLOPT_CUSTOMREQUEST => 'POST',
+        //                 CURLOPT_POSTFIELDS => '{
+        //                                                     "api_key": "iEQRRY8J4UUAkWKW78iPja2hc8rjlcCK",
+        //                                                     "sender": "6285961403102",
+        //                                                     "number": "' . $nomor . '",
+        //                                                     "media_type": "image",
+        //                                                     "caption" : "' . $pesan . '"
+        //                                                     "url": "'.$url.'"
+        //                                                     }',
+        //                 CURLOPT_HTTPHEADER => array(
+        //                     'Content-Type: application/json'
+        //                 ),
+        //             )
+        //         );
+        //         $response2 = curl_exec($curl2);
+        //         curl_close($curl2);
+        //             $o = json_decode($response2);
+        //             if (json_encode($o->status) == true){
+        //                 $this->session->set_flashdata('massage', '<div class="alert alert-success" role="alert"></i> Pesan Berhasil dikirim </div>');
+        //                 redirect('administrator/whatsapp');
+        //             }else{
+        //                 $this->session->set_flashdata('massage', '<div class="alert alert-alert" role="alert"></i> Pesan gagal dikirim </div>');
+        //              redirect('administrator/whatsapp');
+        //             }
+        // }
         $data['pelanggan'] = $this->db->query("SELECT * FROM tb_registrasi")->num_rows();
         $data['pakettt'] = $this->db->query("SELECT * FROM tb_paket")->num_rows();
         $data['user'] = $this->db->get_where('tb_user', ['username' => $this->session->userdata('username')])->row_array();
