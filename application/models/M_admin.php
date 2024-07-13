@@ -103,7 +103,6 @@ class M_admin extends CI_Model
             "periode"=>$record->periode,
             "tanggal"=>$record->tanggal,
             "nomor_struk"=> "#".$record->nomor_struk,
-            "nama"=>$record->nama,
             "id" => $record->id_cetak
             );
         }

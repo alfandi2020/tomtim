@@ -103,7 +103,7 @@
          'url':'getReport'
       },
       'columns': [
-          {data: 'no'},
+        {data: 'no'},
          { data: 'nama' },
          { data: 'paket' },
          { data: 'tagihan' },
