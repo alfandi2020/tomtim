@@ -154,7 +154,7 @@ class Administrator extends CI_Controller
         $pesan = $this->input->post('pesan');
         $url = $this->input->post('url');
         $nomor = $this->input->post('nomor');
-        if ($pesan == true & $nomor == true) {
+        if ($pesan == true & $nomor == true & $url == false) {
                 $curl = curl_init();
                 curl_setopt_array($curl, array(
                     CURLOPT_URL => 'http://103.171.85.211:8000/send-message',
@@ -189,26 +189,34 @@ class Administrator extends CI_Controller
             
         } 
         if($pesan == true & $nomor == true & $url == true){
-            $ex = explode(',',$nomor);
-            foreach ($ex as $x_nomor) {
-                sleep(2);
                 $curl2 = curl_init();
-                    curl_setopt_array($curl2, array(
-                      CURLOPT_URL => 'http://103.171.85.211:8000/send-message',
-                      CURLOPT_RETURNTRANSFER => true,
-                      CURLOPT_ENCODING => '',
-                      CURLOPT_MAXREDIRS => 10,
-                      CURLOPT_TIMEOUT => 0,
-                      CURLOPT_FOLLOWLOCATION => true,
-                      CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-                      CURLOPT_CUSTOMREQUEST => 'POST',
-                      CURLOPT_POSTFIELDS => 'sender='.$sender.'&number='.$x_nomor.'&message='.$pesan.'',
-                    ));
-                    
-                    $response = curl_exec($curl2);
-                }
-                    curl_close($curl2);
-                    $o = json_decode($response);
+                curl_setopt_array(
+                    $curl2,
+                    array(
+                        CURLOPT_URL => 'http://103.171.85.211:8000/send-message',
+                        CURLOPT_RETURNTRANSFER => true,
+                        CURLOPT_ENCODING => '',
+                        CURLOPT_MAXREDIRS => 10,
+                        CURLOPT_TIMEOUT => 0,
+                        CURLOPT_FOLLOWLOCATION => true,
+                        CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+                        CURLOPT_CUSTOMREQUEST => 'POST',
+                        CURLOPT_POSTFIELDS => '{
+                                                            "api_key": "iEQRRY8J4UUAkWKW78iPja2hc8rjlcCK",
+                                                            "sender": "6285961403102",
+                                                            "number": "' . $nomor . '",
+                                                            "media_type": "image",
+                                                            "caption" : "' . $pesan . '"
+                                                            "url": "'.$url.'"
+                                                            }',
+                        CURLOPT_HTTPHEADER => array(
+                            'Content-Type: application/json'
+                        ),
+                    )
+                );
+                $response2 = curl_exec($curl2);
+                curl_close($curl2);
+                    $o = json_decode($response2);
                     if (json_encode($o->status) == true){
                         $this->session->set_flashdata('massage', '<div class="alert alert-success" role="alert"></i> Pesan Berhasil dikirim </div>');
                         redirect('administrator/whatsapp');
