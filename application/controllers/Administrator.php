@@ -678,8 +678,6 @@ class Administrator extends CI_Controller
     }
     public function cetak()
     {
-        ini_set('display_errors', 1);
-        error_reporting(-1);
         // $data['struk'] = $this->M_admin->get_struk();
         $data['pelanggan'] = $this->db->query("SELECT * FROM tb_registrasi")->num_rows();
         $data['pakettt'] = $this->db->query("SELECT * FROM tb_paket")->num_rows();
