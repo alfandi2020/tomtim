@@ -165,12 +165,12 @@ class Administrator extends CI_Controller
                     CURLOPT_FOLLOWLOCATION => true,
                     CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
                     CURLOPT_CUSTOMREQUEST => 'POST',
-                    CURLOPT_POSTFIELDS => '{
-                                                        "api_key": "iEQRRY8J4UUAkWKW78iPja2hc8rjlcCK",
-                                                        "sender": "6285961403102",
-                                                        "number": "' . $nomor . '",
-                                                        "message" : "' . $pesan . '"
-                                                        }',
+                    CURLOPT_POSTFIELDS => "{
+                                                        'api_key': 'iEQRRY8J4UUAkWKW78iPja2hc8rjlcCK',
+                                                        'sender': '6285961403102',
+                                                        'number': " . $nomor . ",
+                                                        'message' : " . $pesan . "
+                                                        }",
                     CURLOPT_HTTPHEADER => array(
                         'Content-Type: application/json'
                     ),
