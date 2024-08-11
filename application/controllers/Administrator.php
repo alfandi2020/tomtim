@@ -684,7 +684,7 @@ class Administrator extends CI_Controller
                              CURLOPT_POSTFIELDS => '{
                                                                  "api_key": "iEQRRY8J4UUAkWKW78iPja2hc8rjlcCK",
                                                                  "sender": "6285961403102",
-                                                                 "number": "' . $phone . '",
+                                                                 "number": "' . "62" . substr($phone, 1) . '",
                                                                  "message" : "' . $msgg . '"
                                                                  }',
                              CURLOPT_HTTPHEADER => array(
