@@ -303,11 +303,11 @@ class Administrator extends CI_Controller
         $id = $this->uri->segment(3, 0);
         $bulan = str_replace(' ','',$this->uri->segment(4,0));
         $tahun = $this->uri->segment(5,0);
-        // if($bulan == false  || $tahun == false){
-        //     $tanggalx = time();
-        //     $bulan = str_replace(' ','',$this->indonesian_date($tanggalx, 'F'));
-        //     $tahun = date('Y');
-        // }
+        if($bulan == false  || $tahun == false){
+            $tanggalx = time();
+            $bulan = str_replace(' ','',$this->indonesian_date($tanggalx, 'F'));
+            $tahun = date('Y');
+        }
         //$key = $this->input->get('key');
         $x = $this->db->query("SELECT * FROM tb_registrasi AS a LEFT JOIN tb_paket AS b ON(a.speed = b.id_wireless) where a.id_registrasi='$id'")->row_array();
         //foreach ($get as $x) {
@@ -360,7 +360,7 @@ class Administrator extends CI_Controller
                  ];
         $this->db->where('id_registrasi', $id);
         $this->db->update("tb_registrasi", $insert_log);
-        $msgg= '📧 *Pembayaran Sukses*\n\nYth Bapak/Ibu '.$get_registrasi['nama'].' \nKami Ucapkan Terima Kasih telah melakukan pembayaran internet untuk Bulan '.$periode.' '.$thn.' sebesar Rp.'. number_format($total_tagihan,0,".",".").'\n\nSalam,\nFinance\nLintas Jaringan Nusantara\nKantor Layanan Makasar - Jakarta Timur';
+        // $msgg= '📧 *Pembayaran Sukses*\n\nYth Bapak/Ibu '.$get_registrasi['nama'].' \nKami Ucapkan Terima Kasih telah melakukan pembayaran internet untuk Bulan '.$periode.' '.$thn.' sebesar Rp.'. number_format($total_tagihan,0,".",".").'\n\nSalam,\nFinance\nLintas Jaringan Nusantara\nKantor Layanan Makasar - Jakarta Timur';
             
         $msgg = '*Billing*\n\nPelanggan *LJN* (PT. Lintas Jaringan Nusantara) Jakarta Timur yang terhormat.\n\n*Bapak/Ibu '.$nama.',*\n\nTagihan internet Anda periode *'.$bulan ." ". $tahun.'* dengan paket *'.$pakettt.'* sebesar *Rp.'.$hasil.'* '.$diskon_show.' '.$addon_show.' \nKami ingatkan bahwa pembayaran internet jatuh pada tanggal 1.\n_Pastikan agar melakukan pembayaran untuk menghindari pemblokiran._\n\nPembayaran dapat melalui outlet kami di JL. Harapan III No. 05 (samping SD/SMP Budiharapan),\nJam operasional pukul 08:00 s/d pukul 17:00 di hari kerja (Senin s/d Sabtu).\n*atau melalui transfer bank ke nomor rekening berikut :*\nBCA        : 1640314229\nMandiri  : 0060005009489\nBRI          : 065201009279506\na/n Tomy Nugrahadi.\n\n*_Lakukan konfirmasi setelah melakukan pembayaran ke nomor wa.me/6282211661443_  <- Langsung klik*\nHiraukan jika anda telah melakukan pembayaran.\n\nUntuk informasi lainnya;\n*Layanan gangguan, masalah teknis, ganti nama wifi dan password :*\n- wa.me/6287868881443 <- Langsung klik\n\nTerima kasih atas perhatian anda. ';
                        
@@ -378,7 +378,7 @@ class Administrator extends CI_Controller
                            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
                            CURLOPT_CUSTOMREQUEST => 'POST',
                              CURLOPT_POSTFIELDS => '{
-                                                     "api_key": "iEQRRY8J4UUAkWKW78iPja2hc8rjlcCK",
+                                                     "api_key": "IVUQAJYTX0sQaHe2SSrOIi2ht0rSeB",
                                                      "sender": "6285961403102",
                                                      "number": "'.$phone.'",
                                                      "message" : "' . $msgg . '"
