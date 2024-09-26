@@ -160,7 +160,7 @@ class M_admin extends CI_Model
         //search
         $searchQuery = "";
         if($searchValue != ''){
-            $searchQuery = " (nama like '%".$searchValue."%' or periode like '%".$searchValue."%' or tanggal like'%".$searchValue."%' ) ";
+            $searchQuery = " (nama like '%{".$searchValue."}%' or periode like '%{".$searchValue."}%' or tanggal like'%{".$searchValue."}%' ) ";
         }
 
         $this->db->select('count(*) as allcount');
@@ -292,16 +292,17 @@ class M_admin extends CI_Model
         foreach ($records as $record) {
             $get_bulan = $this->session->userdata('bln');
             $get_thn = $this->session->userdata('thn');
+            
 
             $tanggal = time();
             $bulan = $this->indonesian_date($tanggal, 'F');
             if ($get_bulan) {
-                $xquery = $this->db->query("SELECT * FROM tb_cetak where id_registrasi='$record->id_registrasi' and periode='$get_bulan' and thn='$get_thn'  ")->num_rows();
+                $xquery = $this->db->query("SELECT * FROM tb_cetak where id_registrasi='$record->id_registrasi' and periode='$get_bulan' and thn='$get_thn' ")->num_rows();
             } else {
                 $xquery = $this->db->query("SELECT * FROM tb_cetak where id_registrasi='$record->id_registrasi' and periode='$bulan' and thn=date('Y')")->num_rows();
             }
 
-
+            $xx = '';
             if ($xquery == true) {
                 $xx = '<td><span  class="btn btn-primary"><i style="font-size:21px" class="fas fa-check"></i> Sudah bayar </span></td>';
             } else {
@@ -340,11 +341,11 @@ class M_admin extends CI_Model
         //search
         $searchQuery = "";
         if($searchValue != ''){
-            $searchQuery = "(nama like '%".$searchValue."%' or kontak like '%".$searchValue."%' or alamat like '%".$searchValue."%') ";
+            $searchQuery = "(nama like '%{".$searchValue."}%' or kontak like '%{".$searchValue."}%' or alamat like '%{".$searchValue."}%') ";
         }
         $searchQuery2 = "";
         if($searchValue != ''){
-            $searchQuery2 = "(a.nama like '%".$searchValue."%' or a.kontak like '%".$searchValue."%' or a.alamat like '%".$searchValue."%')";
+            $searchQuery2 = "(a.nama like '%{".$searchValue."}%' or a.kontak like '%{".$searchValue."}%' or a.alamat like '%{".$searchValue."}%')";
         }
 
         $this->db->select('count(*) as allcount');
@@ -425,11 +426,11 @@ class M_admin extends CI_Model
         //search
         $searchQuery = "";
         if($searchValue != ''){
-            $searchQuery = " (nama like '%".$searchValue."%' or kontak like '%".$searchValue."%' or alamat like '%".$searchValue."%') ";
+            $searchQuery = " (nama like '%{".$searchValue."}%' or kontak like '%{".$searchValue."}%' or alamat like '%{".$searchValue."}%') ";
         }
         $searchQuery2 = "";
         if($searchValue != ''){
-            $searchQuery2 = " (nama like '%".$searchValue."%' or kontak like '%".$searchValue."%' or alamat like '%".$searchValue."%') ";
+            $searchQuery2 = " (nama like '%{".$searchValue."}%' or kontak like '%{".$searchValue."}%' or alamat like '%{".$searchValue."}%') ";
         }
 
         $this->db->select('count(*) as allcount');
