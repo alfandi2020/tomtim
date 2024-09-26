@@ -160,7 +160,7 @@ class M_admin extends CI_Model
         //search
         $searchQuery = "";
         if($searchValue != ''){
-            $searchQuery = " (nama like '%''$searchValue.''%' or periode like '%''$searchValue.''%' or tanggal like'%''$searchValue.''%' ) ";
+            $searchQuery = " (nama like '%".$searchValue."%' or periode like '%".$searchValue."%' or tanggal like'%".$searchValue."%' ) ";
         }
 
         $this->db->select('count(*) as allcount');
@@ -341,11 +341,11 @@ class M_admin extends CI_Model
         //search
         $searchQuery = "";
         if($searchValue != ''){
-            $searchQuery = "(nama like '%''$searchValue.''%' or kontak like '%''$searchValue.''%' or alamat like '%''$searchValue.''%') ";
+            $searchQuery = "(nama like '%".$searchValue."%' or kontak like '%".$searchValue."%' or alamat like '%".$searchValue."%') ";
         }
         $searchQuery2 = "";
         if($searchValue != ''){
-            $searchQuery2 = "(a.nama like '%''$searchValue.''%' or a.kontak like '%''$searchValue.''%' or a.alamat like '%''$searchValue.''%')";
+            $searchQuery2 = "(a.nama like '%".$searchValue."%' or a.kontak like '%".$searchValue."%' or a.alamat like '%".$searchValue."%')";
         }
 
         $this->db->select('count(*) as allcount');
@@ -426,11 +426,11 @@ class M_admin extends CI_Model
         //search
         $searchQuery = "";
         if($searchValue != ''){
-            $searchQuery = " (nama like '%''$searchValue.''%' or kontak like '%''$searchValue.''%' or alamat like '%''$searchValue.''%') ";
+            $searchQuery = " (nama like '%".$searchValue."%' or kontak like '%".$searchValue."%' or alamat like '%".$searchValue."%') ";
         }
         $searchQuery2 = "";
         if($searchValue != ''){
-            $searchQuery2 = " (nama like '%''$searchValue.''%' or kontak like '%''$searchValue.''%' or alamat like '%''$searchValue.''%') ";
+            $searchQuery2 = " (nama like '%".$searchValue."%' or kontak like '%".$searchValue."%' or alamat like '%".$searchValue."%') ";
         }
 
         $this->db->select('count(*) as allcount');
