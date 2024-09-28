@@ -595,6 +595,17 @@ class Administrator extends CI_Controller
             print_r($m);
         }
     }
+    function generate_code()
+    {
+        $data['user'] = $data['user'] = $this->db->get_where('tb_user', ['username' => $this->session->userdata('username')])->row_array();
+        $data['pelanggan'] = $this->db->query("SELECT * FROM tb_registrasi")->num_rows();
+        $data['pakettt'] = $this->db->query("SELECT * FROM tb_paket")->num_rows();
+
+        $this->load->view('admin/head');
+        $this->load->view('admin/generate',$data);
+        $this->load->view('admin/footer');
+
+    }
     public function cekPembayaran()
     {
         $data['user'] = $data['user'] = $this->db->get_where('tb_user', ['username' => $this->session->userdata('username')])->row_array();

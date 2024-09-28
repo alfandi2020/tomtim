@@ -388,6 +388,12 @@
                                 <span class="sub-item">Blast WhatsApp</span>
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a href="<?php echo base_url('administrator/generate_code') ?>">
+                                <i class="icon-people"></i>
+                                <span class="sub-item">Generate Code GPON</span>
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </div>
