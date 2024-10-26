@@ -125,7 +125,7 @@
                                         <div class="col-xl-4">
                                             <label>Lokasi Pelanggan</label>
                                            <select name="lok_pelanggan" id="" required class="form-control select22">
-                                               <option>Pilih Lokasi Pelanggan</option>
+                                               <option value="">Pilih Lokasi Pelanggan</option>
                                                <option value="TomTimNet">TomTimNet</option>
                                                <option value="Otista">Otista</option>
                                            </select>
