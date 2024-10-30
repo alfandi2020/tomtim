@@ -301,7 +301,6 @@ class M_admin extends CI_Model
             } else {
                 $xquery = $this->db->query("SELECT * FROM tb_cetak where id_registrasi='$record->id_registrasi' and periode='$bulan' and thn=date('Y')")->num_rows();
             }
-
             $xx = '';
             if ($xquery == true) {
                 $xx = '<td><span  class="btn btn-primary"><i style="font-size:21px" class="fas fa-check"></i> Sudah bayar </span></td>';
