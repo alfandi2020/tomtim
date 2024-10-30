@@ -155,8 +155,7 @@ class Administrator extends CI_Controller
         $url = $this->input->post('url');
         $nomor = $this->input->post('nomor');
         if ($pesan == true & $nomor == true & $url == false) {
-            $xx = implode('|',$nomor);
-            foreach (explode('|',$xx) as $x) {
+            foreach (explode('|',$nomor) as $x) {
                 $curl = curl_init();
                 curl_setopt_array($curl, array(
                     CURLOPT_URL => 'http://103.171.85.211:8000/send-message',
