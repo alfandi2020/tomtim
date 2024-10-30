@@ -153,8 +153,9 @@ class Administrator extends CI_Controller
     {
         $pesan = $this->input->post('pesan');
         $url = $this->input->post('url');
-        $nomor = $this->input->post('nomor');
+        $nomor = implode('|',$this->input->post('nomor'));
         if ($pesan == true & $nomor == true & $url == false) {
+            foreach (explode('|',$nomor) as $x) {
                 $curl = curl_init();
                 curl_setopt_array($curl, array(
                     CURLOPT_URL => 'http://103.171.85.211:8000/send-message',
@@ -168,7 +169,7 @@ class Administrator extends CI_Controller
                     CURLOPT_POSTFIELDS => '{
                                                         "api_key": "iEQRRY8J4UUAkWKW78iPja2hc8rjlcCK",
                                                         "sender": "6285954542160",
-                                                        "number": "' . $nomor . '",
+                                                        "number": "' . $x . '",
                                                         "message" : "' . $pesan . '"
                                                         }',
                     CURLOPT_HTTPHEADER => array(
@@ -179,6 +180,7 @@ class Administrator extends CI_Controller
                 $response = curl_exec($curl);
                 curl_close($curl);
                 $o = json_decode($response);
+            }
                 if (json_encode($o->status) == true) {
                     $this->session->set_flashdata('massage', '<div class="alert alert-success" role="alert"> Pesan Berhasil dikirim </div>');
                     redirect('administrator/whatsapp');
