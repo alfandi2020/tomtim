@@ -116,6 +116,28 @@
                                             </div>
                                         </div>
                                     </div>
+                                    <div class="form-group">
+                                        <h4><b>Akun PPoE</b></h4>
+                                        <div class="row">
+                                           <div class="col-xl-4">
+                                                <label>Username</label>
+                                                <input class="form-control uang" placeholder="username ppp" name="user_ppp">
+                                           </div>
+                                            <div class="col-xl-4">
+                                                <label>Password</label>
+                                                <input class="form-control uang" placeholder="password ppp" name="pass_ppp">
+                                           </div>
+                                           <div class="col-xl-4">
+                                                <label>Profile</label>
+                                                <select name="profile_ppp" class="form-control select22" id="">
+                                                    <option value="">Pilih Profile</option>
+                                                    <?php foreach ($profile_ppp as $k) { ?>
+                                                        <option value="<?= $k['name']; ?>"><?= $k['name']; ?></option>
+                                                    <?php } ?>
+                                                </select>
+                                           </div>
+                                        </div>
+                                    </div>
                                     <hr>
                                     <h4>II. Data Pelanggan</h4>
                                     <div class="form-group">

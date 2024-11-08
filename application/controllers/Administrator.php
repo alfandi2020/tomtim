@@ -4,7 +4,8 @@ require 'formatbytesbites.php';
 
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
-
+use \RouterOS\Client;
+use \RouterOS\Query;
 class Administrator extends CI_Controller
 {
     public function __construct()
@@ -148,7 +149,7 @@ class Administrator extends CI_Controller
         $data = $this->M_admin->ListClient2($postData);
         echo json_encode($data);
     }
-    
+  
     public function whatsapp()
     {
         $pesan = $this->input->post('pesan');
@@ -452,6 +453,12 @@ class Administrator extends CI_Controller
         $this->form_validation->set_rules('tanggal_installasi', 'Tanggal_installasi', 'trim|required');
 
         if ($this->form_validation->run() == false) {
+            $client = $this->config_routeros();
+            $query =
+                (new Query('/ppp/profile/print'));
+            $data['profile_ppp'] = $client->query($query)->read();
+            // echo json_encode($response, JSON_PRETTY_PRINT);
+
             $data['pelanggan'] = $this->db->query("SELECT * FROM tb_registrasi")->num_rows();
             $data['user'] = $this->db->get_where('tb_user', ['username' => $this->session->userdata('username')])->row_array();
             $data['pakettt'] = $this->db->query("SELECT * FROM tb_paket")->num_rows();
@@ -461,6 +468,15 @@ class Administrator extends CI_Controller
         } else {
             $this->registrasi2();
         }
+    }
+    function config_routeros()
+    {
+        return new Client([
+            'host' => '103.155.198.12',
+            'user' => 'pandi',
+            'pass' => 'betulsekali',
+            'port' => 8228,
+        ]);
     }
     public function registrasi2()
     {
@@ -533,6 +549,16 @@ class Administrator extends CI_Controller
 
         ];
         $this->db->insert('tb_registrasi', $data);
+        if ($this->input->post('user_ppp') == true && $this->input->post('pass_ppp')) {
+            $ppp = [
+                "id_pelanggan" => $hasil,
+                "name" => $this->input->post('user_ppp'),
+                "password" => $this->input->post('pass_ppp'),
+                "profile" => $this->input->post('profile_ppp'),
+                "tgl_aktif" => $tanggal_installasi
+            ];
+            $this->db->insert('dt_ppp', $ppp);
+        }
         $this->session->set_flashdata('massage', '<div class="alert alert-success" role="alert"></i> Data Berhasil di input</div>');
         redirect('Administrator/registrasi');
     }
@@ -843,6 +869,10 @@ class Administrator extends CI_Controller
         $data['pakettt'] = $this->db->query("SELECT * FROM tb_paket")->num_rows();
         $data['user'] = $data['user'] = $this->db->get_where('tb_user', ['username' => $this->session->userdata('username')])->row_array();
         $data['edit'] = $this->db->query("SELECT * FROM tb_registrasi as a inner join tb_paket as b on(a.speed = b.id_wireless) where id_registrasi = '$id_plg'")->result();
+        $client = $this->config_routeros();
+        $query =
+            (new Query('/ppp/profile/print'));
+        $data['profile_ppp'] = $client->query($query)->read();
         $this->load->view('admin/head');
         $this->load->view('admin/edit_pelanggan', $data);
         $this->load->view('admin/footer');

@@ -673,6 +673,7 @@
     $(document).ready(function() {
         // $('#table-user').DataTable({});
     $('#table-status1').DataTable({
+        order : [[3,'asc']],   
       'processing': true,
       'serverSide': true,
       'serverMethod': 'post',
@@ -683,7 +684,9 @@
         {data: 'no'},
          { data: 'nama' },
          { data: 'alamat' },
-         { data: 'status' },
+         { data: 'status',
+        
+        },
 
       ],
       
