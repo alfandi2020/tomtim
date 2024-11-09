@@ -557,7 +557,8 @@ class Administrator extends CI_Controller
                     ->equal('password', $this->input->post('pass_ppp'))
                     ->equal('profile', $this->input->post('profile_ppp'));
             $cek_ins = $client->query($query)->read();
-            if ($cek_ins == true) {
+            // if ($cek_ins == true) {
+                sleep(2);
                 //get user
                 $get_user = new Query('/ppp/secret/print');
                 $get_user->where('name', $this->input->post('user_ppp'));
@@ -569,7 +570,7 @@ class Administrator extends CI_Controller
                         ->equal('.id', $user_ppp[0]['.id'])  // Gunakan ID spesifik, atau
                         ->equal('comment', $kontak);
                 $user_ppp = $client->query($upd_com)->read();
-            }
+            // }
 
             $ppp = [
                 "id_pelanggan" => $hasil,
