@@ -567,7 +567,7 @@ class Administrator extends CI_Controller
                 $upd_com =
                     (new Query('/ppp/secret/set'))
                         ->equal('.id', $user_ppp[0]['.id'])  // Gunakan ID spesifik, atau
-                        ->equal('comment', $nomor);
+                        ->equal('comment', $kontak);
                 $user_ppp = $client->query($upd_com)->read();
             }
 
