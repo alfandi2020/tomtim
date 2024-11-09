@@ -550,13 +550,26 @@ class Administrator extends CI_Controller
         ];
         $this->db->insert('tb_registrasi', $data);
         if ($this->input->post('user_ppp') == true && $this->input->post('pass_ppp')) {
+            $client = $this->config_routeros();
             $query =
                 (new Query('/ppp/secret/add'))
                     ->equal('name', $this->input->post('user_ppp'))
                     ->equal('password', $this->input->post('pass_ppp'))
                     ->equal('profile', $this->input->post('profile_ppp'));
-            $client = $this->config_routeros();
-            $response = $client->query($query)->read();
+            $cek_ins = $client->query($query)->read();
+            if ($cek_ins == true) {
+                //get user
+                $get_user = new Query('/ppp/secret/print');
+                $get_user->where('name', 'fandi');
+                $user_ppp = $client->query($get_user)->read();
+
+                //update comment
+                $upd_com =
+                    (new Query('/ppp/secret/set'))
+                        ->equal('.id', $user_ppp[0]['.id'])  // Gunakan ID spesifik, atau
+                        ->equal('comment', $nomor);
+                $user_ppp = $client->query($upd_com)->read();
+            }
 
             $ppp = [
                 "id_pelanggan" => $hasil,
