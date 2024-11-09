@@ -560,7 +560,7 @@ class Administrator extends CI_Controller
             if ($cek_ins == true) {
                 //get user
                 $get_user = new Query('/ppp/secret/print');
-                $get_user->where('name', 'fandi');
+                $get_user->where('name', $this->input->post('user_ppp'));
                 $user_ppp = $client->query($get_user)->read();
 
                 //update comment
