@@ -126,4 +126,60 @@ class Cron extends CI_Controller
             }
         }
     }
+    public function reminder()
+    {
+        $this->db->where('b.id_ppp !=',NULL);
+        $this->db->join('dt_ppp as b','a.id_registrasi=b.id_pelanggan','left');
+        $this->db->join('tb_paket as c', 'a.speed=c.id_wireless', 'left');
+        $get_client = $this->db->get('tb_registrasi as a')->result();
+        foreach ($get_client as $x) {
+            $day3 = $x->tgl_reminder - 3;//h-3
+            $day7 = $x->tgl_reminder - 7;//h-3
+            if ($day3 == date('d') || $day7 == date('d')) {
+                $hasil = number_format(intval($x->harga) + intval($x->addon1) + intval($x->addon2) + intval($x->addon3) - intval($x->diskon), 0, ".", ".");
+                // $message = '📧 Bot Billing\n\nPelanggan LJN (PT. Lintas Jaringan Nusantara) Jakarta Timur yang terhormat,\n\nKami informasikan bahwa saat ini status internet anda ISOLIR/TERBLOKIR\n\nUntuk dapat menggunakan layanan kami kembali, silahkan lakukan pembayaran melalui transfer bank ke nomor rekening berikut :\n\nBCA        : 1640314229\nMandiri  : 0060005009489\nBRI          : 065201009279506\na/n Tomy Nugrahadi.\n\nKirimkan bukti pembayaran melalui whatsapp ke nomor 082211661443 👈 Langsung klik\n\nTerima kasih atas perhatian anda. 🙏\n\n*Mohon untuk tidak membalas pesan ini*';
+                $message = '*📧 Bot Billing*\n' .
+                    'Pelanggan LJN (PT. Lintas Jaringan Nusantara) Jakarta Timur yang terhormat,\n\n' .
+                    '*Bapak/Ibu '.$x->nama.'*\n\n' .
+                    'Kami informasikan bahwa tagihan internet anda bulan *'.date('F').'* senilai *Rp.'.$hasil.'* dan akan jatuh tempo pada *'.$x->tgl_reminder.' '. date('F').'*\n\n' .
+                    'Untuk terus dapat menggunakan layanan internet anda, silahkan lakukan pembayaran melalui transfer bank ke nomor rekening berikut :\n\n' .
+                    'BCA        : 1640314229\n' .
+                    'Mandiri  : 0060005009489\n' .
+                    'BRI          : 065201009279506\n' .
+                    '*_a/n Tomy Nugrahadi._*\n\n' .
+                    'Kirimkan bukti pembayaran melalui whatsapp ke nomor 082211661443 👈 Langsung klik\n\n' .
+                    'Abaikan pesan ini jika Anda sudah melakukan pembayaran.\n' .
+                    'Terima kasih atas perhatian anda. 🙏\n\n' .
+                    '*Mohon untuk tidak membalas pesan ini*';
+
+
+                $token = "rasJFCC37ewayax21uu2Caog9CCqyT3KSwBWFqQAbQMdMAefxa";
+                $phone = "083897943785"; //untuk group pakai groupid contoh: 62812xxxxxx-xxxxx
+                $curl = curl_init();
+                curl_setopt_array($curl, array(
+                    CURLOPT_URL => 'http://103.171.85.211:8000/send-message',
+                    CURLOPT_RETURNTRANSFER => true,
+                    CURLOPT_ENCODING => '',
+                    CURLOPT_MAXREDIRS => 10,
+                    CURLOPT_TIMEOUT => 0,
+                    CURLOPT_FOLLOWLOCATION => true,
+                    CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+                    CURLOPT_CUSTOMREQUEST => 'POST',
+                    CURLOPT_POSTFIELDS => '{
+                                                        "api_key": "IVUQAJYTX0sQaHe2SSrOIi2ht0rSeB",
+                                                        "sender": "6285961403102",
+                                                        "number": "' . $phone . '",
+                                                        "message" : "' . $message . '"
+                                                        }',
+                    CURLOPT_HTTPHEADER => array(
+                        'Content-Type: application/json'
+                    ),
+                ));
+                $response = curl_exec($curl);
+                curl_close($curl);
+                echo $response;
+            }
+        }
+        
+    }
 }

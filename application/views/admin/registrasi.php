@@ -122,9 +122,12 @@
                                                 <label>Profile</label>
                                                 <select name="profile_ppp" class="form-control select22" id="">
                                                     <option value="">Pilih Profile</option>
-                                                <?php foreach ($profile_ppp as $k) { ?>
+                                                <?php foreach ($profile_ppp as $k) {
+                                                    if ($k['name'] != 'default-encryption' && $k['name'] != 'default') {
+                                                        ?>
                                                     <option value="<?= $k['name']; ?>"><?= $k['name']; ?></option>
-                                                <?php } ?>
+                                                <?php }
+                                                } ?>
                                             </select>
                                         </div>
                                     </div>
@@ -318,6 +321,10 @@
                                         <div class="col-xl-4">
                                             <label>Tanggal dan Waktu Installasi</label>
                                             <input style="border-color: #1269db;" size="16" type="text" placeholder="Pilih Tanggal" name="tanggal_installasi" class="form-control form_datetime1">
+                                        </div>
+                                         <div class="col-xl-4">
+                                            <label>Tanggal Jatoh tempo</label>
+                                            <input style="border-color: #1269db;" size="16" type="number" placeholder="Tanggal aja" name="tgl_reminder" class="form-control">
                                         </div>
                                     </div>
                                 </div>

@@ -394,6 +394,36 @@
                                 <span class="sub-item">Generate Code GPON</span>
                             </a>
                         </li>
+                         <li class="nav-item ">
+                            <a data-toggle="collapse" href="#base1">
+                                <i class="icon-book-open"></i>
+                                <p>Mikrotik</p>
+                                <span class="caret"></span>
+                            </a>
+                            <div class="collapse" id="base1">
+                                <ul class="nav nav-collapse">
+                                    <li>
+                                        <a href="<?php echo base_url('administrator/registrasi') ?>">
+                                            <span class="sub-item">Registrasi</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="<?php echo base_url('administrator/create') ?>">
+                                            <span class="sub-item">Buat Pembayaran</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="<?php echo base_url('administrator/cetak') ?>">
+                                            <span class="sub-item">Cetak Pembayaran</span>
+                        
+                                        </a>
+                                    </li>
+                        
+                                </ul>
+                        
+                        
+                            </div>
+                        </li>
                     </ul>
                 </div>
             </div>

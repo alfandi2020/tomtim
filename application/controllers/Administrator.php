@@ -545,7 +545,8 @@ class Administrator extends CI_Controller
             'tanggal_installasi' => $tanggal_installasi,
             'tanggal_blast' =>$installasi2 . "-01",
             'date_wa' => '',
-            'lokasi' => $lok_pelanggan
+            'lokasi' => $lok_pelanggan,
+            'tgl_reminder' => $this->input->post('tgl_reminder')
 
         ];
         $this->db->insert('tb_registrasi', $data);
@@ -952,6 +953,8 @@ class Administrator extends CI_Controller
             'npwp' => $npwp,
             'kontak_pelanggan' => $kontak_pelanggan,
             'email_pelanggan' => $email_pelanggan,
+            'tgl_reminder' => $this->input->post('tgl_reminder')
+
         ];
         $this->db->where('id_registrasi', $get_id_pelanggan);
         $this->db->update('tb_registrasi', $update);

@@ -376,7 +376,10 @@
                                                 <label>Registrasi Pelanggan</label>
                                                 <input type="text" class="form-control" disabled value="<?php echo $x->tanggal_installasi ?>">
                                             </div>
-                                           
+                                           <div class="col-xl-4">
+                                                <label>Tanggal Jatoh tempo</label>
+                                                <input style="border-color: #1269db;" size="16" type="number" value="<?= $x->tgl_reminder ?>" placeholder="Tanggal aja" name="tgl_reminder" class="form-control">
+                                            </div>
                                         </div>
                                     </div>
 
