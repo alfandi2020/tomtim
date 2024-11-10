@@ -154,7 +154,7 @@ class Cron extends CI_Controller
 
 
                 $token = "rasJFCC37ewayax21uu2Caog9CCqyT3KSwBWFqQAbQMdMAefxa";
-                $phone = "083897943785"; //untuk group pakai groupid contoh: 62812xxxxxx-xxxxx
+                $phone = $x->kontak; //untuk group pakai groupid contoh: 62812xxxxxx-xxxxx
                 $curl = curl_init();
                 curl_setopt_array($curl, array(
                     CURLOPT_URL => 'http://103.171.85.211:8000/send-message',
