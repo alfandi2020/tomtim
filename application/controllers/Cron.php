@@ -1,7 +1,8 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-
+use \RouterOS\Client;
+use \RouterOS\Query;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 
@@ -126,60 +127,114 @@ class Cron extends CI_Controller
             }
         }
     }
+  
     public function reminder()
     {
+        $client = $this->config_routeros();
         $this->db->where('b.id_ppp !=',NULL);
+        $this->db->where('a.is_blocked', 0);
         $this->db->join('dt_ppp as b','a.id_registrasi=b.id_pelanggan','left');
         $this->db->join('tb_paket as c', 'a.speed=c.id_wireless', 'left');
         $get_client = $this->db->get('tb_registrasi as a')->result();
-        foreach ($get_client as $x) {
-            $day3 = $x->tgl_reminder - 3;//h-3
-            $day7 = $x->tgl_reminder - 7;//h-3
-            if ($day3 == date('d') || $day7 == date('d')) {
-                $hasil = number_format(intval($x->harga) + intval($x->addon1) + intval($x->addon2) + intval($x->addon3) - intval($x->diskon), 0, ".", ".");
-                // $message = '📧 Bot Billing\n\nPelanggan LJN (PT. Lintas Jaringan Nusantara) Jakarta Timur yang terhormat,\n\nKami informasikan bahwa saat ini status internet anda ISOLIR/TERBLOKIR\n\nUntuk dapat menggunakan layanan kami kembali, silahkan lakukan pembayaran melalui transfer bank ke nomor rekening berikut :\n\nBCA        : 1640314229\nMandiri  : 0060005009489\nBRI          : 065201009279506\na/n Tomy Nugrahadi.\n\nKirimkan bukti pembayaran melalui whatsapp ke nomor 082211661443 👈 Langsung klik\n\nTerima kasih atas perhatian anda. 🙏\n\n*Mohon untuk tidak membalas pesan ini*';
-                $message = '*📧 Bot Billing*\n' .
-                    'Pelanggan LJN (PT. Lintas Jaringan Nusantara) Jakarta Timur yang terhormat,\n\n' .
-                    '*Bapak/Ibu '.$x->nama.'*\n\n' .
-                    'Kami informasikan bahwa tagihan internet anda bulan *'.date('F').'* senilai *Rp.'.$hasil.'* dan akan jatuh tempo pada *'.$x->tgl_reminder.' '. date('F').'*\n\n' .
-                    'Untuk terus dapat menggunakan layanan internet anda, silahkan lakukan pembayaran melalui transfer bank ke nomor rekening berikut :\n\n' .
-                    'BCA        : 1640314229\n' .
-                    'Mandiri  : 0060005009489\n' .
-                    'BRI          : 065201009279506\n' .
-                    '*_a/n Tomy Nugrahadi._*\n\n' .
-                    'Kirimkan bukti pembayaran melalui whatsapp ke nomor 082211661443 👈 Langsung klik\n\n' .
-                    'Abaikan pesan ini jika Anda sudah melakukan pembayaran.\n' .
-                    'Terima kasih atas perhatian anda. 🙏\n\n' .
-                    '*Mohon untuk tidak membalas pesan ini*';
+        $tanggalx = time();
+        $bulan = $this->indonesian_date($tanggalx, 'F');
+            $today = date('j');
+            $currentHour = date('G');
+            // if (($today == 10 || $today == 13) && $currentHour == 9) {
+                foreach ($get_client as $x) {
+                    $cek_paid = $this->db->get_where('tb_cetak', ['periode' => $bulan, 'thn' => date('Y'),'id_registrasi' => $x->id_registrasi])->num_rows();
+                    if ($cek_paid == false) {//jika belum bayar
+                        $day7 = date('Y-m-d', strtotime('-6 days', strtotime($x->due_date)));
+                        $day3 = date('Y-m-d', strtotime('-3 days', strtotime($x->due_date)));
+                        // if(){
+                            if(date('Y-m-d') == $x->due_date && $cek_paid == false){//isolir
+                                //get user ppp
+                                $get_user = new Query('/ppp/secret/print');
+                                $get_user->where('name', $x->name);
+                                $user_ppp = $client->query($get_user)->read();
+                                //disable user ppp
+                                $disable_user =
+                                    (new Query('/ppp/secret/disable'))
+                                        ->equal('.id', $user_ppp[0]['.id']);  // Gunakan ID spesifik, atau
+                                $client->query($disable_user)->read();
+
+                                //get active user
+                                $get_user2 = new Query('/ppp/active/print');
+                                $get_user2->where('name', $x->name);
+                                $user_actv = $client->query($get_user2)->read();
+                                //disable user ppp
+                                $user_actv_remove =
+                                    (new Query('/ppp/active/remove'))
+                                        ->equal('.id', $user_actv[0]['.id']);  // Gunakan ID spesifik, atau
+                                $client->query($user_actv_remove)->read();
+
+                                $this->block_user($x->id_registrasi);
+
+                            }
+                            if (($day3 == date('Y-m-d') || $day7 == date('Y-m-d')) && $currentHour == 00) {
+                                $hasil = number_format(intval($x->harga) + intval($x->addon1) + intval($x->addon2) + intval($x->addon3) - intval($x->diskon), 0, ".", ".");
+                                // $message = '📧 Bot Billing\n\nPelanggan LJN (PT. Lintas Jaringan Nusantara) Jakarta Timur yang terhormat,\n\nKami informasikan bahwa saat ini status internet anda ISOLIR/TERBLOKIR\n\nUntuk dapat menggunakan layanan kami kembali, silahkan lakukan pembayaran melalui transfer bank ke nomor rekening berikut :\n\nBCA        : 1640314229\nMandiri  : 0060005009489\nBRI          : 065201009279506\na/n Tomy Nugrahadi.\n\nKirimkan bukti pembayaran melalui whatsapp ke nomor 082211661443 👈 Langsung klik\n\nTerima kasih atas perhatian anda. 🙏\n\n*Mohon untuk tidak membalas pesan ini*';
+                                $message = '*📧 Bot Billing*\n' .
+                                    'Pelanggan LJN (PT. Lintas Jaringan Nusantara) Jakarta Timur yang terhormat,\n\n' .
+                                    '*Bapak/Ibu ' . $x->nama . '*\n\n' .
+                                    'Kami informasikan bahwa tagihan internet anda bulan *' . date('F') . '* senilai *Rp.' . $hasil . '* dan akan jatuh tempo pada *' . date('d F',strtotime($x->due_date )) . '*\n\n' .
+                                    'Untuk terus dapat menggunakan layanan internet anda, silahkan lakukan pembayaran melalui transfer bank ke nomor rekening berikut :\n\n' .
+                                    'BCA        : 1640314229\n' .
+                                    'Mandiri  : 0060005009489\n' .
+                                    'BRI          : 065201009279506\n' .
+                                    '*_a/n Tomy Nugrahadi._*\n\n' .
+                                    'Kirimkan bukti pembayaran melalui whatsapp ke nomor 082211661443 👈 Langsung klik\n\n' .
+                                    'Abaikan pesan ini jika Anda sudah melakukan pembayaran.\n' .
+                                    'Terima kasih atas perhatian anda. 🙏\n\n' .
+                                    '*Mohon untuk tidak membalas pesan ini*';
 
 
-                $token = "rasJFCC37ewayax21uu2Caog9CCqyT3KSwBWFqQAbQMdMAefxa";
-                $phone = $x->kontak; //untuk group pakai groupid contoh: 62812xxxxxx-xxxxx
-                $curl = curl_init();
-                curl_setopt_array($curl, array(
-                    CURLOPT_URL => 'http://103.171.85.211:8000/send-message',
-                    CURLOPT_RETURNTRANSFER => true,
-                    CURLOPT_ENCODING => '',
-                    CURLOPT_MAXREDIRS => 10,
-                    CURLOPT_TIMEOUT => 0,
-                    CURLOPT_FOLLOWLOCATION => true,
-                    CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-                    CURLOPT_CUSTOMREQUEST => 'POST',
-                    CURLOPT_POSTFIELDS => '{
-                                                        "api_key": "IVUQAJYTX0sQaHe2SSrOIi2ht0rSeB",
-                                                        "sender": "6285961403102",
-                                                        "number": "' . $phone . '",
-                                                        "message" : "' . $message . '"
-                                                        }',
-                    CURLOPT_HTTPHEADER => array(
-                        'Content-Type: application/json'
-                    ),
-                ));
-                $response = curl_exec($curl);
-                curl_close($curl);
-                echo $response;
-            }
-        }
+                                $token = "rasJFCC37ewayax21uu2Caog9CCqyT3KSwBWFqQAbQMdMAefxa";
+                                $phone = $x->kontak; //untuk group pakai groupid contoh: 62812xxxxxx-xxxxx
+                                $curl = curl_init();
+                                curl_setopt_array($curl, array(
+                                    CURLOPT_URL => 'http://103.171.85.211:8000/send-message',
+                                    CURLOPT_RETURNTRANSFER => true,
+                                    CURLOPT_ENCODING => '',
+                                    CURLOPT_MAXREDIRS => 10,
+                                    CURLOPT_TIMEOUT => 0,
+                                    CURLOPT_FOLLOWLOCATION => true,
+                                    CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+                                    CURLOPT_CUSTOMREQUEST => 'POST',
+                                    CURLOPT_POSTFIELDS => '{
+                                                                        "api_key": "IVUQAJYTX0sQaHe2SSrOIi2ht0rSeB",
+                                                                        "sender": "6285961403102",
+                                                                        "number": "' . $phone . '",
+                                                                        "message" : "' . $message . '"
+                                                                        }',
+                                    CURLOPT_HTTPHEADER => array(
+                                        'Content-Type: application/json'
+                                    ),
+                                ));
+                                $response = curl_exec($curl);
+                                curl_close($curl);
+                                echo $response;
+                            }
+                        // }
+                    }
+                }
         
     }
+
+    public function block_user($billing_id)
+    {
+        // Memperbarui status is_blocked menjadi true
+        $this->db->where('id_registrasi', $billing_id);
+        $this->db->update('tb_registrasi', ['is_blocked' => 1]);
+    }
+    function config_routeros()
+    {
+        return new Client([
+            'host' => '103.155.198.12',
+            'user' => 'pandi',
+            'pass' => 'betulsekali',
+            'port' => 8228,
+        ]);
+    }
+    
 }

@@ -570,7 +570,7 @@ class Administrator extends CI_Controller
                     (new Query('/ppp/secret/set'))
                         ->equal('.id', $user_ppp[0]['.id'])  // Gunakan ID spesifik, atau
                         ->equal('comment', $kontak);
-                $user_ppp = $client->query($upd_com)->read();
+                $client->query($upd_com)->read();
             // }
 
             $ppp = [
@@ -682,6 +682,7 @@ class Administrator extends CI_Controller
 
     public function simpanCetak()
     {
+        $client = $this->config_routeros();
         $id_registrasix = $this->input->post('id_registrasi');
         $internet = $this->input->post('internet');
         $addon1 = $this->input->post('addon1');
@@ -707,11 +708,22 @@ class Administrator extends CI_Controller
         //$urut++;
         //$hasil = "C" . sprintf("%03s", $urut);
         $xx = $this->db->query("SELECT * FROM tb_cetak where id_registrasi='$id_registrasix' and internet='$internet' and periode='$periode' and thn='$thn'")->num_rows();
-        $get_registrasi = $this->db->query("SELECT * from tb_registrasi where id_registrasi='$id_registrasix'")->row_array();
+        $get_registrasi = $this->db->query("SELECT * from tb_registrasi as a left join dt_ppp as b on(a.id_registrasi=b.id_pelanggan) where id_registrasi='$id_registrasix'")->row_array();
         if ($xx == true) {
             $this->session->set_flashdata('massage', '<div class="alert alert-danger" role="alert"></i> Data pembayaran tidak boleh dobel nama ' . $get_registrasi['nama'] . ' ,bulan ' . $periode . ' dan tahun ' . $thn . '</div>');
             redirect('administrator/create');
         } else {
+            $get_user = new Query('/ppp/secret/print');
+            $get_user->where('name', $get_registrasi['name']);
+            $user_ppp = $client->query($get_user)->read();
+            //enable user ppp
+            $disable_user =
+                (new Query('/ppp/secret/enable'))
+                    ->equal('.id', $user_ppp[0]['.id']);  // Gunakan ID spesifik, atau
+            $client->query($disable_user)->read();
+            $this->db->where('id_registrasi', $get_registrasi['id_registrasi']);
+            $this->db->update('tb_registrasi', ['is_blocked' => 0]);
+            
             $total_tagihan = $r_tagihan + $get_registrasi['addon1'] + $get_registrasi['addon2'] + $get_registrasi['addon3'] - $get_registrasi['diskon'];
             $msgg= '📧 *Pembayaran Sukses*\n\nYth Bapak/Ibu '.$get_registrasi['nama'].' \nKami Ucapkan Terima Kasih telah melakukan pembayaran internet untuk Bulan '.$periode.' '.$thn.' sebesar Rp.'. number_format($total_tagihan,0,".",".").'\n\nSalam,\nFinance\nLintas Jaringan Nusantara\nKantor Layanan Makasar - Jakarta Timur';
             $data = [
