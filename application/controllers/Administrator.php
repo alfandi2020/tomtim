@@ -721,8 +721,9 @@ class Administrator extends CI_Controller
                 (new Query('/ppp/secret/enable'))
                     ->equal('.id', $user_ppp[0]['.id']);  // Gunakan ID spesifik, atau
             $client->query($disable_user)->read();
+            $tgl_update = date('Y-m-d', strtotime('1 month', strtotime($get_registrasi['due_date'])));
             $this->db->where('id_registrasi', $get_registrasi['id_registrasi']);
-            $this->db->update('tb_registrasi', ['is_blocked' => 0]);
+            $this->db->update('tb_registrasi', ['is_blocked' => 0,'due_date' => $tgl_update]);
             
             $total_tagihan = $r_tagihan + $get_registrasi['addon1'] + $get_registrasi['addon2'] + $get_registrasi['addon3'] - $get_registrasi['diskon'];
             $msgg= '📧 *Pembayaran Sukses*\n\nYth Bapak/Ibu '.$get_registrasi['nama'].' \nKami Ucapkan Terima Kasih telah melakukan pembayaran internet untuk Bulan '.$periode.' '.$thn.' sebesar Rp.'. number_format($total_tagihan,0,".",".").'\n\nSalam,\nFinance\nLintas Jaringan Nusantara\nKantor Layanan Makasar - Jakarta Timur';
