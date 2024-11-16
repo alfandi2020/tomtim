@@ -721,7 +721,7 @@ class Administrator extends CI_Controller
                 (new Query('/ppp/secret/enable'))
                     ->equal('.id', $user_ppp[0]['.id']);  // Gunakan ID spesifik, atau
             $client->query($disable_user)->read();
-            $tgl_update = date('Y-m-d', strtotime('1 month', strtotime($get_registrasi['due_date'])));
+            $tgl_update = date('Y-m-d', strtotime('1 month', strtotime($tanggal)));
             $this->db->where('id_registrasi', $get_registrasi['id_registrasi']);
             $this->db->update('tb_registrasi', ['is_blocked' => 0,'due_date' => $tgl_update]);
             
