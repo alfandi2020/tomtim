@@ -546,7 +546,7 @@ class Administrator extends CI_Controller
             'tanggal_blast' =>$installasi2 . "-01",
             'date_wa' => '',
             'lokasi' => $lok_pelanggan,
-            'tgl_reminder' => $this->input->post('tgl_reminder')
+            'due_date' => $this->input->post('tgl_reminder')
 
         ];
         $this->db->insert('tb_registrasi', $data);
