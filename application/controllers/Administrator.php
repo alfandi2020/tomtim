@@ -990,6 +990,20 @@ class Administrator extends CI_Controller
     }
     public function delete_pelanggan($id_pelanggan)
     {
+        $userr = $this->db->get_where('dt_ppp',['id_pelanggan' => $id_pelanggan]);
+       if($userr->count() == 1){
+            $client = $this->config_routeros();
+            $get_user = new Query('/ppp/secret/print');
+            $get_user->where('name', $userr->row_array()['name']);
+            $user_ppp = $client->query($get_user)->read();
+
+            //update comment
+            $upd_com =
+                (new Query('/ppp/secret/remove'))
+                    ->equal('.id', $user_ppp[0]['.id']);  // Gunakan ID spesifik, atau
+            $client->query($upd_com)->read();
+         }
+
         $this->db->where('id_registrasi', $id_pelanggan);
         $this->db->delete('tb_registrasi');
         $this->session->set_flashdata('massage', '<div class="alert alert-danger" role="alert"></i> Data Pelanggan berhasil di hapus   </div>');
