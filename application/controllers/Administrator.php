@@ -966,7 +966,7 @@ class Administrator extends CI_Controller
             'npwp' => $npwp,
             'kontak_pelanggan' => $kontak_pelanggan,
             'email_pelanggan' => $email_pelanggan,
-            'tgl_reminder' => $this->input->post('tgl_reminder')
+            'due_date' => $this->input->post('tgl_reminder')
 
         ];
         $this->db->where('id_registrasi', $get_id_pelanggan);
