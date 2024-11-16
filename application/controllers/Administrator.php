@@ -16,7 +16,7 @@ class Administrator extends CI_Controller
         ob_start();
         $this->load->model('M_admin');
         $this->load->helper(array('form', 'url'));
-        $this->load->library(array('form_validation','Routerosapi'));
+        $this->load->library(array('form_validation', 'Routerosapi'));
         //cek jika user blm login maka redirect ke halaman login
         if ($this->session->userdata('username', 'nama') != true) {
             $this->session->set_flashdata('massage', '<div class="alert alert-danger" role="alert">Maaf anda belum login !</div>');
@@ -45,20 +45,21 @@ class Administrator extends CI_Controller
         $this->load->view('admin/index', $data);
         $this->load->view('admin/footer', $data);
     }
-    function update_blast(){
+    function update_blast()
+    {
         $db = $this->db->query("SELECT * FROM tb_registrasi")->result();
         foreach ($db as $x) {
             $data = [
                 "tanggal_blast" => date('Y-m-d')
             ];
-            $this->db->where('id_registrasi',$x->id_registrasi);
-            $this->db->update('tb_registrasi',$data);
-            
+            $this->db->where('id_registrasi', $x->id_registrasi);
+            $this->db->update('tb_registrasi', $data);
+
         }
     }
     function set_sort()
     {
-        $this->session->set_userdata('bln',$this->input->post('bulan'));
+        $this->session->set_userdata('bln', $this->input->post('bulan'));
         $this->session->set_userdata('thn', $this->input->post('tahun'));
         $this->session->set_userdata('lokasi', $this->input->post('lokasi'));
         redirect('administrator/cekPembayaran');
@@ -84,7 +85,7 @@ class Administrator extends CI_Controller
             $this->load->view('admin/footer');
         } else {
             $nama = $this->input->post('nama');
-            $username =	$this->input->post('username');
+            $username = $this->input->post('username');
             $password = $this->input->post('password');
             $user = $this->db->query("SELECT * FROM tb_user where username='$username' ")->num_rows();
             if ($user == true) {
@@ -134,63 +135,68 @@ class Administrator extends CI_Controller
         $data = $this->M_admin->list_status2($postData);
         echo json_encode($data);
     }
-    function getReport(){
+    function getReport()
+    {
         $postData = $this->input->post();
         $data = $this->M_admin->ListReport($postData);
         echo json_encode($data);
     }
-    function getClient(){
+    function getClient()
+    {
         $postData = $this->input->post();
         $data = $this->M_admin->ListClient($postData);
         echo json_encode($data);
     }
-    function getClient2(){
+    function getClient2()
+    {
         $postData = $this->input->post();
         $data = $this->M_admin->ListClient2($postData);
         echo json_encode($data);
     }
-  
+
     public function whatsapp()
     {
         $pesan = $this->input->post('pesan');
         $url = $this->input->post('url');
         $nomor = $this->input->post('nomor');
         if ($pesan == true & $nomor == true & $url == false) {
-            foreach (explode('|',$nomor) as $x) {
+            foreach (explode('|', $nomor) as $x) {
                 $curl = curl_init();
-                curl_setopt_array($curl, array(
-                    CURLOPT_URL => 'http://103.171.85.211:8000/send-message',
-                    CURLOPT_RETURNTRANSFER => true,
-                    CURLOPT_ENCODING => '',
-                    CURLOPT_MAXREDIRS => 10,
-                    CURLOPT_TIMEOUT => 0,
-                    CURLOPT_FOLLOWLOCATION => true,
-                    CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-                    CURLOPT_CUSTOMREQUEST => 'POST',
-                    CURLOPT_POSTFIELDS => '{
+                curl_setopt_array(
+                    $curl,
+                    array(
+                        CURLOPT_URL => 'http://103.171.85.211:8000/send-message',
+                        CURLOPT_RETURNTRANSFER => true,
+                        CURLOPT_ENCODING => '',
+                        CURLOPT_MAXREDIRS => 10,
+                        CURLOPT_TIMEOUT => 0,
+                        CURLOPT_FOLLOWLOCATION => true,
+                        CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+                        CURLOPT_CUSTOMREQUEST => 'POST',
+                        CURLOPT_POSTFIELDS => '{
                                                         "api_key": "iEQRRY8J4UUAkWKW78iPja2hc8rjlcCK",
                                                         "sender": "6285954542160",
                                                         "number": "' . $x . '",
                                                         "message" : "' . $pesan . '"
                                                         }',
-                    CURLOPT_HTTPHEADER => array(
-                        'Content-Type: application/json'
-                    ),
-                )
+                        CURLOPT_HTTPHEADER => array(
+                            'Content-Type: application/json'
+                        ),
+                    )
                 );
                 $response = curl_exec($curl);
                 curl_close($curl);
                 $o = json_decode($response);
             }
-                if (json_encode($o->status) == true) {
-                    $this->session->set_flashdata('massage', '<div class="alert alert-success" role="alert"> Pesan Berhasil dikirim </div>');
-                    redirect('administrator/whatsapp');
-                }else{
-                    $this->session->set_flashdata('massage', '<div class="alert alert-alert" role="alert"> Pesan gagal dikirim </div>');
-                    redirect('administrator/whatsapp');
-                }
-            
-        } 
+            if (json_encode($o->status) == true) {
+                $this->session->set_flashdata('massage', '<div class="alert alert-success" role="alert"> Pesan Berhasil dikirim </div>');
+                redirect('administrator/whatsapp');
+            } else {
+                $this->session->set_flashdata('massage', '<div class="alert alert-alert" role="alert"> Pesan gagal dikirim </div>');
+                redirect('administrator/whatsapp');
+            }
+
+        }
         // if($pesan == true & $nomor == true & $url == true){
         //         $curl2 = curl_init();
         //         curl_setopt_array(
@@ -231,7 +237,7 @@ class Administrator extends CI_Controller
         $data['pelanggan'] = $this->db->query("SELECT * FROM tb_registrasi")->num_rows();
         $data['pakettt'] = $this->db->query("SELECT * FROM tb_paket")->num_rows();
         $data['user'] = $this->db->get_where('tb_user', ['username' => $this->session->userdata('username')])->row_array();
-       
+
         $this->load->view('admin/head');
         $this->load->view('admin/wa', $data);
         $this->load->view('admin/footer', $data);
@@ -248,9 +254,9 @@ class Administrator extends CI_Controller
             $data = $this->routerosapi->comm("/interface/print");
             $num = count($data);
             //print_r($data);
-            for ($b = 0; $b     < $num; $b++) {
+            for ($b = 0; $b < $num; $b++) {
                 $interface = $data[$b]['name'];
-                $getinterfaceTraffic = $this->routerosapi->comm("/interface/monitor-traffic", array("interface" => "$interface", "once" => "",));
+                $getinterfaceTraffic = $this->routerosapi->comm("/interface/monitor-traffic", array("interface" => "$interface", "once" => "", ));
                 $nama = $getinterfaceTraffic[0]['name'];
                 $tx = formatBites($getinterfaceTraffic[0]['tx-bits-per-second'], 1);
                 $rx = formatBites($getinterfaceTraffic[0]['rx-bits-per-second'], 1);
@@ -304,11 +310,11 @@ class Administrator extends CI_Controller
     public function manual_wa()
     {
         $id = $this->uri->segment(3, 0);
-        $bulan = str_replace(' ','',$this->uri->segment(4,0));
-        $tahun = $this->uri->segment(5,0);
-        if($bulan == false  || $tahun == false){
+        $bulan = str_replace(' ', '', $this->uri->segment(4, 0));
+        $tahun = $this->uri->segment(5, 0);
+        if ($bulan == false || $tahun == false) {
             $tanggalx = time();
-            $bulan = str_replace(' ','',$this->indonesian_date($tanggalx, 'F'));
+            $bulan = str_replace(' ', '', $this->indonesian_date($tanggalx, 'F'));
             $tahun = date('Y');
         }
         //$key = $this->input->get('key');
@@ -317,13 +323,13 @@ class Administrator extends CI_Controller
         date_default_timezone_set('Asia/Jakarta');
         //if ($key == "TommY") {
         //  if ($x->tanggal_blast == date('Y-m-d')) {
-                    
+
         //$sub = substr($x->harga, -3);
         $nama = $x['nama'];
-	$pakettt = $x['mbps']. 'Mbps'; 
+        $pakettt = $x['mbps'] . 'Mbps';
         //$total =  random_string('numeric', 3);
         //if ($sub == 0) {
-        
+
         //echo "No Unik :" . $total . "<br>";
         //}
 
@@ -332,17 +338,17 @@ class Administrator extends CI_Controller
 //        $bulan = $this->indonesian_date($tanggalx, 'F');
         //$tahunxx = date('Y', strtotime($x->tanggal_pembayaran));
         //$id_pelanggan = crc32($x->id_registrasi);
-    
+
         if ($x['diskon'] == false) {
             echo "";
         } else {
-            $diskon_show = "(Sudah dikurangi potongan tagihan sebesar " . "*Rp." . number_format($x['diskon'], 0, ".", ".") ."*)";
+            $diskon_show = "(Sudah dikurangi potongan tagihan sebesar " . "*Rp." . number_format($x['diskon'], 0, ".", ".") . "*)";
         }
-        
-        if($x['addon1'] == true || $x['addon2'] == true || $x['addon3'] == true){
-            $addon_show = "sudah termasuk biaya sewa ".$x['noteee'] . " *Rp." . number_format(intval($x['addon1']) + intval($x['addon2']) + intval($x['addon3']), 0, ".", ".") ."*.";
+
+        if ($x['addon1'] == true || $x['addon2'] == true || $x['addon3'] == true) {
+            $addon_show = "sudah termasuk biaya sewa " . $x['noteee'] . " *Rp." . number_format(intval($x['addon1']) + intval($x['addon2']) + intval($x['addon3']), 0, ".", ".") . "*.";
         }
-        
+
         $hasil = number_format(intval($x['harga']) + intval($x['addon1']) + intval($x['addon2']) + intval($x['addon3']) - intval($x['diskon']), 0, ".", ".");
 
         $target = $x['kontak'];
@@ -359,52 +365,52 @@ class Administrator extends CI_Controller
         // $this->db->insert("tb_log_wa", $insert_log);
         //update bulan
         $insert_log = [
-                     "date_wa" => date('d-m-Y H:i:s'),
-                 ];
+            "date_wa" => date('d-m-Y H:i:s'),
+        ];
         $this->db->where('id_registrasi', $id);
         $this->db->update("tb_registrasi", $insert_log);
         // $msgg= '📧 *Pembayaran Sukses*\n\nYth Bapak/Ibu '.$get_registrasi['nama'].' \nKami Ucapkan Terima Kasih telah melakukan pembayaran internet untuk Bulan '.$periode.' '.$thn.' sebesar Rp.'. number_format($total_tagihan,0,".",".").'\n\nSalam,\nFinance\nLintas Jaringan Nusantara\nKantor Layanan Makasar - Jakarta Timur';
-            
-        $msgg = '*Billing*\n\nPelanggan *LJN* (PT. Lintas Jaringan Nusantara) Jakarta Timur yang terhormat.\n\n*Bapak/Ibu '.$nama.',*\n\nTagihan internet Anda periode *'.$bulan ." ". $tahun.'* dengan paket *'.$pakettt.'* sebesar *Rp.'.$hasil.'* '.$diskon_show.' '.$addon_show.' \nKami ingatkan bahwa pembayaran internet jatuh pada tanggal 1.\n_Pastikan agar melakukan pembayaran untuk menghindari pemblokiran._\n\nPembayaran dapat melalui outlet kami di JL. Harapan III No. 05 (samping SD/SMP Budiharapan),\nJam operasional pukul 08:00 s/d pukul 17:00 di hari kerja (Senin s/d Sabtu).\n*atau melalui transfer bank ke nomor rekening berikut :*\nBCA        : 1640314229\nMandiri  : 0060005009489\nBRI          : 065201009279506\na/n Tomy Nugrahadi.\n\n*_Lakukan konfirmasi setelah melakukan pembayaran ke nomor wa.me/6282211661443_  <- Langsung klik*\nHiraukan jika anda telah melakukan pembayaran.\n\nUntuk informasi lainnya;\n*Layanan gangguan, masalah teknis, ganti nama wifi dan password :*\n- wa.me/6287868881443 <- Langsung klik\n\nTerima kasih atas perhatian anda. ';
-                       
-                        $token = "rasJFCC37ewayax21uu2Caog9CCqyT3KSwBWFqQAbQMdMAefxa";
-                        $phone = $x['kontak']; //untuk group pakai groupid contoh: 62812xxxxxx-xxxxx
-                        $sender = 'tommy';
-                        $curl = curl_init();
-                         curl_setopt_array($curl, array(
-                           CURLOPT_URL => 'http://103.171.85.211:8000/send-message',
-                           CURLOPT_RETURNTRANSFER => true,
-                           CURLOPT_ENCODING => '',
-                           CURLOPT_MAXREDIRS => 10,
-                           CURLOPT_TIMEOUT => 0,
-                           CURLOPT_FOLLOWLOCATION => true,
-                           CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-                           CURLOPT_CUSTOMREQUEST => 'POST',
-                             CURLOPT_POSTFIELDS => '{
+
+        $msgg = '*Billing*\n\nPelanggan *LJN* (PT. Lintas Jaringan Nusantara) Jakarta Timur yang terhormat.\n\n*Bapak/Ibu ' . $nama . ',*\n\nTagihan internet Anda periode *' . $bulan . " " . $tahun . '* dengan paket *' . $pakettt . '* sebesar *Rp.' . $hasil . '* ' . $diskon_show . ' ' . $addon_show . ' \nKami ingatkan bahwa pembayaran internet jatuh pada tanggal 1.\n_Pastikan agar melakukan pembayaran untuk menghindari pemblokiran._\n\nPembayaran dapat melalui outlet kami di JL. Harapan III No. 05 (samping SD/SMP Budiharapan),\nJam operasional pukul 08:00 s/d pukul 17:00 di hari kerja (Senin s/d Sabtu).\n*atau melalui transfer bank ke nomor rekening berikut :*\nBCA        : 1640314229\nMandiri  : 0060005009489\nBRI          : 065201009279506\na/n Tomy Nugrahadi.\n\n*_Lakukan konfirmasi setelah melakukan pembayaran ke nomor wa.me/6282211661443_  <- Langsung klik*\nHiraukan jika anda telah melakukan pembayaran.\n\nUntuk informasi lainnya;\n*Layanan gangguan, masalah teknis, ganti nama wifi dan password :*\n- wa.me/6287868881443 <- Langsung klik\n\nTerima kasih atas perhatian anda. ';
+
+        $token = "rasJFCC37ewayax21uu2Caog9CCqyT3KSwBWFqQAbQMdMAefxa";
+        $phone = $x['kontak']; //untuk group pakai groupid contoh: 62812xxxxxx-xxxxx
+        $sender = 'tommy';
+        $curl = curl_init();
+        curl_setopt_array($curl, array(
+            CURLOPT_URL => 'http://103.171.85.211:8000/send-message',
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => '',
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 0,
+            CURLOPT_FOLLOWLOCATION => true,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => 'POST',
+            CURLOPT_POSTFIELDS => '{
                                                      "api_key": "IVUQAJYTX0sQaHe2SSrOIi2ht0rSeB",
                                                      "sender": "6285961403102",
-                                                     "number": "'.$phone.'",
+                                                     "number": "' . $phone . '",
                                                      "message" : "' . $msgg . '"
                                                      }',
-                             CURLOPT_HTTPHEADER => array(
-                                 'Content-Type: application/json'
-                             ),
-                         ));
-                         $response = curl_exec($curl);
-                         curl_close($curl);
-                        // echo $response;
+            CURLOPT_HTTPHEADER => array(
+                'Content-Type: application/json'
+            ),
+        ));
+        $response = curl_exec($curl);
+        curl_close($curl);
+        // echo $response;
         // $o = json_decode($response);
         // if (json_encode($o->status) == true) {
         //     $this->session->set_flashdata('massage', '<div class="alert alert-success" role="alert"></i> WhatApp berhasil dikirim</div>');
-            redirect('administrator/client?bulan='.$bulan.'&thn='.$tahun);
+        redirect('administrator/client?bulan=' . $bulan . '&thn=' . $tahun);
         // }else{
         //     $this->session->set_flashdata('massage', '<div class="alert alert-alert" role="alert"></i> WhatApp gagal dikirim</div>');
         //     redirect('administrator/client?bulan='.$bulan.'&thn='.$tahun);
         // }
-               
+
         // }
-           // }
-       // }
+        // }
+        // }
     }
     public function delete_user($id_user)
     {
@@ -423,9 +429,9 @@ class Administrator extends CI_Controller
     public function cetak_client($key)
     {
         if ($key == 'otista') {
-             $data['client'] = $this->db->query("SELECT * FROM tb_registrasi as a LEFT JOIN tb_paket as b on(a.speed = b.id_wireless) where lokasi='otista'")->result();
+            $data['client'] = $this->db->query("SELECT * FROM tb_registrasi as a LEFT JOIN tb_paket as b on(a.speed = b.id_wireless) where lokasi='otista'")->result();
             $this->load->view('admin/cetak_client', $data);
-        }else if($key == 'TomTimNet'){
+        } else if ($key == 'TomTimNet') {
             $data['client'] = $this->db->query("SELECT * FROM tb_registrasi as a LEFT JOIN tb_paket as b on(a.speed = b.id_wireless) where lokasi='TomTimNet'")->result();
             $this->load->view('admin/cetak_client', $data);
         }
@@ -489,25 +495,25 @@ class Administrator extends CI_Controller
         $r_addon1 = $this->remove_special_characters($addon1);
         $r_addon2 = $this->remove_special_characters($addon2);
         $r_addon3 = $this->remove_special_characters($addon3);
-        $nama =	$this->input->post('nama');
-        $ktp_sim =	$this->input->post('ktp_sim');
-        $nomor =	$this->input->post('nomor');
-        $alamat =	$this->input->post('alamat');
-        $kodepos =	$this->input->post('kodepos');
-        $kontak =	$this->input->post('kontak');
-        $email =	$this->input->post('email');
-        $tindakan =	$this->input->post('tindakan');
+        $nama = $this->input->post('nama');
+        $ktp_sim = $this->input->post('ktp_sim');
+        $nomor = $this->input->post('nomor');
+        $alamat = $this->input->post('alamat');
+        $kodepos = $this->input->post('kodepos');
+        $kontak = $this->input->post('kontak');
+        $email = $this->input->post('email');
+        $tindakan = $this->input->post('tindakan');
         //data pelanggan
-        $nama_pelanggan =	$this->input->post('nama_pelanggan');
-        $ktp_sim_pelanggan =	$this->input->post('sim_ktp_pelanggan');
-        $nomor_pelanggan =	$this->input->post('nomor_pelanggan');
-        $alamat_pelanggan =	$this->input->post('alamat_pelanggan');
-        $kodepos_pelanggan =	$this->input->post('kodepos_pelanggan');
-        $npwp =	$this->input->post('npwp');
-        $kontak_pelanggan =	$this->input->post('kontak_pelanggan');
-        $email_pelanggan =	$this->input->post('email_pelanggan');
-        $pembayaran =	$this->input->post('pembayaran');
-        $tanggal_installasi =	$this->input->post('tanggal_installasi');
+        $nama_pelanggan = $this->input->post('nama_pelanggan');
+        $ktp_sim_pelanggan = $this->input->post('sim_ktp_pelanggan');
+        $nomor_pelanggan = $this->input->post('nomor_pelanggan');
+        $alamat_pelanggan = $this->input->post('alamat_pelanggan');
+        $kodepos_pelanggan = $this->input->post('kodepos_pelanggan');
+        $npwp = $this->input->post('npwp');
+        $kontak_pelanggan = $this->input->post('kontak_pelanggan');
+        $email_pelanggan = $this->input->post('email_pelanggan');
+        $pembayaran = $this->input->post('pembayaran');
+        $tanggal_installasi = $this->input->post('tanggal_installasi');
         $installasi2 = date('Y-m', strtotime('1 month', strtotime($tanggal_installasi)));
         $lok_pelanggan = $this->input->post('lok_pelanggan');
 
@@ -543,7 +549,7 @@ class Administrator extends CI_Controller
             'email_pelanggan' => $email_pelanggan,
             'pembayaran' => $pembayaran,
             'tanggal_installasi' => $tanggal_installasi,
-            'tanggal_blast' =>$installasi2 . "-01",
+            'tanggal_blast' => $installasi2 . "-01",
             'date_wa' => '',
             'lokasi' => $lok_pelanggan,
             'due_date' => $this->input->post('tgl_reminder')
@@ -559,18 +565,18 @@ class Administrator extends CI_Controller
                     ->equal('profile', $this->input->post('profile_ppp'));
             $cek_ins = $client->query($query)->read();
             // if ($cek_ins == true) {
-                sleep(2);
-                //get user
-                $get_user = new Query('/ppp/secret/print');
-                $get_user->where('name', $this->input->post('user_ppp'));
-                $user_ppp = $client->query($get_user)->read();
+            sleep(2);
+            //get user
+            $get_user = new Query('/ppp/secret/print');
+            $get_user->where('name', $this->input->post('user_ppp'));
+            $user_ppp = $client->query($get_user)->read();
 
-                //update comment
-                $upd_com =
-                    (new Query('/ppp/secret/set'))
-                        ->equal('.id', $user_ppp[0]['.id'])  // Gunakan ID spesifik, atau
-                        ->equal('comment', $kontak);
-                $client->query($upd_com)->read();
+            //update comment
+            $upd_com =
+                (new Query('/ppp/secret/set'))
+                    ->equal('.id', $user_ppp[0]['.id'])  // Gunakan ID spesifik, atau
+                    ->equal('comment', $kontak);
+            $client->query($upd_com)->read();
             // }
 
             $ppp = [
@@ -653,7 +659,7 @@ class Administrator extends CI_Controller
         $data['pakettt'] = $this->db->query("SELECT * FROM tb_paket")->num_rows();
 
         $this->load->view('admin/head');
-        $this->load->view('admin/generate',$data);
+        $this->load->view('admin/generate', $data);
         $this->load->view('admin/footer');
 
     }
@@ -700,7 +706,7 @@ class Administrator extends CI_Controller
         $tanggal = $this->input->post('tanggal');
         $nomor_struk = $this->input->post('nomor_struk');
         $thn = $this->input->post('thn');
-        
+
         $quer = $this->db->query("SELECT max(id_cetak) as kode FROM tb_cetak")->row_array();
         $kode = $quer['kode'];
         $kode++;
@@ -723,10 +729,10 @@ class Administrator extends CI_Controller
             $client->query($disable_user)->read();
             $tgl_update = date('Y-m-d', strtotime('1 month', strtotime($tanggal)));
             $this->db->where('id_registrasi', $get_registrasi['id_registrasi']);
-            $this->db->update('tb_registrasi', ['is_blocked' => 0,'due_date' => $tgl_update]);
-            
+            $this->db->update('tb_registrasi', ['is_blocked' => 0, 'due_date' => $tgl_update]);
+
             $total_tagihan = $r_tagihan + $get_registrasi['addon1'] + $get_registrasi['addon2'] + $get_registrasi['addon3'] - $get_registrasi['diskon'];
-            $msgg= '📧 *Pembayaran Sukses*\n\nYth Bapak/Ibu '.$get_registrasi['nama'].' \nKami Ucapkan Terima Kasih telah melakukan pembayaran internet untuk Bulan '.$periode.' '.$thn.' sebesar Rp.'. number_format($total_tagihan,0,".",".").'\n\nSalam,\nFinance\nLintas Jaringan Nusantara\nKantor Layanan Makasar - Jakarta Timur';
+            $msgg = '📧 *Pembayaran Sukses*\n\nYth Bapak/Ibu ' . $get_registrasi['nama'] . ' \nKami Ucapkan Terima Kasih telah melakukan pembayaran internet untuk Bulan ' . $periode . ' ' . $thn . ' sebesar Rp.' . number_format($total_tagihan, 0, ".", ".") . '\n\nSalam,\nFinance\nLintas Jaringan Nusantara\nKantor Layanan Makasar - Jakarta Timur';
             $data = [
                 'id_cetak' => $kode,
                 'id_registrasi' => $id_registrasix,
@@ -745,41 +751,43 @@ class Administrator extends CI_Controller
             ];
             $this->db->insert('tb_cetak', $data);
 
-                        $token = "rasJFCC37ewayax21uu2Caog9CCqyT3KSwBWFqQAbQMdMAefxa";
-                        $phone = $get_registrasi['kontak']; //untuk group pakai groupid contoh: 62812xxxxxx-xxxxx
-                         $curl = curl_init();
-                         curl_setopt_array($curl, array(
-                             CURLOPT_URL => 'http://103.171.85.211:8000/send-message',
-                             CURLOPT_RETURNTRANSFER => true,
-                             CURLOPT_ENCODING => '',
-                             CURLOPT_MAXREDIRS => 10,
-                             CURLOPT_TIMEOUT => 0,
-                             CURLOPT_FOLLOWLOCATION => true,
-                             CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-                             CURLOPT_CUSTOMREQUEST => 'POST',
-                             CURLOPT_POSTFIELDS => '{
+            $token = "rasJFCC37ewayax21uu2Caog9CCqyT3KSwBWFqQAbQMdMAefxa";
+            $phone = $get_registrasi['kontak']; //untuk group pakai groupid contoh: 62812xxxxxx-xxxxx
+            $curl = curl_init();
+            curl_setopt_array(
+                $curl,
+                array(
+                    CURLOPT_URL => 'http://103.171.85.211:8000/send-message',
+                    CURLOPT_RETURNTRANSFER => true,
+                    CURLOPT_ENCODING => '',
+                    CURLOPT_MAXREDIRS => 10,
+                    CURLOPT_TIMEOUT => 0,
+                    CURLOPT_FOLLOWLOCATION => true,
+                    CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+                    CURLOPT_CUSTOMREQUEST => 'POST',
+                    CURLOPT_POSTFIELDS => '{
                                                                  "api_key": "IVUQAJYTX0sQaHe2SSrOIi2ht0rSeB",
                                                                  "sender": "6285961403102",
                                                                  "number": "' . "62" . substr($phone, 1) . '",
                                                                  "message" : "' . $msgg . '"
                                                                  }',
-                             CURLOPT_HTTPHEADER => array(
-                                 'Content-Type: application/json'
-                             ),
-                         )
-                         );
-                         $response = curl_exec($curl);
-                         curl_close($curl);
-                         $o = json_decode($response);
-                         if (json_encode($o->status) == true){
-                            $this->session->set_flashdata('massage', '<div class="alert alert-success" role="alert"></i> Silahkan Cetak Struk</div>');
-                            redirect('administrator/cetak');
-                         }else{
-                             $this->session->set_flashdata('massage', '<div class="alert alert-alert" role="alert"></i> Gagal buat Pembayaran</div>');
-                             redirect('administrator/cetak');
-                         }
+                    CURLOPT_HTTPHEADER => array(
+                        'Content-Type: application/json'
+                    ),
+                )
+            );
+            $response = curl_exec($curl);
+            curl_close($curl);
+            $o = json_decode($response);
+            if (json_encode($o->status) == true) {
+                $this->session->set_flashdata('massage', '<div class="alert alert-success" role="alert"></i> Silahkan Cetak Struk</div>');
+                redirect('administrator/cetak');
+            } else {
+                $this->session->set_flashdata('massage', '<div class="alert alert-alert" role="alert"></i> Gagal buat Pembayaran</div>');
+                redirect('administrator/cetak');
+            }
         }
-    
+
     }
     public function cetak()
     {
@@ -857,7 +865,7 @@ class Administrator extends CI_Controller
             $pdf->Cell(150);
             $pdf->SetTextColor(255, 255, 255);
             $pdf->SetFontSize(12);
-            $total =  $tagihan + $addon1 + $addon2 + $addon3 - $tagihan_diskon;
+            $total = $tagihan + $addon1 + $addon2 + $addon3 - $tagihan_diskon;
             $pdf->Cell(22, 3, 'Rp. ' . number_format($total, 0, ".", "."), 0, 0, 'L');
             if ($addon1 && $addon2 && $addon3 == true) {
                 $pdf->Cell(-169);
@@ -925,23 +933,23 @@ class Administrator extends CI_Controller
         $r_addon1 = $this->remove_special_characters($addon1);
         $r_addon2 = $this->remove_special_characters($addon2);
         $r_addon3 = $this->remove_special_characters($addon3);
-        $nama =	$this->input->post('nama');
-        $ktp_sim =	$this->input->post('ktp_sim');
-        $nomor =	$this->input->post('nomor');
-        $alamat =	$this->input->post('alamat');
-        $kodepos =	$this->input->post('kodepos');
-        $kontak =	$this->input->post('kontak');
-        $email =	$this->input->post('email');
-        $tindakan =	$this->input->post('tindakan');
+        $nama = $this->input->post('nama');
+        $ktp_sim = $this->input->post('ktp_sim');
+        $nomor = $this->input->post('nomor');
+        $alamat = $this->input->post('alamat');
+        $kodepos = $this->input->post('kodepos');
+        $kontak = $this->input->post('kontak');
+        $email = $this->input->post('email');
+        $tindakan = $this->input->post('tindakan');
         //data pelanggan
-        $nama_pelanggan =	$this->input->post('nama_pelanggan');
-        $ktp_sim_pelanggan =	$this->input->post('ktp_sim_pelanggan');
-        $nomor_pelanggan =	$this->input->post('nomor_pelanggan');
-        $alamat_pelanggan =	$this->input->post('alamat_pelanggan');
-        $kodepos_pelanggan =	$this->input->post('kodepos_pelanggan');
-        $npwp =	$this->input->post('npwp');
-        $kontak_pelanggan =	$this->input->post('kontak_pelanggan');
-        $email_pelanggan =	$this->input->post('email_pelanggan');
+        $nama_pelanggan = $this->input->post('nama_pelanggan');
+        $ktp_sim_pelanggan = $this->input->post('ktp_sim_pelanggan');
+        $nomor_pelanggan = $this->input->post('nomor_pelanggan');
+        $alamat_pelanggan = $this->input->post('alamat_pelanggan');
+        $kodepos_pelanggan = $this->input->post('kodepos_pelanggan');
+        $npwp = $this->input->post('npwp');
+        $kontak_pelanggan = $this->input->post('kontak_pelanggan');
+        $email_pelanggan = $this->input->post('email_pelanggan');
         $update = [
             'layanan' => $paket,
             'speed' => $speed,
@@ -975,9 +983,9 @@ class Administrator extends CI_Controller
         $dataxx = [
             "internet" => $speed
         ];
-        $this->db->where('id_registrasi',$get_id_pelanggan);
-        $this->db->update('tb_cetak',$dataxx);
-        
+        $this->db->where('id_registrasi', $get_id_pelanggan);
+        $this->db->update('tb_cetak', $dataxx);
+
         $this->session->set_flashdata('massage', '<div class="alert alert-success" role="alert"></i> Data Pelanggan Berhasil di update</div>');
         redirect('administrator/client');
     }
@@ -990,8 +998,8 @@ class Administrator extends CI_Controller
     }
     public function delete_pelanggan($id_pelanggan)
     {
-        $userr = $this->db->get_where('dt_ppp',['id_pelanggan' => $id_pelanggan]);
-       if($userr->num_rows() == true){
+        $userr = $this->db->get_where('dt_ppp', ['id_pelanggan' => $id_pelanggan]);
+        if ($userr->num_rows() == true) {
             $client = $this->config_routeros();
             $get_user = new Query('/ppp/secret/print');
             $get_user->where('name', $userr->row_array()['name']);
@@ -1002,7 +1010,15 @@ class Administrator extends CI_Controller
                 (new Query('/ppp/secret/remove'))
                     ->equal('.id', $user_ppp[0]['.id']);  // Gunakan ID spesifik, atau
             $client->query($upd_com)->read();
-         }
+
+            $get_user2 = new Query('/ppp/active/print');
+            $get_user2->where('name', $userr->row_array()['name']);
+            $user_actv = $client->query($get_user2)->read();
+            $user_actv_remove =
+                (new Query('/ppp/active/remove'))
+                    ->equal('.id', $user_actv[0]['.id']);  // Gunakan ID spesifik, atau
+            $client->query($user_actv_remove)->read();
+        }
 
         $this->db->where('id_registrasi', $id_pelanggan);
         $this->db->delete('tb_registrasi');
@@ -1047,7 +1063,7 @@ class Administrator extends CI_Controller
                 $pdf->Cell(168, 8, 'Rp. ' . number_format($row['tagihan'], 0, ".", ".") . $diskon, 0, 0, 'L');
             }
             $pdf->Cell(168, 8, 'Rp. ' . number_format($row['tagihan'], 0, ".", "."), 0, 0, 'L');
-            
+
             $pdf->Ln(20);
             $pdf->Cell(74);
             $pdf->Cell(103, -6, $row['penerima'], 0, 0, 'L');
@@ -1055,7 +1071,7 @@ class Administrator extends CI_Controller
             $pdf->Cell(148);
             $pdf->SetTextColor(255, 255, 255);
             $pdf->SetFontSize(12);
-            $total =  $row['tagihan'] + $row['addon1'] + $row['addon2'] + $row['addon3'] - $row['tagihan_diskon'];
+            $total = $row['tagihan'] + $row['addon1'] + $row['addon2'] + $row['addon3'] - $row['tagihan_diskon'];
             $pdf->Cell(22, 3, 'Rp. ' . number_format($total, 0, ".", "."), 0, 0, 'L');
             if ($row['addon1'] || $row['addon2'] || $row['addon3'] == true) {
                 $pdf->Cell(-169);
@@ -1069,7 +1085,7 @@ class Administrator extends CI_Controller
     public function image()
     {
         header("Content-Type: image/png");//change the php file to an image
-        $font= base_url('assets/MONTSERRAT.REGULAR.TTF');
+        $font = base_url('assets/MONTSERRAT.REGULAR.TTF');
         $im = @imagecreate(800, 500)
             or die("Cannot Initialize new GD image stream");//creates an image with the resolution x:110 y:20
         $background_color = imagecolorallocate($im, 255, 255, 255);//create an color with RGB
@@ -1080,7 +1096,7 @@ class Administrator extends CI_Controller
     }
     public function excel()
     {
-       // $get = $this->input->post('plg');
+        // $get = $this->input->post('plg');
         $get2 = $this->input->post('periode');
         $thn = $this->input->post('thn');
         $lokasi = $this->input->post('lokasi');
@@ -1145,21 +1161,82 @@ class Administrator extends CI_Controller
         # remove S (st,nd,rd,th) there are no such things in indonesia :p
         $date_format = preg_replace("/S/", "", $date_format);
         $pattern = array(
-            '/Mon[^day]/', '/Tue[^sday]/', '/Wed[^nesday]/', '/Thu[^rsday]/',
-            '/Fri[^day]/', '/Sat[^urday]/', '/Sun[^day]/', '/Monday/', '/Tuesday/',
-            '/Wednesday/', '/Thursday/', '/Friday/', '/Saturday/', '/Sunday/',
-            '/Jan[^uary]/', '/Feb[^ruary]/', '/Mar[^ch]/', '/Apr[^il]/', '/May/',
-            '/Jun[^e]/', '/Jul[^y]/', '/Aug[^ust]/', '/Sep[^tember]/', '/Oct[^ober]/',
-            '/Nov[^ember]/', '/Dec[^ember]/', '/January/', '/February/', '/March/',
-            '/April/', '/June/', '/July/', '/August/', '/September/', '/October/',
-            '/November/', '/December/',
+            '/Mon[^day]/',
+            '/Tue[^sday]/',
+            '/Wed[^nesday]/',
+            '/Thu[^rsday]/',
+            '/Fri[^day]/',
+            '/Sat[^urday]/',
+            '/Sun[^day]/',
+            '/Monday/',
+            '/Tuesday/',
+            '/Wednesday/',
+            '/Thursday/',
+            '/Friday/',
+            '/Saturday/',
+            '/Sunday/',
+            '/Jan[^uary]/',
+            '/Feb[^ruary]/',
+            '/Mar[^ch]/',
+            '/Apr[^il]/',
+            '/May/',
+            '/Jun[^e]/',
+            '/Jul[^y]/',
+            '/Aug[^ust]/',
+            '/Sep[^tember]/',
+            '/Oct[^ober]/',
+            '/Nov[^ember]/',
+            '/Dec[^ember]/',
+            '/January/',
+            '/February/',
+            '/March/',
+            '/April/',
+            '/June/',
+            '/July/',
+            '/August/',
+            '/September/',
+            '/October/',
+            '/November/',
+            '/December/',
         );
         $replace = array(
-            'Sen', 'Sel', 'Rab', 'Kam', 'Jum', 'Sab', 'Min',
-            'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu', 'Minggu',
-            'Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun', 'Jul', 'Ags', 'Sep', 'Okt', 'Nov', 'Des',
-            'Januari', 'Februari', 'Maret', 'April', 'Juni', 'Juli', 'Agustus', 'September',
-            'Oktober', 'November', 'Desember',
+            'Sen',
+            'Sel',
+            'Rab',
+            'Kam',
+            'Jum',
+            'Sab',
+            'Min',
+            'Senin',
+            'Selasa',
+            'Rabu',
+            'Kamis',
+            'Jumat',
+            'Sabtu',
+            'Minggu',
+            'Jan',
+            'Feb',
+            'Mar',
+            'Apr',
+            'Mei',
+            'Jun',
+            'Jul',
+            'Ags',
+            'Sep',
+            'Okt',
+            'Nov',
+            'Des',
+            'Januari',
+            'Februari',
+            'Maret',
+            'April',
+            'Juni',
+            'Juli',
+            'Agustus',
+            'September',
+            'Oktober',
+            'November',
+            'Desember',
         );
         $date = date($date_format, $timestamp);
         $date = preg_replace($pattern, $replace, $date);
