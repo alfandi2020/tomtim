@@ -991,7 +991,7 @@ class Administrator extends CI_Controller
     public function delete_pelanggan($id_pelanggan)
     {
         $userr = $this->db->get_where('dt_ppp',['id_pelanggan' => $id_pelanggan]);
-       if($userr->count() == 1){
+       if($userr->num_rows() == true){
             $client = $this->config_routeros();
             $get_user = new Query('/ppp/secret/print');
             $get_user->where('name', $userr->row_array()['name']);
