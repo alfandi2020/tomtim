@@ -324,7 +324,9 @@
                                         </div>
                                          <div class="col-xl-4">
                                             <label>Tanggal Jatoh tempo</label>
-                                            <input style="border-color: #1269db;" size="16" type="number" placeholder="Tanggal aja" name="tgl_reminder" class="form-control">
+                                                <input style="border-color: #1269db;" size="16" type="date" placeholder="Tanggal aja"
+                                                    name="tgl_reminder" class="form-control">
+
                                         </div>
                                     </div>
                                 </div>
