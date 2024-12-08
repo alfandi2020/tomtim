@@ -950,6 +950,8 @@ class Administrator extends CI_Controller
         $npwp = $this->input->post('npwp');
         $kontak_pelanggan = $this->input->post('kontak_pelanggan');
         $email_pelanggan = $this->input->post('email_pelanggan');
+        $lok_pelanggan = $this->input->post('lok_pelanggan');
+
         $update = [
             'layanan' => $paket,
             'speed' => $speed,
@@ -974,7 +976,7 @@ class Administrator extends CI_Controller
             'npwp' => $npwp,
             'kontak_pelanggan' => $kontak_pelanggan,
             'email_pelanggan' => $email_pelanggan,
-            'due_date' => $this->input->post('tgl_reminder')
+            'lokasi' => $lok_pelanggan
 
         ];
         $this->db->where('id_registrasi', $get_id_pelanggan);

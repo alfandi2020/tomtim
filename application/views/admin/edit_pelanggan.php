@@ -116,28 +116,6 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="form-group">
-                                        <h4><b>Akun PPoE</b></h4>
-                                        <div class="row">
-                                           <div class="col-xl-4">
-                                                <label>Username</label>
-                                                <input class="form-control uang" placeholder="username ppp" name="user_ppp">
-                                           </div>
-                                            <div class="col-xl-4">
-                                                <label>Password</label>
-                                                <input class="form-control uang" placeholder="password ppp" name="pass_ppp">
-                                           </div>
-                                           <div class="col-xl-4">
-                                                <label>Profile</label>
-                                                <select name="profile_ppp" class="form-control select22" id="">
-                                                    <option value="">Pilih Profile</option>
-                                                    <?php foreach ($profile_ppp as $k) { ?>
-                                                        <option value="<?= $k['name']; ?>"><?= $k['name']; ?></option>
-                                                    <?php } ?>
-                                                </select>
-                                           </div>
-                                        </div>
-                                    </div>
                                     <hr>
                                     <h4>II. Data Pelanggan</h4>
                                     <div class="form-group">
@@ -368,6 +346,14 @@
                                                 <input type="text" class="form-control" name="npwp" value="<?php echo $x->npwp ?>">
                                                 <p style="color: red;font-size:12px">* Jika ada</p>
                                             </div>
+                                            <div class="col-xl-4">
+                                            <label>Lokasi Pelanggan</label>
+                                            <select name="lok_pelanggan" id="" required class="form-control select22">
+                                                <option value="">Pilih Lokasi Pelanggan</option>
+                                                <option <?= $x->lokasi == 'TomTimNet' ? 'selected' : '' ?> value="TomTimNet">TomTimNet</option>
+                                                <option <?= $x->lokasi == 'Otista' ? 'selected' : '' ?>  value="Otista">Otista</option>
+                                            </select>
+                                        </div>
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -376,10 +362,7 @@
                                                 <label>Registrasi Pelanggan</label>
                                                 <input type="text" class="form-control" disabled value="<?php echo $x->tanggal_installasi ?>">
                                             </div>
-                                           <div class="col-xl-4">
-                                                <label>Tanggal Jatoh tempo</label>
-                                                <input style="border-color: #1269db;" size="16" type="date" value="<?= $x->due_date ?>" placeholder="Tanggal aja" name="tgl_reminder" class="form-control">
-                                            </div>
+                                           
                                         </div>
                                     </div>
 
