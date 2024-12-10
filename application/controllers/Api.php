@@ -43,27 +43,30 @@ class Api extends CI_Controller
             //     'pass' => 'betulsekali',
             //     'port' => 8228,
             // ]);
-      
+        $client = $this->config_routeros();
+
 
         // Create "where" Query object for RouterOS
         //add ppp user
         // $query =
         //     (new Query('/ppp/secret/add'))
-        //         ->equal('name','fandi2')
+        //         ->equal('name','fandi22')
         //         ->equal('password','123')
         //         ->equal('profile', '10Mbps');
-        $client = $this->config_routeros();
-        $query =
-            (new Query('/ppp/secret/set'))
-                ->equal('.id', '1')  // Gunakan ID spesifik, atau
-                // ->equal('name', 'fandi')  // Identifikasi berdasarkan nama
-                ->equal('password', 'abc');
-                // ->equal('password', '123')
-                // ->equal('profile', '10Mbps');
-
+        // $query =
+        //     (new Query('/ppp/secret/set'))
+        //         // ->equal('.id', '1')  // Gunakan ID spesifik, atau
+        //         ->equal('name', 'fandi')  // Identifikasi berdasarkan nama
+        //         // ->equal('password', 'abcd')
+        //         ->equal('comment', '222');
+        // $query = new Query('/ppp/secret/print');
+        // $query->where('name', 'fandi');
+        $query = new Query('/ppp/secret/print');
+        // $get_user->where('name', $x->name);
+        // $user_ppp = $client->query($get_user)->read();
         // Send query and read response from RouterOS
         $response = $client->query($query)->read();
-        echo json_encode($response, JSON_PRETTY_PRINT);
+        echo json_encode($response[0]['comment'], JSON_PRETTY_PRINT);
         }
     function get_profile()
     {
