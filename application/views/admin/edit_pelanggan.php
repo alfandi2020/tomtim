@@ -363,7 +363,7 @@
                                                 <input type="text" class="form-control" disabled value="<?php echo $x->tanggal_installasi ?>">
                                             </div>
                                             <div class="col-xl-4">
-                                                <label>Status Modem</label>
+                                                <label>Status Modem <?= $x->due_date ?></label>
                                                 <select name="status_modem" id="" required class="form-control select22">
                                                     <option value="">Pilih Lokasi Pelanggan</option>
                                                     <option <?= $x->is_blocked == '1' ? 'selected' : '' ?> value="1">Block</option>
