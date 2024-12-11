@@ -169,11 +169,46 @@ class Cron extends CI_Controller
                                 $client->query($user_actv_remove)->read();
 
                                 $this->block_user($x->id_registrasi);
+                                $message2 = '*📧 Bot Billing*\n' .
+                                    'Pelanggan LJN (PT. Lintas Jaringan Nusantara) Jakarta Timur yang terhormat,\n\n' .
+                                    'Kami informasikan bahwa saat ini status internet anda *ISOLIR/TERBLOKIR*\n\n' .
+                                    'Untuk terus dapat menggunakan layanan internet anda, silahkan lakukan pembayaran melalui transfer bank ke nomor rekening berikut :\n\n' .
+                                    'BCA        : 1640314229\n' .
+                                    'Mandiri  : 0060005009489\n' .
+                                    'BRI          : 065201009279506\n' .
+                                    '*_a/n Tomy Nugrahadi._*\n\n' .
+                                    'Kirimkan bukti pembayaran melalui whatsapp ke nomor 082211661443 👈 Langsung klik\n\n' .
+                                    'Terima kasih atas perhatian anda. 🙏\n' .
+                                    '_Mohon untuk tidak membalas pesan ini_';
+                                    $phone = $x->kontak; //untuk group pakai groupid contoh: 62812xxxxxx-xxxxx
+                                    $curl = curl_init();
+                                    curl_setopt_array($curl, array(
+                                        CURLOPT_URL => 'http://103.171.85.211:8000/send-message',
+                                        CURLOPT_RETURNTRANSFER => true,
+                                        CURLOPT_ENCODING => '',
+                                        CURLOPT_MAXREDIRS => 10,
+                                        CURLOPT_TIMEOUT => 0,
+                                        CURLOPT_FOLLOWLOCATION => true,
+                                        CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+                                        CURLOPT_CUSTOMREQUEST => 'POST',
+                                        CURLOPT_POSTFIELDS => '{
+                                                                            "api_key": "IVUQAJYTX0sQaHe2SSrOIi2ht0rSeB",
+                                                                            "sender": "6285961403102",
+                                                                            "number": "' . $phone . '",
+                                                                            "message" : "' . $message2 . '"
+                                                                            }',
+                                        CURLOPT_HTTPHEADER => array(
+                                            'Content-Type: application/json'
+                                        ),
+                                    ));
+                                    $response = curl_exec($curl);
+                                    curl_close($curl);
+                                    echo $response;
 
                             }
 
                 
-                            if (($day3 == date('Y-m-d') || $day7 == date('Y-m-d') || $x->due_date == date('Y-m-d')) && $currentHour == 10) {
+                            if (($day3 == date('Y-m-d') || $day7 == date('Y-m-d') || $x->due_date == date('Y-m-d')) && $currentHour == 11) {
                 
                                 $hasil = number_format(intval($x->harga) + intval($x->addon1) + intval($x->addon2) + intval($x->addon3) - intval($x->diskon), 0, ".", ".");
                                 // $message = '📧 Bot Billing\n\nPelanggan LJN (PT. Lintas Jaringan Nusantara) Jakarta Timur yang terhormat,\n\nKami informasikan bahwa saat ini status internet anda ISOLIR/TERBLOKIR\n\nUntuk dapat menggunakan layanan kami kembali, silahkan lakukan pembayaran melalui transfer bank ke nomor rekening berikut :\n\nBCA        : 1640314229\nMandiri  : 0060005009489\nBRI          : 065201009279506\na/n Tomy Nugrahadi.\n\nKirimkan bukti pembayaran melalui whatsapp ke nomor 082211661443 👈 Langsung klik\n\nTerima kasih atas perhatian anda. 🙏\n\n*Mohon untuk tidak membalas pesan ini*';
