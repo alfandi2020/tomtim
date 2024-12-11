@@ -347,13 +347,13 @@
                                                 <p style="color: red;font-size:12px">* Jika ada</p>
                                             </div>
                                             <div class="col-xl-4">
-                                            <label>Lokasi Pelanggan</label>
-                                            <select name="lok_pelanggan" id="" required class="form-control select22">
-                                                <option value="">Pilih Lokasi Pelanggan</option>
-                                                <option <?= $x->lokasi == 'TomTimNet' ? 'selected' : '' ?> value="TomTimNet">TomTimNet</option>
-                                                <option <?= $x->lokasi == 'Otista' ? 'selected' : '' ?>  value="Otista">Otista</option>
-                                            </select>
-                                        </div>
+                                                <label>Lokasi Pelanggan</label>
+                                                <select name="lok_pelanggan" id="" required class="form-control select22">
+                                                    <option value="">Pilih Lokasi Pelanggan</option>
+                                                    <option <?= $x->lokasi == 'TomTimNet' ? 'selected' : '' ?> value="TomTimNet">TomTimNet</option>
+                                                    <option <?= $x->lokasi == 'Otista' ? 'selected' : '' ?>  value="Otista">Otista</option>
+                                                </select>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -362,7 +362,14 @@
                                                 <label>Registrasi Pelanggan</label>
                                                 <input type="text" class="form-control" disabled value="<?php echo $x->tanggal_installasi ?>">
                                             </div>
-                                           
+                                            <div class="col-xl-4">
+                                                <label>Status Modem</label>
+                                                <select name="status_modem" id="" required class="form-control select22">
+                                                    <option value="">Pilih Lokasi Pelanggan</option>
+                                                    <option <?= $x->is_blocked == '1' ? 'selected' : '' ?> value="1">Block</option>
+                                                    <option <?= $x->is_blocked == '0' ? 'selected' : '' ?>  value="0">Unblock</option>
+                                                </select>
+                                            </div>
                                         </div>
                                     </div>
 

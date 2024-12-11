@@ -976,7 +976,8 @@ class Administrator extends CI_Controller
             'npwp' => $npwp,
             'kontak_pelanggan' => $kontak_pelanggan,
             'email_pelanggan' => $email_pelanggan,
-            'lokasi' => $lok_pelanggan
+            'lokasi' => $lok_pelanggan,
+            'is_blocked' => $this->input->post('status_modem') == '' ? 0 : $this->input->post('status_modem')
 
         ];
         $this->db->where('id_registrasi', $get_id_pelanggan);
