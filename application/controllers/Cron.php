@@ -206,7 +206,7 @@ class Cron extends CI_Controller
                                     echo $response;
 
                             }
-                            echo $currentHour ;exit;
+                            
 
                 
                             if (($day3 == date('Y-m-d') || $day7 == date('Y-m-d')) && $currentHour == 16) {
