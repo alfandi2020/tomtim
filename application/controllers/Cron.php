@@ -129,7 +129,8 @@ class Cron extends CI_Controller
     }
     function edit_jam(){
         $jam = $this->uri->segment(3);
-        if ($jam == true) {
+        $key = $this->uri->segment(4);
+        if ($jam == true && $key == 'e33c4feca6a141065ea0795b488c44f0') {
             $this->db->set('value',$jam);
             $this->db->where('name','time_cron');
             $this->db->update('tb_option');
