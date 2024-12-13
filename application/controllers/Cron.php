@@ -216,7 +216,7 @@ class Cron extends CI_Controller
 
                             }
                             
-                           $opt = $this->db->get_where('tb_option',['name','time_cron'])->row_array();
+                           $opt = $this->db->get_where('tb_option',['name' => 'time_cron'])->row_array();
                            echo $opt['value'];exit;
                 
                             if (($day3 == date('Y-m-d') || $day7 == date('Y-m-d')) && $currentHour == $opt['value']) {
