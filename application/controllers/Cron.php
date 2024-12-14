@@ -240,7 +240,7 @@ class Cron extends CI_Controller
                                     'Kirimkan bukti pembayaran melalui whatsapp ke nomor 082211661443 👈 Langsung klik\n\n' .
                                     'Abaikan pesan ini jika Anda sudah melakukan pembayaran.\n' .
                                     'Regards,\n*LJN Kantor Layanan Makasar - Jakarta Timur*\n\n' .
-                                    '⚠️*Mohon untuk tidak membalas pesan ini*⚠️';
+                                    '⚠️ *Mohon untuk tidak membalas pesan ini* ⚠️';
 
                                 $token = "rasJFCC37ewayax21uu2Caog9CCqyT3KSwBWFqQAbQMdMAefxa";
                                 $phone = $x->kontak; //untuk group pakai groupid contoh: 62812xxxxxx-xxxxx
