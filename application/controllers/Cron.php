@@ -134,7 +134,7 @@ class Cron extends CI_Controller
             $this->db->set('value',$jam);
             $this->db->where('name','time_cron');
             $this->db->update('tb_option');
-            echo "update jam berhasil";
+            echo "update jam ".$jam." berhasil";
         }
     }
     public function reminder()

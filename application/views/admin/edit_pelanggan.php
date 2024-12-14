@@ -365,11 +365,16 @@
                                             <div class="col-xl-4">
                                                 <label>Status Modem <?= $x->due_date ?></label>
                                                 <select name="status_modem" id="" required class="form-control select22">
-                                                    <option value="">Pilih Lokasi Pelanggan</option>
                                                     <option <?= $x->is_blocked == '1' ? 'selected' : '' ?> value="1">Block</option>
                                                     <option <?= $x->is_blocked == '0' ? 'selected' : '' ?>  value="0">Unblock</option>
                                                 </select>
                                             </div>
+                                            <div class="col-xl-4">
+                                            <label>Tanggal Jatoh tempo</label>
+                                                <input style="border-color: #1269db;" size="16" type="date" placeholder="Tanggal aja"
+                                                    name="tgl_reminder" value="<?= $x->due_date ?>" class="form-control">
+
+                                        </div>
                                         </div>
                                     </div>
 

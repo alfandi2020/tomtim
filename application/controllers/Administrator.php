@@ -980,6 +980,7 @@ class Administrator extends CI_Controller
             'kontak_pelanggan' => $kontak_pelanggan,
             'email_pelanggan' => $email_pelanggan,
             'lokasi' => $lok_pelanggan,
+            'due_date' => $this->input->post('tgl_reminder'),
             'is_blocked' => $this->input->post('status_modem') == '' ? 0 : $this->input->post('status_modem')
 
         ];
