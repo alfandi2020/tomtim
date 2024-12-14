@@ -221,14 +221,14 @@ class Cron extends CI_Controller
                             if (($day3 == date('Y-m-d') || $day7 == date('Y-m-d')) && $currentHour == $opt['value']) {
                                 $date33 = date_create($x->due_date);
                                 date_add($date33, date_interval_create_from_date_string("30 days"));
-                                $tgl_sd = date_format($date33, "d m Y");
+                                $tgl_sd = date_format($date33, "Y-m-d");
 
                                 $hasil = number_format(intval($x->harga) + intval($x->addon1) + intval($x->addon2) + intval($x->addon3) - intval($x->diskon), 0, ".", ".");
                                 // $message = '📧 Bot Billing\n\nPelanggan LJN (PT. Lintas Jaringan Nusantara) Jakarta Timur yang terhormat,\n\nKami informasikan bahwa saat ini status internet anda ISOLIR/TERBLOKIR\n\nUntuk dapat menggunakan layanan kami kembali, silahkan lakukan pembayaran melalui transfer bank ke nomor rekening berikut :\n\nBCA        : 1640314229\nMandiri  : 0060005009489\nBRI          : 065201009279506\na/n Tomy Nugrahadi.\n\nKirimkan bukti pembayaran melalui whatsapp ke nomor 082211661443 👈 Langsung klik\n\nTerima kasih atas perhatian anda. 🙏\n\n*Mohon untuk tidak membalas pesan ini*';
                                 $message = '*📧 Bot Billing*\n' .
                                     'Pelanggan LJN (PT. Lintas Jaringan Nusantara) Jakarta Timur yang terhormat,\n\n' .
                                     '*Bapak/Ibu ' . $x->nama . '*\n\n' .
-                                    'Kami informasikan bahwa tagihan internet anda bulan *' . date('d F', strtotime($x->due_date)) .' s/d '. $tgl_sd . '* senilai *Rp.' . $hasil . '* dan akan jatuh tempo pada *' . date('d F Y',strtotime($x->due_date )) . '*\n\n' .
+                                    'Kami informasikan bahwa tagihan internet anda bulan *' . date('d F', strtotime($x->due_date)) .' s/d '. date('d F Y', strtotime($tgl_sd)) . '* senilai *Rp.' . $hasil . '* dan akan jatuh tempo pada *' . date('d F Y',strtotime($x->due_date )) . '*\n\n' .
                                     'Untuk terus dapat menggunakan layanan internet anda, silahkan lakukan pembayaran melalui transfer bank ke nomor rekening berikut :\n\n' .
                                     'BCA        : 1640314229\n' .
                                     'Mandiri  : 0060005009489\n' .
