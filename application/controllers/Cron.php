@@ -229,7 +229,7 @@ class Cron extends CI_Controller
                                     'No. Hp ' . $x->kontak . '\n\n' .
                                     'Terima kasih atas kepercayaan Anda untuk menggunakan layanan internet *Lintas Jaringan Nusantara*\n'.
                                     'Berikut kami sampaikan informasi dan nilai tagihan Anda :\n'.
-                                    'Jumlah Tagihan : *'. $hasil .'*\n'.
+                                    'Jumlah Tagihan : *Rp.'. $hasil .'*\n'.
                                     'Periode Tagihan : *'. date('d F Y', strtotime($x->due_date)) . ' s/d ' . date('d F Y', strtotime($tgl_sd)).'*\n'.
                                     'Jatuh Tempo : *'. date('d F Y', strtotime($x->due_date)).'*\n\n'.
                                     'Untuk terus dapat menggunakan layanan internet anda, silahkan lakukan pembayaran melalui transfer bank ke nomor rekening berikut :\n' .
