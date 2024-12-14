@@ -225,20 +225,22 @@ class Cron extends CI_Controller
 
                                 $hasil = number_format(intval($x->harga) + intval($x->addon1) + intval($x->addon2) + intval($x->addon3) - intval($x->diskon), 0, ".", ".");
                                 // $message = '📧 Bot Billing\n\nPelanggan LJN (PT. Lintas Jaringan Nusantara) Jakarta Timur yang terhormat,\n\nKami informasikan bahwa saat ini status internet anda ISOLIR/TERBLOKIR\n\nUntuk dapat menggunakan layanan kami kembali, silahkan lakukan pembayaran melalui transfer bank ke nomor rekening berikut :\n\nBCA        : 1640314229\nMandiri  : 0060005009489\nBRI          : 065201009279506\na/n Tomy Nugrahadi.\n\nKirimkan bukti pembayaran melalui whatsapp ke nomor 082211661443 👈 Langsung klik\n\nTerima kasih atas perhatian anda. 🙏\n\n*Mohon untuk tidak membalas pesan ini*';
-                                $message = '*📧 Bot Billing*\n' .
-                                    'Pelanggan LJN (PT. Lintas Jaringan Nusantara) Jakarta Timur yang terhormat,\n\n' .
-                                    '*Bapak/Ibu ' . $x->nama . '*\n\n' .
-                                    'Kami informasikan bahwa tagihan internet anda bulan *' . date('d F', strtotime($x->due_date)) .' s/d '. date('d F Y', strtotime($tgl_sd)) . '* senilai *Rp.' . $hasil . '* dan akan jatuh tempo pada *' . date('d F Y',strtotime($x->due_date )) . '*\n\n' .
-                                    'Untuk terus dapat menggunakan layanan internet anda, silahkan lakukan pembayaran melalui transfer bank ke nomor rekening berikut :\n\n' .
+                                $message = 'Hai ' . $x->nama . '\n' .
+                                    'No. Hp ' . $x->kontak . '\n\n  ' .
+                                    'Terima kasih atas kepercayaan Anda untuk menggunakan layanan internet Lintas Jaringan Nusantara\n'.
+                                    'Berikut kami sampaikan informasi dan nilai tagihan Anda :\n'.
+                                    'Jumlah Tagihan : *'. $hasil .'*\n'.
+                                    'Periode Tagihan : '. date('d F Y', strtotime($x->due_date)) . ' s/d ' . date('d F Y', strtotime($tgl_sd)).'\n'.
+                                    'Jatuh Tempo : '. date('d F Y', strtotime($x->due_date)).'\n\n'.
+                                    'Untuk terus dapat menggunakan layanan internet anda, silahkan lakukan pembayaran melalui transfer bank ke nomor rekening berikut :\n' .
                                     'BCA        : 1640314229\n' .
                                     'Mandiri  : 0060005009489\n' .
                                     'BRI          : 065201009279506\n' .
                                     '*_a/n Tomy Nugrahadi._*\n\n' .
                                     'Kirimkan bukti pembayaran melalui whatsapp ke nomor 082211661443 👈 Langsung klik\n\n' .
                                     'Abaikan pesan ini jika Anda sudah melakukan pembayaran.\n' .
-                                    'Terima kasih atas perhatian anda. 🙏\n\n' .
-                                    '*Mohon untuk tidak membalas pesan ini*';
-
+                                    'Regards,\n*LJN Kantor Layanan Makasar - Jakarta Timur*\n\n' .
+                                    '⚠️*Mohon untuk tidak membalas pesan ini*⚠️';
 
                                 $token = "rasJFCC37ewayax21uu2Caog9CCqyT3KSwBWFqQAbQMdMAefxa";
                                 $phone = $x->kontak; //untuk group pakai groupid contoh: 62812xxxxxx-xxxxx
