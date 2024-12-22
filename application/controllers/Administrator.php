@@ -999,6 +999,10 @@ class Administrator extends CI_Controller
                     (new Query('/ppp/secret/disable'))
                         ->equal('.id', $user_ppp[0]['.id']);  // Gunakan ID spesifik, atau
                 $client->query($enable_user)->read();
+                $user_actv_remove =
+                    (new Query('/ppp/active/remove'))
+                        ->equal('.id', $user_ppp[0]['.id']);  // Gunakan ID spesifik, atau
+                $client->query($user_actv_remove)->read();
             }else{
                 $enable_user =
                     (new Query('/ppp/secret/enable'))
