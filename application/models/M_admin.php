@@ -196,11 +196,15 @@ class M_admin extends CI_Model
         $data = array();
         $no =1;
         foreach($records as $record ){
-
+            if ($record->promo == true) {
+                $paket = $record->promo . ' ' . $record->mbps;
+            } else {
+                $paket = $record->paket;
+            }
             $data[] = array(
             "no"=>$no++,
             "nama"=>$record->nama,
-            "paket"=>$record->paket,
+            "paket"=>$paket,
             "tagihan"=> $record->tagihan,
             "penerima"=>$record->penerima,
             "periode"=>$record->periode,
@@ -382,7 +386,11 @@ class M_admin extends CI_Model
         $data = array();
         // $no =1;
         foreach($records as $record ){
-
+            if ($record->promo == true) {
+                $paket = $record->promo .' ' . $record->mbps;
+            }else{
+                $paket = $record->paket;
+            }
             $data[] = array(
             // "no"=>$no++,
             "nama"=>'<a data-toggle="collapse" href="#collapseExample'.$record->id_registrasi.'" role="button" aria-expanded="false" aria-controls="collapseExample2" style="color:#545559">'. $record->nama.'</a>
@@ -394,7 +402,7 @@ class M_admin extends CI_Model
             "status_wa"=> '<span class="btn btn-primary">'.$record->date_wa. '</span>',
             "id"=>$record->id_registrasi,
             "alamat"=>$record->alamat,
-            "paket"=>$record->paket,
+            "paket"=> $paket,
             "kontak"=>$record->kontak,
             "email"=>$record->email,
             );
@@ -469,7 +477,11 @@ class M_admin extends CI_Model
         $data = array();
         // $no =1;
         foreach($records as $record ){
-
+            if ($record->promo == true) {
+                $paket = $record->promo . ' ' . $record->mbps;
+            } else {
+                $paket = $record->paket;
+            }
             $data[] = array(
             // "no"=>$no++,
             "nama"=>'<a data-toggle="collapse" href="#collapseExample'.$record->id_registrasi.'" role="button" aria-expanded="false" aria-controls="collapseExample2" style="color:#545559">'. $record->nama.'</a>
@@ -481,7 +493,7 @@ class M_admin extends CI_Model
             "status_wa"=> '<span class="btn btn-primary">'.$record->date_wa. '</span>',
             "id"=>$record->id_registrasi,
             "alamat"=>$record->alamat,
-            "paket"=>$record->paket,
+            "paket"=> $paket,
             "kontak"=>$record->kontak,
             "email"=>$record->email,
             );
