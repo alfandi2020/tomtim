@@ -158,7 +158,7 @@
                                                         if ($data->promo == true) {
                                                             echo $data->promo . " ".  $data->mbps . " Mbps";
                                                         }else{
-                                                            echo $data->mbps . " Mbps";
+                                                            echo "Internet Up To ".$data->mbps . " Mbps";
                                                         }
                                                         
                                                         ?></td>
