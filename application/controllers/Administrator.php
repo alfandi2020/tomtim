@@ -986,7 +986,27 @@ class Administrator extends CI_Controller
         ];
         $this->db->where('id_registrasi', $get_id_pelanggan);
         $this->db->update('tb_registrasi', $update);
-
+        //script run
+        $userr = $this->db->get_where('dt_ppp', ['id_pelanggan' => $get_id_pelanggan]);
+        if ($userr->num_rows() == true) {
+            $client = $this->config_routeros();
+            $get_user = new Query('/ppp/secret/print');
+            $get_user->where('name', $userr->row_array()['name']);
+            $user_ppp = $client->query($get_user)->read();
+            //disable user ppp
+            if ($this->input->post('status_modem') == 1) {
+                $enable_user =
+                    (new Query('/ppp/secret/disable'))
+                        ->equal('.id', $user_ppp[0]['.id']);  // Gunakan ID spesifik, atau
+                $client->query($enable_user)->read();
+            }else{
+                $enable_user =
+                    (new Query('/ppp/secret/enable'))
+                        ->equal('.id', $user_ppp[0]['.id']);  // Gunakan ID spesifik, atau
+                $client->query($enable_user)->read();
+            }
+            
+        }
         $dataxx = [
             "internet" => $speed
         ];
