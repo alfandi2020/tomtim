@@ -154,7 +154,14 @@
                                                 foreach ($paket as $data) { ?>
                                                     <tr>
                                                         <td><?php echo $no++; ?></td>
-                                                        <td><?php echo "Internet Up to " . $data->mbps . " Mbps" ?></td>
+                                                        <td><?php
+                                                        if ($data->promo == true) {
+                                                            echo $data->promo . " ".  $data->mbps . " Mbps";
+                                                        }else{
+                                                            echo $data->mbps . " Mbps";
+                                                        }
+                                                        
+                                                        ?></td>
                                                         <td><?php echo "Rp." . number_format($data->harga, 0, ".", ".") ?></td>
                                                         <td><?php echo $data->layanan ?></td>
                                                         <td><?php echo $data->promo ?></td>
