@@ -197,7 +197,7 @@ class M_admin extends CI_Model
         $no =1;
         foreach($records as $record ){
             if ($record->promo == true) {
-                $paket = $record->promo . ' ' . $record->mbps . " Mbps";
+                $paket = $record->promo . ' ' . $record->mbps . ' Mbps - Rp.' . number_format($record->harga);
             } else {
                 $paket = $record->paket;
             }
@@ -387,7 +387,7 @@ class M_admin extends CI_Model
         // $no =1;
         foreach($records as $record ){
             if ($record->promo == true) {
-                $paket = $record->promo .' ' . $record->mbps . " Mbps";
+                $paket = $record->promo .' ' . $record->mbps . ' Mbps - Rp.' . number_format($record->harga);
             }else{
                 $paket = $record->paket;
             }
@@ -478,7 +478,7 @@ class M_admin extends CI_Model
         // $no =1;
         foreach($records as $record ){
             if ($record->promo == true) {
-                $paket = $record->promo . ' ' . $record->mbps . " Mbps";
+                $paket = $record->promo . ' ' . $record->mbps . ' Mbps - Rp.' . number_format($record->harga);
             } else {
                 $paket = $record->paket;
             }
