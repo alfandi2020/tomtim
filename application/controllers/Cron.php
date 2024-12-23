@@ -192,7 +192,7 @@ class Cron extends CI_Controller
                                     $phone = $x->kontak; //untuk group pakai groupid contoh: 62812xxxxxx-xxxxx
                                     $curl = curl_init();
                                     curl_setopt_array($curl, array(
-                                        CURLOPT_URL => 'http://103.171.85.211:8000/send-message',
+                                        CURLOPT_URL => 'http://103.127.96.32:8001/send-message',
                                         CURLOPT_RETURNTRANSFER => true,
                                         CURLOPT_ENCODING => '',
                                         CURLOPT_MAXREDIRS => 10,
@@ -246,7 +246,7 @@ class Cron extends CI_Controller
                                 $phone = $x->kontak; //untuk group pakai groupid contoh: 62812xxxxxx-xxxxx
                                 $curl = curl_init();
                                 curl_setopt_array($curl, array(
-                                    CURLOPT_URL => 'http://103.171.85.211:8000/send-message',
+                                    CURLOPT_URL => 'http://103.127.96.32:8001/send-message',
                                     CURLOPT_RETURNTRANSFER => true,
                                     CURLOPT_ENCODING => '',
                                     CURLOPT_MAXREDIRS => 10,

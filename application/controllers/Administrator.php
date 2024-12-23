@@ -165,7 +165,7 @@ class Administrator extends CI_Controller
                 curl_setopt_array(
                     $curl,
                     array(
-                        CURLOPT_URL => 'http://103.171.85.211:8000/send-message',
+                        CURLOPT_URL => 'http://103.127.96.32:8001/send-message',
                         CURLOPT_RETURNTRANSFER => true,
                         CURLOPT_ENCODING => '',
                         CURLOPT_MAXREDIRS => 10,
@@ -202,7 +202,7 @@ class Administrator extends CI_Controller
         //         curl_setopt_array(
         //             $curl2,
         //             array(
-        //                 CURLOPT_URL => 'http://103.171.85.211:8000/send-media',
+        //                 CURLOPT_URL => 'http://103.127.96.32:8001/send-media',
         //                 CURLOPT_RETURNTRANSFER => true,
         //                 CURLOPT_ENCODING => '',
         //                 CURLOPT_MAXREDIRS => 10,
@@ -378,7 +378,7 @@ class Administrator extends CI_Controller
         $sender = 'tommy';
         $curl = curl_init();
         curl_setopt_array($curl, array(
-            CURLOPT_URL => 'http://103.171.85.211:8000/send-message',
+            CURLOPT_URL => 'http://103.127.96.32:8001/send-message',
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_ENCODING => '',
             CURLOPT_MAXREDIRS => 10,
@@ -763,7 +763,7 @@ class Administrator extends CI_Controller
             curl_setopt_array(
                 $curl,
                 array(
-                    CURLOPT_URL => 'http://103.171.85.211:8000/send-message',
+                    CURLOPT_URL => 'http://103.127.96.32:8001/send-message',
                     CURLOPT_RETURNTRANSFER => true,
                     CURLOPT_ENCODING => '',
                     CURLOPT_MAXREDIRS => 10,
@@ -1002,7 +1002,7 @@ class Administrator extends CI_Controller
                     (new Query('/ppp/secret/disable'))
                         ->equal('.id', $user_ppp[0]['.id']);  // Gunakan ID spesifik, atau
                 $client->query($enable_user)->read();
-                
+
                 $get_user2 = new Query('/ppp/active/print');
                 $get_user2->where('name', $userr->row_array()['name']);
                 $user_actv = $client->query($get_user2)->read();
