@@ -719,14 +719,17 @@ class Administrator extends CI_Controller
             $this->session->set_flashdata('massage', '<div class="alert alert-danger" role="alert"></i> Data pembayaran tidak boleh dobel nama ' . $get_registrasi['nama'] . ' ,bulan ' . $periode . ' dan tahun ' . $thn . '</div>');
             redirect('administrator/create');
         } else {
-            $get_user = new Query('/ppp/secret/print');
-            $get_user->where('name', $get_registrasi['name']);
-            $user_ppp = $client->query($get_user)->read();
-            //enable user ppp
-            $disable_user =
-                (new Query('/ppp/secret/enable'))
-                    ->equal('.id', $user_ppp[0]['.id']);  // Gunakan ID spesifik, atau
-            $client->query($disable_user)->read();
+            $userr = $this->db->get_where('dt_ppp', ['id_pelanggan' => $get_registrasi['id_registrasi']]);
+            if($userr->num_rows() == true){
+                $get_user = new Query('/ppp/secret/print');
+                $get_user->where('name', $get_registrasi['name']);
+                $user_ppp = $client->query($get_user)->read();
+                //enable user ppp
+                $disable_user =
+                    (new Query('/ppp/secret/enable'))
+                        ->equal('.id', $user_ppp[0]['.id']);  // Gunakan ID spesifik, atau
+                $client->query($disable_user)->read();
+            }
             // $tgl_update = date('Y-m-d', strtotime('1 month', strtotime($tanggal)));
             $date3 = date_create($get_registrasi['due_date']);
             date_add($date3,date_interval_create_from_date_string("30 days"));
