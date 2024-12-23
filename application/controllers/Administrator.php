@@ -556,7 +556,7 @@ class Administrator extends CI_Controller
 
         ];
         $this->db->insert('tb_registrasi', $data);
-        if ($this->input->post('user_ppp') == true && $this->input->post('pass_ppp')) {
+        if ($this->input->post('user_ppp') == true && $this->input->post('pass_ppp') == true) {
             $client = $this->config_routeros();
             $query =
                 (new Query('/ppp/secret/add'))
