@@ -518,7 +518,7 @@ class Administrator extends CI_Controller
         $lok_pelanggan = $this->input->post('lok_pelanggan');
 
         //auto kode
-        $quer = $this->db->query("SELECT max(id_(registras)i) as kode FROM tb_registrasi")->row_array();
+        $quer = $this->db->query("SELECT max(id_registrasi) as kode FROM tb_registrasi")->row_array();
         $kode = $quer['kode'];
         $urut = (int) substr($kode, 3, 8);
         $urut++;
