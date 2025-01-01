@@ -992,7 +992,7 @@ class Administrator extends CI_Controller
         //script run
         $userr = $this->db->get_where('dt_ppp', ['id_pelanggan' => $get_id_pelanggan]);
 
-        if ($this->input->post('user_ppp') == true && $this->input->post('pass_ppp') == true && $userr == false) {
+        if ($this->input->post('user_ppp') == true && $this->input->post('pass_ppp') == true && $userr->num_rows() == false) {
             $client = $this->config_routeros();
             $query =
                 (new Query('/ppp/secret/add'))
@@ -1001,6 +1001,7 @@ class Administrator extends CI_Controller
                     ->equal('profile', $this->input->post('profile_ppp'));
             $cek_ins = $client->query($query)->read();
             // if ($cek_ins == true) {
+            sleep(2);
             //get user
             $get_user = new Query('/ppp/secret/print');
             $get_user->where('name', $this->input->post('user_ppp'));
