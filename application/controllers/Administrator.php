@@ -518,7 +518,7 @@ class Administrator extends CI_Controller
         $lok_pelanggan = $this->input->post('lok_pelanggan');
 
         //auto kode
-        $quer = $this->db->query("SELECT max(id_registrasi) as kode FROM tb_registrasi")->row_array();
+        $quer = $this->db->query("SELECT max(id_(registras)i) as kode FROM tb_registrasi")->row_array();
         $kode = $quer['kode'];
         $urut = (int) substr($kode, 3, 8);
         $urut++;
@@ -565,7 +565,6 @@ class Administrator extends CI_Controller
                     ->equal('profile', $this->input->post('profile_ppp'));
             $cek_ins = $client->query($query)->read();
             // if ($cek_ins == true) {
-            sleep(2);
             //get user
             $get_user = new Query('/ppp/secret/print');
             $get_user->where('name', $this->input->post('user_ppp'));
@@ -989,8 +988,41 @@ class Administrator extends CI_Controller
         ];
         $this->db->where('id_registrasi', $get_id_pelanggan);
         $this->db->update('tb_registrasi', $update);
+
         //script run
         $userr = $this->db->get_where('dt_ppp', ['id_pelanggan' => $get_id_pelanggan]);
+
+        if ($this->input->post('user_ppp') == true && $this->input->post('pass_ppp') == true && $userr == false) {
+            $client = $this->config_routeros();
+            $query =
+                (new Query('/ppp/secret/add'))
+                    ->equal('name', $this->input->post('user_ppp'))
+                    ->equal('password', $this->input->post('pass_ppp'))
+                    ->equal('profile', $this->input->post('profile_ppp'));
+            $cek_ins = $client->query($query)->read();
+            // if ($cek_ins == true) {
+            //get user
+            $get_user = new Query('/ppp/secret/print');
+            $get_user->where('name', $this->input->post('user_ppp'));
+            $user_ppp = $client->query($get_user)->read();
+
+            //update comment
+            $upd_com =
+                (new Query('/ppp/secret/set'))
+                    ->equal('.id', $user_ppp[0]['.id'])  // Gunakan ID spesifik, atau
+                    ->equal('comment', $kontak);
+            $client->query($upd_com)->read();
+            // }
+
+            $ppp = [
+                "id_pelanggan" => $get_id_pelanggan,
+                "name" => $this->input->post('user_ppp'),
+                "password" => $this->input->post('pass_ppp'),
+                "profile" => $this->input->post('profile_ppp'),
+                "tgl_aktif" => $this->db->get_where('tb_registrasi',['id_registrasi' => $get_id_pelanggan])->row_array()['tanggal_installasi']
+            ];
+            $this->db->insert('dt_ppp', $ppp);
+        }
         if ($userr->num_rows() == true) {
             $client = $this->config_routeros();
             $get_user = new Query('/ppp/secret/print');
