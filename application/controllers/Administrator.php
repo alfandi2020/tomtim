@@ -373,12 +373,29 @@ class Administrator extends CI_Controller
 
         $msgg = '*Billing*\n\nPelanggan *LJN* (PT. Lintas Jaringan Nusantara) Jakarta Timur yang terhormat.\n\n*Bapak/Ibu ' . $nama . ',*\n\nTagihan internet Anda periode *' . $bulan . " " . $tahun . '* dengan paket *' . $pakettt . '* sebesar *Rp.' . $hasil . '* ' . $diskon_show . ' ' . $addon_show . ' \nKami ingatkan bahwa pembayaran internet jatuh pada tanggal 1.\n_Pastikan agar melakukan pembayaran untuk menghindari pemblokiran._\n\nPembayaran dapat melalui outlet kami di JL. Harapan III No. 05 (samping SD/SMP Budiharapan),\nJam operasional pukul 08:00 s/d pukul 17:00 di hari kerja (Senin s/d Sabtu).\n*atau melalui transfer bank ke nomor rekening berikut :*\nBCA        : 1640314229\nMandiri  : 0060005009489\nBRI          : 065201009279506\na/n Tomy Nugrahadi.\n\n*_Lakukan konfirmasi setelah melakukan pembayaran ke nomor wa.me/6282211661443_  <- Langsung klik*\nHiraukan jika anda telah melakukan pembayaran.\n\nUntuk informasi lainnya;\n*Layanan gangguan, masalah teknis, ganti nama wifi dan password :*\n- wa.me/6287868881443 <- Langsung klik\n\nTerima kasih atas perhatian anda. ';
 
-        $token = "rasJFCC37ewayax21uu2Caog9CCqyT3KSwBWFqQAbQMdMAefxa";
         $phone = $x['kontak']; //untuk group pakai groupid contoh: 62812xxxxxx-xxxxx
-        $sender = 'tommy';
         $curl = curl_init();
+        // curl_setopt_array($curl, array(
+        //     CURLOPT_URL => 'http://103.127.96.32:8001/send-message',
+        //     CURLOPT_RETURNTRANSFER => true,
+        //     CURLOPT_ENCODING => '',
+        //     CURLOPT_MAXREDIRS => 10,
+        //     CURLOPT_TIMEOUT => 0,
+        //     CURLOPT_FOLLOWLOCATION => true,
+        //     CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+        //     CURLOPT_CUSTOMREQUEST => 'POST',
+        //     CURLOPT_POSTFIELDS => '{
+        //                                              "api_key": "iEQRRY8J4UUAkWKW78iPja2hc8rjlcCK",
+        //                                              "sender": "6285961403102",
+        //                                              "number": "' . $phone . '",
+        //                                              "message" : "' . $msgg . '"
+        //                                              }',
+        //     CURLOPT_HTTPHEADER => array(
+        //         'Content-Type: application/json'
+        //     ),
+        // ));
         curl_setopt_array($curl, array(
-            CURLOPT_URL => 'http://103.127.96.32:8001/send-message',
+            CURLOPT_URL => 'https://api.watzap.id/v1/send_message',
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_ENCODING => '',
             CURLOPT_MAXREDIRS => 10,
@@ -387,9 +404,9 @@ class Administrator extends CI_Controller
             CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
             CURLOPT_CUSTOMREQUEST => 'POST',
             CURLOPT_POSTFIELDS => '{
-                                                     "api_key": "iEQRRY8J4UUAkWKW78iPja2hc8rjlcCK",
-                                                     "sender": "6285961403102",
-                                                     "number": "' . $phone . '",
+                                                    "api_key": "NIIXSOGXEBJEXXAZ",
+                                                      "number_key": "BlP77cdNcTvKT1K9",
+                                                     "phone_no": "' . $phone . '",
                                                      "message" : "' . $msgg . '"
                                                      }',
             CURLOPT_HTTPHEADER => array(
