@@ -191,8 +191,27 @@ class Cron extends CI_Controller
                                     '_Mohon untuk tidak membalas pesan ini_';
                                     $phone = $x->kontak; //untuk group pakai groupid contoh: 62812xxxxxx-xxxxx
                                     $curl = curl_init();
+                                    // curl_setopt_array($curl, array(
+                                    //     CURLOPT_URL => 'http://103.127.96.32:8001/send-message',
+                                    //     CURLOPT_RETURNTRANSFER => true,
+                                    //     CURLOPT_ENCODING => '',
+                                    //     CURLOPT_MAXREDIRS => 10,
+                                    //     CURLOPT_TIMEOUT => 0,
+                                    //     CURLOPT_FOLLOWLOCATION => true,
+                                    //     CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+                                    //     CURLOPT_CUSTOMREQUEST => 'POST',
+                                    //     CURLOPT_POSTFIELDS => '{
+                                    //                                         "api_key": "iEQRRY8J4UUAkWKW78iPja2hc8rjlcCK",
+                                    //                                         "sender": "6285961403102",
+                                    //                                         "number": "' . $phone . '",
+                                    //                                         "message" : "' . $message2 . '"
+                                    //                                         }',
+                                    //     CURLOPT_HTTPHEADER => array(
+                                    //         'Content-Type: application/json'
+                                    //     ),
+                                    // ));
                                     curl_setopt_array($curl, array(
-                                        CURLOPT_URL => 'http://103.127.96.32:8001/send-message',
+                                        CURLOPT_URL => 'https://api.watzap.id/v1/send_message',
                                         CURLOPT_RETURNTRANSFER => true,
                                         CURLOPT_ENCODING => '',
                                         CURLOPT_MAXREDIRS => 10,
@@ -201,11 +220,11 @@ class Cron extends CI_Controller
                                         CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
                                         CURLOPT_CUSTOMREQUEST => 'POST',
                                         CURLOPT_POSTFIELDS => '{
-                                                                            "api_key": "iEQRRY8J4UUAkWKW78iPja2hc8rjlcCK",
-                                                                            "sender": "6285961403102",
-                                                                            "number": "' . $phone . '",
-                                                                            "message" : "' . $message2 . '"
-                                                                            }',
+                                                                    "api_key": "NIIXSOGXEBJEXXAZ",
+                                                                    "number_key": "BlP77cdNcTvKT1K9",
+                                                                    "phone_no": "'.$phone.'",
+                                                                    "message" : "' . $message2 . '"
+                                                                    }',
                                         CURLOPT_HTTPHEADER => array(
                                             'Content-Type: application/json'
                                         ),
