@@ -162,28 +162,47 @@ class Administrator extends CI_Controller
         if ($pesan == true & $nomor == true & $url == false) {
             foreach (explode('|', $nomor) as $x) {
                 $curl = curl_init();
-                curl_setopt_array(
-                    $curl,
-                    array(
-                        CURLOPT_URL => 'http://103.127.96.32:8001/send-message',
-                        CURLOPT_RETURNTRANSFER => true,
-                        CURLOPT_ENCODING => '',
-                        CURLOPT_MAXREDIRS => 10,
-                        CURLOPT_TIMEOUT => 0,
-                        CURLOPT_FOLLOWLOCATION => true,
-                        CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-                        CURLOPT_CUSTOMREQUEST => 'POST',
-                        CURLOPT_POSTFIELDS => '{
-                                                        "api_key": "iEQRRY8J4UUAkWKW78iPja2hc8rjlcCK",
-                                                        "sender": "6285954542160",
-                                                        "number": "' . $x . '",
-                                                        "message" : "' . $pesan . '"
-                                                        }',
-                        CURLOPT_HTTPHEADER => array(
-                            'Content-Type: application/json'
-                        ),
-                    )
-                );
+                // curl_setopt_array(
+                //     $curl,
+                //     array(
+                //         CURLOPT_URL => 'http://103.127.96.32:8001/send-message',
+                //         CURLOPT_RETURNTRANSFER => true,
+                //         CURLOPT_ENCODING => '',
+                //         CURLOPT_MAXREDIRS => 10,
+                //         CURLOPT_TIMEOUT => 0,
+                //         CURLOPT_FOLLOWLOCATION => true,
+                //         CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+                //         CURLOPT_CUSTOMREQUEST => 'POST',
+                //         CURLOPT_POSTFIELDS => '{
+                //                                         "api_key": "iEQRRY8J4UUAkWKW78iPja2hc8rjlcCK",
+                //                                         "sender": "6285954542160",
+                //                                         "number": "' . $x . '",
+                //                                         "message" : "' . $pesan . '"
+                //                                         }',
+                //         CURLOPT_HTTPHEADER => array(
+                //             'Content-Type: application/json'
+                //         ),
+                //     )
+                // );
+                curl_setopt_array($curl, array(
+                    CURLOPT_URL => 'https://api.watzap.id/v1/send_message',
+                    CURLOPT_RETURNTRANSFER => true,
+                    CURLOPT_ENCODING => '',
+                    CURLOPT_MAXREDIRS => 10,
+                    CURLOPT_TIMEOUT => 0,
+                    CURLOPT_FOLLOWLOCATION => true,
+                    CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+                    CURLOPT_CUSTOMREQUEST => 'POST',
+                    CURLOPT_POSTFIELDS => '{
+                                                    "api_key": "NIIXSOGXEBJEXXAZ",
+                                                      "number_key": "BlP77cdNcTvKT1K9",
+                                                     "phone_no": "' . $x . '",
+                                                     "message" : "' . $pesan . '"
+                                                     }',
+                    CURLOPT_HTTPHEADER => array(
+                        'Content-Type: application/json'
+                    ),
+                ));
                 $response = curl_exec($curl);
                 curl_close($curl);
                 $o = json_decode($response);
