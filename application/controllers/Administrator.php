@@ -415,6 +415,8 @@ class Administrator extends CI_Controller
         ));
         $response = curl_exec($curl);
         curl_close($curl);
+        echo $response;
+        exit;
         // echo $response;
         // $o = json_decode($response);
         // if (json_encode($o->status) == true) {
