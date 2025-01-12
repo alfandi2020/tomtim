@@ -396,7 +396,7 @@
                                             </div>
                                             <div class="col-xl-4">
                                             <label>Tanggal Jatoh tempo</label>
-                                                <input style="border-color: #1269db;" size="16" type="date" placeholder="Tanggal aja"
+                                                <input style="border-color: #1269db;" type="date"
                                                     name="tgl_reminder" value="<?= $x->due_date ?>" class="form-control">
 
                                         </div>
