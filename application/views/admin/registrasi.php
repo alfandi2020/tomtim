@@ -323,7 +323,7 @@
                                             <input style="border-color: #1269db;" size="16" type="text" placeholder="Pilih Tanggal" name="tanggal_installasi" class="form-control form_datetime1">
                                         </div>
                                          <div class="col-xl-4">
-                                            <label>Tanggal Jatoh tempo</label>
+                                            <label>Tanggal Jatuh tempo</label>
                                                 <input style="border-color: #1269db;" size="16" type="date" placeholder="Tanggal aja"
                                                     name="tgl_reminder" class="form-control">
 

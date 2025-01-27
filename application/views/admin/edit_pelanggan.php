@@ -395,7 +395,7 @@
                                                 </select>
                                             </div>
                                             <div class="col-xl-4">
-                                            <label>Tanggal Jatoh tempo</label>
+                                            <label>Tanggal Jatuh tempo</label>
                                                 <input style="border-color: #1269db;" type="date"
                                                     name="tgl_reminder" value="<?= $x->due_date ?>" class="form-control">
 
