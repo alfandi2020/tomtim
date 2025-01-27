@@ -152,7 +152,7 @@ class Cron extends CI_Controller
             // if (($today == 10 || $today == 13) && $currentHour == 9) {
                 foreach ($get_client as $x) {
                     $cek_paid = $this->db->get_where('tb_cetak', ['periode' => $bulan, 'thn' => date('Y'),'id_registrasi' => $x->id_registrasi])->num_rows();
-                    if ($cek_paid == false) {//jika belum bayar
+                    // if ($cek_paid == false) {//jika belum bayar
                         $day7 = date('Y-m-d', strtotime('-7 days', strtotime($x->due_date)));
                         $day3 = date('Y-m-d', strtotime('-3 days', strtotime($x->due_date)));
                         // if(){
@@ -234,7 +234,7 @@ class Cron extends CI_Controller
                                     echo $response;
 
                             }
-                            
+                            //
                             $opt = $this->db->get_where('tb_option',['name' => 'time_cron'])->row_array();
                 
                             if (($day3 == date('Y-m-d') || $day7 == date('Y-m-d')) && $currentHour == $opt['value']) {
@@ -288,7 +288,7 @@ class Cron extends CI_Controller
                                 echo $response;
                             }
                         // }
-                    }
+                    // }
                 }
         
     }
