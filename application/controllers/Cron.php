@@ -156,6 +156,8 @@ class Cron extends CI_Controller
                         $day7 = date('Y-m-d', strtotime('-7 days', strtotime($x->due_date)));
                         $day3 = date('Y-m-d', strtotime('-3 days', strtotime($x->due_date)));
                         // if(){
+            echo $bulan;
+            echo $x->due_date;
                             if(date('Y-m-d') == $x->due_date && $cek_paid == false){//isolir
                                 //get user ppp
                                 $get_user = new Query('/ppp/secret/print');
