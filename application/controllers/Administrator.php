@@ -539,7 +539,7 @@ class Administrator extends CI_Controller
         $kode = $quer['kode'];
         $urut = (int) substr($kode, 3, 8);
         $urut++;
-        $hasil = "LJN" . sprintf("%03s", $urut);
+        $hasil = "LJN" . sprintf("%04s", $urut);
         $data = [
             'id_registrasi' => $hasil,
             'layanan' => $paket,
