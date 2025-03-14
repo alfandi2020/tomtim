@@ -537,7 +537,7 @@ class Administrator extends CI_Controller
         //auto kode
         $quer = $this->db->query("SELECT max(id_registrasi) as kode FROM tb_registrasi")->row_array();
         $kode = $quer['kode'];
-        $urut = (int) substr($kode, 3, 8);
+        $urut = (int) substr($kode, 3, 4);
         $urut++;
         $hasil = "LJN" . sprintf("%04s", $urut);
         $data = [
