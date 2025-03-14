@@ -535,13 +535,13 @@ class Administrator extends CI_Controller
         $lok_pelanggan = $this->input->post('lok_pelanggan');
 
         //auto kode
-        $quer = $this->db->query("SELECT max(id_registrasi) as kode FROM tb_registrasi")->row_array();
+        $quer = $this->db->query("SELECT MAX(CAST(SUBSTRING(id_registrasi, 4) AS UNSIGNED)) AS kode FROM tb_registrasi")->row_array();
         $kode = $quer['kode'];
-        $urut = (int) substr($kode, 3, 4);
-        $urut++;
-        $hasil = "LJN" . sprintf("%04s", $urut);
+        // $urut = (int) substr($kode, 3, 8);
+        $kode++;
+        // $hasil = "LJN" . sprintf("%03s", $urut);
         $data = [
-            'id_registrasi' => $hasil,
+            'id_registrasi' => "LJN".$kode,
             'layanan' => $paket,
             'speed' => $speed,
             'addon1' => $r_addon1,
@@ -596,7 +596,7 @@ class Administrator extends CI_Controller
             // }
 
             $ppp = [
-                "id_pelanggan" => $hasil,
+                "id_pelanggan" => $kode,
                 "name" => $this->input->post('user_ppp'),
                 "password" => $this->input->post('pass_ppp'),
                 "profile" => $this->input->post('profile_ppp'),
