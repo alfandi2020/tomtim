@@ -142,6 +142,7 @@ class Cron extends CI_Controller
         $client = $this->config_routeros();
         $this->db->where('b.id_ppp !=',NULL);
         $this->db->where('a.is_blocked', 0);
+        $this->db->where('b.id_pelanggan','LJN1011');
         $this->db->join('dt_ppp as b','a.id_registrasi=b.id_pelanggan','left');
         $this->db->join('tb_paket as c', 'a.speed=c.id_wireless', 'left');
         $get_client = $this->db->get('tb_registrasi as a')->result();
