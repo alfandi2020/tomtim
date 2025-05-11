@@ -121,11 +121,11 @@
                                         <div class="row">
                                            <div class="col-xl-4">
                                                 <label>Username</label>
-                                                <input class="form-control" placeholder="username ppp" name="user_ppp">
+                                                <input class="form-control" value="<?= $x->name ?>" placeholder="username ppp" name="user_ppp">
                                            </div>
                                             <div class="col-xl-4">
                                                 <label>Password</label>
-                                                <input class="form-control" placeholder="password ppp" name="pass_ppp">
+                                                <input class="form-control" value="<?= $x->password ?>" placeholder="password ppp" name="pass_ppp">
                                            </div>
                                            <div class="col-xl-4">
                                                 <label>Profile</label>
@@ -134,7 +134,7 @@
                                                 <?php foreach ($profile_ppp as $k) {
                                                         if ($k['name'] != 'default-encryption' && $k['name'] != 'default') {
                                                             ?>
-                                                            <option value="<?= $k['name']; ?>"><?= $k['name']; ?></option>
+                                                            <option value="<?= $x->profile == $k['name'] ? 'selected' : '' ?>" value="<?= $k['name']; ?>"><?= $k['name']; ?></option>
                                                         <?php }
                                                     } ?>
                                                 </select>

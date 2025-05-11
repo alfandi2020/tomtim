@@ -954,7 +954,7 @@ class Administrator extends CI_Controller
         $data['pelanggan'] = $this->db->query("SELECT * FROM tb_registrasi")->num_rows();
         $data['pakettt'] = $this->db->query("SELECT * FROM tb_paket")->num_rows();
         $data['user'] = $data['user'] = $this->db->get_where('tb_user', ['username' => $this->session->userdata('username')])->row_array();
-        $data['edit'] = $this->db->query("SELECT * FROM tb_registrasi as a inner join tb_paket as b on(a.speed = b.id_wireless) where id_registrasi = '$id_plg'")->result();
+        $data['edit'] = $this->db->query("SELECT * FROM tb_registrasi as a inner join tb_paket as b on(a.speed = b.id_wireless) left join dt_ppp as c on(a.id_registrasi=c.id_pelanggan) where id_registrasi = '$id_plg'")->result();
         $client = $this->config_routeros();
         $query =
             (new Query('/ppp/profile/print'));
