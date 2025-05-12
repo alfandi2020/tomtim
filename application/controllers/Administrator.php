@@ -723,9 +723,9 @@ class Administrator extends CI_Controller
         $nomor_struk = $this->input->post('nomor_struk');
         $thn = $this->input->post('thn');
 
-        $quer = $this->db->query("SELECT max(id_cetak) as kode FROM tb_cetak")->row_array();
-        $kode = $quer['kode'];
-        $kode++;
+        // $quer = $this->db->query("SELECT max(id_cetak) as kode FROM tb_cetak")->row_array();
+        $kode = mt_rand();
+        // $kode++;
         //$urut = (int) substr($kode, 1, 8);
         //$urut++;
         //$hasil = "C" . sprintf("%03s", $urut);
