@@ -596,7 +596,7 @@ class Administrator extends CI_Controller
             // }
 
             $ppp = [
-                "id_pelanggan" => $kode,
+                "id_pelanggan" => 'LJN'.$kode,
                 "name" => $this->input->post('user_ppp'),
                 "password" => $this->input->post('pass_ppp'),
                 "profile" => $this->input->post('profile_ppp'),
