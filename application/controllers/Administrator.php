@@ -754,7 +754,7 @@ class Administrator extends CI_Controller
 
             }
            
-            $total_tagihan = $r_tagihan + $get_registrasi['addon1'] + $get_registrasi['addon2'] + $get_registrasi['addon3'] - $get_registrasi['diskon'];
+            $total_tagihan = intval($r_tagihan) + intval($get_registrasi['addon1']) + intval($get_registrasi['addon2']) + intval($get_registrasi['addon3']) - intval($get_registrasi['diskon']);
             $msgg = '📧 *Pembayaran Sukses*\n\nYth Bapak/Ibu ' . $get_registrasi['nama'] . ' \nKami Ucapkan Terima Kasih telah melakukan pembayaran internet untuk Bulan ' . $periode . ' ' . $thn . ' sebesar Rp.' . number_format($total_tagihan, 0, ".", ".") . '\n\nSalam,\nFinance\nLintas Jaringan Nusantara\nKantor Layanan Makasar - Jakarta Timur';
             $data = [
                 'id_cetak' => $kode,
