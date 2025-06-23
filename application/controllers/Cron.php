@@ -140,11 +140,11 @@ class Cron extends CI_Controller
     public function reminder()
     {
         $client = $this->config_routeros();
-        $this->db->where('b.id_ppp !=',NULL);
-        $this->db->where('a.is_blocked', 0);
-        $this->db->join('dt_ppp as b','a.id_registrasi=b.id_pelanggan','left');
-        $this->db->join('tb_paket as c', 'a.speed=c.id_wireless', 'left');
-        $get_client = $this->db->get('tb_registrasi as a')->result();
+        // $this->db->where('b.id_ppp !=',NULL);
+        // $this->db->where('a.is_blocked', 0);
+        // $this->db->join('dt_ppp as b','a.id_registrasi=b.id_pelanggan','left');
+        // $this->db->join('tb_paket as c', 'a.speed=c.id_wireless', 'left');
+        $get_client = $this->db->query('SELECT * from tb_registrasi as a LEFT JOIN dt_ppp as b on (a.id_registrasi=b.id_pelanggan) left join tb_paket as c on(a.speed=c.id_wireless) where a.is_blocked=0 and b.id_ppp IS NOT null')->result();
         $tanggalx = time();
         $bulan = $this->indonesian_date($tanggalx, 'F');
             $today = date('j');
@@ -190,6 +190,9 @@ class Cron extends CI_Controller
                                     'Terima kasih atas perhatian anda. 🙏\n' .
                                     '_Mohon untuk tidak membalas pesan ini_';
                                     $phone = $x->kontak; //untuk group pakai groupid contoh: 62812xxxxxx-xxxxx
+                                    if (substr($phone, 0, 1) === '0') {
+                                        $phone = '62' . substr($phone, 1);
+                                    }
                                     $curl = curl_init();
                                     // curl_setopt_array($curl, array(
                                     //     CURLOPT_URL => 'http://103.127.96.32:8001/send-message',
@@ -236,8 +239,8 @@ class Cron extends CI_Controller
                             }
                             //
                             $opt = $this->db->get_where('tb_option',['name' => 'time_cron'])->row_array();
-                
-                            if (($day3 == date('Y-m-d') || $day7 == date('Y-m-d')) && $currentHour == $opt['value']) {
+                           
+                            if (($day3 === date('Y-m-d') || $day7 === date('Y-m-d')) && $currentHour == $opt['value']) {
                                 $date33 = date_create($x->due_date);
                                 date_add($date33, date_interval_create_from_date_string("30 days"));
                                 $tgl_sd = date_format($date33, "Y-m-d");
@@ -262,7 +265,11 @@ class Cron extends CI_Controller
                                     '⚠️ *Mohon untuk tidak membalas pesan ini* ⚠️';
 
                                 $token = "rasJFCC37ewayax21uu2Caog9CCqyT3KSwBWFqQAbQMdMAefxa";
-                                $phone = $x->kontak; //untuk group pakai groupid contoh: 62812xxxxxx-xxxxx
+                                
+                                $phone = $x->kontak; 
+                                if (substr($phone, 0, 1) === '0') {
+                                    $phone = '62' . substr($phone, 1);
+                                }
                                 $curl = curl_init();
                                 curl_setopt_array($curl, array(
                                     CURLOPT_URL => 'https://api.watzap.id/v1/send_message',
@@ -286,6 +293,8 @@ class Cron extends CI_Controller
                                 $response = curl_exec($curl);
                                 curl_close($curl);
                                 echo $response . $x->nama;
+                            }else{
+                                echo date('Y-m-d');
                             }
                         // }
                     // }
