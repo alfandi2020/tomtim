@@ -374,6 +374,9 @@ class Administrator extends CI_Controller
         $msgg = '*Billing*\n\nPelanggan *LJN* (PT. Lintas Jaringan Nusantara) Jakarta Timur yang terhormat.\n\n*Bapak/Ibu ' . $nama . ',*\n\nTagihan internet Anda periode *' . $bulan . " " . $tahun . '* dengan paket *' . $pakettt . '* sebesar *Rp.' . $hasil . '* ' . $diskon_show . ' ' . $addon_show . ' \nKami ingatkan bahwa pembayaran internet jatuh pada tanggal 1.\n_Pastikan agar melakukan pembayaran untuk menghindari pemblokiran._\n\nPembayaran dapat melalui outlet kami di JL. Harapan III No. 05 (samping SD/SMP Budiharapan),\nJam operasional pukul 08:00 s/d pukul 17:00 di hari kerja (Senin s/d Sabtu).\n*atau melalui transfer bank ke nomor rekening berikut :*\nBCA        : 1640314229\nMandiri  : 0060005009489\nBRI          : 065201009279506\na/n Tomy Nugrahadi.\n\n*_Lakukan konfirmasi setelah melakukan pembayaran ke nomor wa.me/6282211661443_  <- Langsung klik*\nHiraukan jika anda telah melakukan pembayaran.\n\nUntuk informasi lainnya;\n*Layanan gangguan, masalah teknis, ganti nama wifi dan password :*\n- wa.me/6287868881443 <- Langsung klik\n\nTerima kasih atas perhatian anda. ';
 
         $phone = $x['kontak']; //untuk group pakai groupid contoh: 62812xxxxxx-xxxxx
+        if (substr($phone, 0, 1) === '0') {
+            $phone = '62' . substr($phone, 1);
+        }
         $curl = curl_init();
         // curl_setopt_array($curl, array(
         //     CURLOPT_URL => 'http://103.127.96.32:8001/send-message',
