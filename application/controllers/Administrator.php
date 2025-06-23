@@ -161,6 +161,9 @@ class Administrator extends CI_Controller
         $nomor = $this->input->post('nomor');
         if ($pesan == true & $nomor == true & $url == false) {
             foreach (explode('|', $nomor) as $x) {
+                if (substr($x, 0, 1) === '0') {
+                    $phone = '62' . substr($x, 1);
+                }
                 $curl = curl_init();
                 curl_setopt_array($curl, array(
                     CURLOPT_URL => 'https://api.watzap.id/v1/send_message',
@@ -174,7 +177,7 @@ class Administrator extends CI_Controller
                     CURLOPT_POSTFIELDS => '{
                                                             "api_key": "NIIXSOGXEBJEXXAZ",
                                                               "number_key": "qT8h6owKvrDYmM6J",
-                                                             "phone_no": "' . $x . '",
+                                                             "phone_no": "' . $phone . '",
                                                              "message" : "' . preg_replace("/\r\n|\r|\n/", "\\n", $pesan) . '"
                                                              }',
                     CURLOPT_HTTPHEADER => array(
