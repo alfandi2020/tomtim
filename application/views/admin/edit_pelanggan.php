@@ -132,11 +132,11 @@
                                                 <select name="profile_ppp" class="form-control select22" id="">
                                                     <option value="">Pilih Profile</option>
                                                 <?php foreach ($profile_ppp as $k) {
-                                                        if ($k['name'] != 'default-encryption' && $k['name'] != 'default') {
+                                                        // if ($k['name'] != 'default-encryption' && $k['name'] != 'default') {
                                                             ?>
-                                                            <option value="<?= $x->profile == $k['name'] ? 'selected' : '' ?>" value="<?= $k['name']; ?>"><?= $k['name']; ?></option>
+                                                            <option <?= $x->profile == $k['name'] ? 'selected' : '' ?> value="<?= $k['name']; ?>"><?= $k['name']; ?></option>
                                                         <?php }
-                                                    } ?>
+                                                    //} ?>
                                                 </select>
                                             </div>
                                         </div>
