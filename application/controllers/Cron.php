@@ -146,11 +146,13 @@ class Cron extends CI_Controller
         // $this->db->join('tb_paket as c', 'a.speed=c.id_wireless', 'left');
         $get_client = $this->db->query('SELECT * from tb_registrasi as a LEFT JOIN dt_ppp as b on (a.id_registrasi=b.id_pelanggan) left join tb_paket as c on(a.speed=c.id_wireless) where a.is_blocked=0 and b.id_ppp IS NOT null')->result();
         $tanggalx = time();
+        $currentHour = date('g');
+        echo $currentHour;exit;
         $bulan = $this->indonesian_date($tanggalx, 'F');
             $today = date('j');
             $currentHour = date('g');
             // if (($today == 10 || $today == 13) && $currentHour == 9) {
-         foreach ($get_client as $x) {
+            foreach ($get_client as $x) {
                 $cek_paid = $this->db->get_where('tb_cetak', [
                     'periode' => $bulan,
                     'thn' => date('Y'),
