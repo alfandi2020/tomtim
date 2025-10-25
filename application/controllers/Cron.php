@@ -139,7 +139,6 @@ class Cron extends CI_Controller
     }
     public function reminder()
     {
-        date_default_timezone_set('Asia/Jakarta');
         $client = $this->config_routeros();
         $this->db->where('b.id_ppp !=',NULL);
         $this->db->where('a.is_blocked', 0);
@@ -152,6 +151,7 @@ class Cron extends CI_Controller
             $currentHour = date('G');
             // if (($today == 10 || $today == 13) && $currentHour == 9) {
                 foreach ($get_client as $x) {
+                    date_default_timezone_set('Asia/Jakarta');
                     $cek_paid = $this->db->get_where('tb_cetak', ['periode' => $bulan, 'thn' => date('Y'),'id_registrasi' => $x->id_registrasi])->num_rows();
                     // if ($cek_paid == false) {//jika belum bayar
                         // $day7 = date('Y-m-d', strtotime('-7 days', strtotime($x->due_date)));
