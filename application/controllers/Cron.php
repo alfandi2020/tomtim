@@ -147,7 +147,6 @@ class Cron extends CI_Controller
         $get_client = $this->db->query('SELECT * from tb_registrasi as a LEFT JOIN dt_ppp as b on (a.id_registrasi=b.id_pelanggan) left join tb_paket as c on(a.speed=c.id_wireless) where a.is_blocked=0 and b.id_ppp IS NOT null')->result();
         $tanggalx = time();
         $currentHour = date('g');
-        echo $currentHour;exit;
         $bulan = $this->indonesian_date($tanggalx, 'F');
             $today = date('j');
             $currentHour = date('g');
