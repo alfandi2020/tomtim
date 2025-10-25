@@ -155,7 +155,7 @@ class Cron extends CI_Controller
                     // if ($cek_paid == false) {//jika belum bayar
                         // $day7 = date('Y-m-d', strtotime('-7 days', strtotime($x->due_date)));
                         // $tanggal = "2025-11-02";
-                        echo date('Y-m-d', strtotime("$x->due_date -7 days"));exit;
+                        echo date('Y-m-d', strtotime("2025-11-02 -7 days"));exit;
                         $day3 = date('Y-m-d', strtotime("$x->due_date -3 days"));
                         // $day3 = date('Y-m-d', strtotime('-3 days', strtotime($x->due_date)));
                         // if(){
