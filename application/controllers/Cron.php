@@ -140,170 +140,156 @@ class Cron extends CI_Controller
     public function reminder()
     {
         $client = $this->config_routeros();
-        // $this->db->where('b.id_ppp !=',NULL);
-        // $this->db->where('a.is_blocked', 0);
-        // $this->db->join('dt_ppp as b','a.id_registrasi=b.id_pelanggan','left');
-        // $this->db->join('tb_paket as c', 'a.speed=c.id_wireless', 'left');
-        $get_client = $this->db->query('SELECT * from tb_registrasi as a LEFT JOIN dt_ppp as b on (a.id_registrasi=b.id_pelanggan) left join tb_paket as c on(a.speed=c.id_wireless) where a.is_blocked=0 and b.id_ppp IS NOT null')->result();
+        $this->db->where('b.id_ppp !=',NULL);
+        $this->db->where('a.is_blocked', 0);
+        $this->db->join('dt_ppp as b','a.id_registrasi=b.id_pelanggan','left');
+        $this->db->join('tb_paket as c', 'a.speed=c.id_wireless', 'left');
+        $get_client = $this->db->get('tb_registrasi as a')->result();
         $tanggalx = time();
-        $currentHour = date('g');
         $bulan = $this->indonesian_date($tanggalx, 'F');
             $today = date('j');
-            $currentHour = date('g');
+            $currentHour = date('G');
             // if (($today == 10 || $today == 13) && $currentHour == 9) {
-            foreach ($get_client as $x) {
-                $cek_paid = $this->db->get_where('tb_cetak', [
-                    'periode' => $bulan,
-                    'thn' => date('Y'),
-                    'id_registrasi' => $x->id_registrasi
-                ])->num_rows();
+                foreach ($get_client as $x) {
+                    $cek_paid = $this->db->get_where('tb_cetak', ['periode' => $bulan, 'thn' => date('Y'),'id_registrasi' => $x->id_registrasi])->num_rows();
+                    // if ($cek_paid == false) {//jika belum bayar
+                        $day7 = date('Y-m-d', strtotime('-7 days', strtotime($x->due_date)));
+                        $day3 = date('Y-m-d', strtotime('-3 days', strtotime($x->due_date)));
+                        // if(){
+                            if(date('Y-m-d') == $x->due_date && $cek_paid == false){//isolir
+                                //get user ppp
+                                $get_user = new Query('/ppp/secret/print');
+                                $get_user->where('name', $x->name);
+                                $user_ppp = $client->query($get_user)->read();
+                                //disable user ppp
+                                $disable_user =
+                                    (new Query('/ppp/secret/disable'))
+                                        ->equal('.id', $user_ppp[0]['.id']);  // Gunakan ID spesifik, atau
+                                $client->query($disable_user)->read();
 
-                // buat objek DateTime dari due_date
-                $due = new DateTime($x->due_date);
+                                //get active user
+                                $get_user2 = new Query('/ppp/active/print');
+                                $get_user2->where('name', $x->name);
+                                $user_actv = $client->query($get_user2)->read();
+                                //disable user ppp
+                                $user_actv_remove =
+                                    (new Query('/ppp/active/remove'))
+                                        ->equal('.id', $user_actv[0]['.id']);  // Gunakan ID spesifik, atau
+                                $client->query($user_actv_remove)->read();
 
-                // H-7 dan H-3 (gunakan DateTime->modify agar selalu benar)
-                $day7 = (clone $due)->modify('-7 days')->format('Y-m-d');
-                $day3 = (clone $due)->modify('-3 days')->format('Y-m-d');
+                                $this->block_user($x->id_registrasi);
+                                $message2 = '*📧 Bot Billing*\n' .
+                                    'Pelanggan LJN (PT. Lintas Jaringan Nusantara) Jakarta Timur yang terhormat,\n\n' .
+                                    'Kami informasikan bahwa saat ini status internet anda *ISOLIR/TERBLOKIR*\n\n' .
+                                    'Untuk terus dapat menggunakan layanan internet anda, silahkan lakukan pembayaran melalui transfer bank ke nomor rekening berikut :\n\n' .
+                                    'BCA        : 1640314229\n' .
+                                    'Mandiri  : 0060005009489\n' .
+                                    'BRI          : 065201009279506\n' .
+                                    '*_a/n Tomy Nugrahadi._*\n\n' .
+                                    'Kirimkan bukti pembayaran melalui whatsapp ke nomor 082211661443 👈 Langsung klik\n\n' .
+                                    'Terima kasih atas perhatian anda. 🙏\n' .
+                                    '_Mohon untuk tidak membalas pesan ini_';
+                                    $phone = $x->kontak; //untuk group pakai groupid contoh: 62812xxxxxx-xxxxx
+                                    $curl = curl_init();
+                                    // curl_setopt_array($curl, array(
+                                    //     CURLOPT_URL => 'http://103.127.96.32:8001/send-message',
+                                    //     CURLOPT_RETURNTRANSFER => true,
+                                    //     CURLOPT_ENCODING => '',
+                                    //     CURLOPT_MAXREDIRS => 10,
+                                    //     CURLOPT_TIMEOUT => 0,
+                                    //     CURLOPT_FOLLOWLOCATION => true,
+                                    //     CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+                                    //     CURLOPT_CUSTOMREQUEST => 'POST',
+                                    //     CURLOPT_POSTFIELDS => '{
+                                    //                                         "api_key": "iEQRRY8J4UUAkWKW78iPja2hc8rjlcCK",
+                                    //                                         "sender": "6285961403102",
+                                    //                                         "number": "' . $phone . '",
+                                    //                                         "message" : "' . $message2 . '"
+                                    //                                         }',
+                                    //     CURLOPT_HTTPHEADER => array(
+                                    //         'Content-Type: application/json'
+                                    //     ),
+                                    // ));
+                                    curl_setopt_array($curl, array(
+                                        CURLOPT_URL => 'https://api.watzap.id/v1/send_message',
+                                        CURLOPT_RETURNTRANSFER => true,
+                                        CURLOPT_ENCODING => '',
+                                        CURLOPT_MAXREDIRS => 10,
+                                        CURLOPT_TIMEOUT => 0,
+                                        CURLOPT_FOLLOWLOCATION => true,
+                                        CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+                                        CURLOPT_CUSTOMREQUEST => 'POST',
+                                        CURLOPT_POSTFIELDS => '{
+                                                                    "api_key": "NIIXSOGXEBJEXXAZ",
+                                                                    "number_key": "BlP77cdNcTvKT1K9",
+                                                                    "phone_no": "'.$phone.'",
+                                                                    "message" : "' . $message2 . '"
+                                                                    }',
+                                        CURLOPT_HTTPHEADER => array(
+                                            'Content-Type: application/json'
+                                        ),
+                                    ));
+                                    $response = curl_exec($curl);
+                                    curl_close($curl);
+                                    echo $response;
 
-                // contoh isolir ketika jatuh tempo hari ini dan belum bayar
-                if (date('Y-m-d') == $x->due_date && $cek_paid == false) {
-                    // get user ppp
-                    $get_user = new Query('/ppp/secret/print');
-                    $get_user->where('name', $x->name);
-                    $user_ppp = $client->query($get_user)->read();
-                    // disable user ppp
-                    $disable_user = (new Query('/ppp/secret/disable'))
-                        ->equal('.id', $user_ppp[0]['.id']);
-                    $client->query($disable_user)->read();
+                            }
+                            //
+                            $opt = $this->db->get_where('tb_option',['name' => 'time_cron'])->row_array();
+                            echo $day3 . $opt['value'].$currentHour;exit;
+                            if (($day3 == date('Y-m-d') || $day7 == date('Y-m-d')) && $currentHour == $opt['value']) {
+                                $date33 = date_create($x->due_date);
+                                date_add($date33, date_interval_create_from_date_string("1 month"));
+                                $tgl_sd = date_format($date33, "Y-m-d");
 
-                    // get active user
-                    $get_user2 = new Query('/ppp/active/print');
-                    $get_user2->where('name', $x->name);
-                    $user_actv = $client->query($get_user2)->read();
-                    // disable user ppp active
-                    $user_actv_remove = (new Query('/ppp/active/remove'))
-                        ->equal('.id', $user_actv[0]['.id']);
-                    $client->query($user_actv_remove)->read();
+                                $hasil = number_format(intval($x->harga) + intval($x->addon1) + intval($x->addon2) + intval($x->addon3) - intval($x->diskon), 0, ".", ".");
+                                // $message = '📧 Bot Billing\n\nPelanggan LJN (PT. Lintas Jaringan Nusantara) Jakarta Timur yang terhormat,\n\nKami informasikan bahwa saat ini status internet anda ISOLIR/TERBLOKIR\n\nUntuk dapat menggunakan layanan kami kembali, silahkan lakukan pembayaran melalui transfer bank ke nomor rekening berikut :\n\nBCA        : 1640314229\nMandiri  : 0060005009489\nBRI          : 065201009279506\na/n Tomy Nugrahadi.\n\nKirimkan bukti pembayaran melalui whatsapp ke nomor 082211661443 👈 Langsung klik\n\nTerima kasih atas perhatian anda. 🙏\n\n*Mohon untuk tidak membalas pesan ini*';
+                                $message3 = '*Yth Bapak/Ibu ' . $x->nama . '*\n' .
+                                    'No. Hp ' . $x->kontak . '\n\n' .
+                                    'Terima kasih atas kepercayaan Anda untuk menggunakan layanan internet *Lintas Jaringan Nusantara*\n'.
+                                    'Berikut kami sampaikan informasi dan nilai tagihan Anda :\n'.
+                                    'Jumlah Tagihan : *Rp.'. $hasil .'*\n'.
+                                    'Periode Tagihan : *'. date('d F Y', strtotime($x->due_date)) . ' s/d ' . date('d F Y', strtotime($tgl_sd)).'*\n'.
+                                    'Jatuh Tempo : *'. date('d F Y', strtotime($x->due_date)).'*\n\n'.
+                                    'Untuk terus dapat menggunakan layanan internet anda, silahkan lakukan pembayaran melalui transfer bank ke nomor rekening berikut :\n' .
+                                    'BCA        : 1640314229\n' .
+                                    'Mandiri  : 0060005009489\n' .
+                                    'BRI          : 065201009279506\n' .
+                                    '*_a/n Tomy Nugrahadi._*\n\n' .
+                                    'Kirimkan bukti pembayaran melalui whatsapp ke nomor 082211661443 👈 Langsung klik\n\n' .
+                                    'Abaikan pesan ini jika Anda sudah melakukan pembayaran.\n' .
+                                    'Regards,\n*LJN Kantor Layanan Makasar - Jakarta Timur*\n\n' .
+                                    '⚠️ *Mohon untuk tidak membalas pesan ini* ⚠️';
 
-                    $this->block_user($x->id_registrasi);
-
-                    $message2 = '*📧 Bot Billing*' . "\n" .
-                        'Pelanggan LJN (PT. Lintas Jaringan Nusantara) Jakarta Timur yang terhormat,' . "\n\n" .
-                        'Kami informasikan bahwa saat ini status internet anda *ISOLIR/TERBLOKIR*' . "\n\n" .
-                        'Untuk terus dapat menggunakan layanan internet anda, silahkan lakukan pembayaran melalui transfer bank ke nomor rekening berikut :' . "\n\n" .
-                        'BCA        : 1640314229' . "\n" .
-                        'Mandiri  : 0060005009489' . "\n" .
-                        'BRI          : 065201009279506' . "\n" .
-                        '*_a/n Tomy Nugrahadi._*' . "\n\n" .
-                        'Kirimkan bukti pembayaran melalui whatsapp ke nomor 082211661443 👈 Langsung klik' . "\n\n" .
-                        'Terima kasih atas perhatian anda. 🙏' . "\n" .
-                        '_Mohon untuk tidak membalas pesan ini_';
-
-                    $phone = $x->kontak;
-                    $curl = curl_init();
-                    curl_setopt_array($curl, array(
-                        CURLOPT_URL => 'https://api.watzap.id/v1/send_message',
-                        CURLOPT_RETURNTRANSFER => true,
-                        CURLOPT_ENCODING => '',
-                        CURLOPT_MAXREDIRS => 10,
-                        CURLOPT_TIMEOUT => 0,
-                        CURLOPT_FOLLOWLOCATION => true,
-                        CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-                        CURLOPT_CUSTOMREQUEST => 'POST',
-                        CURLOPT_POSTFIELDS => json_encode([
-                            "api_key" => "NIIXSOGXEBJEXXAZ",
-                            "number_key" => "BlP77cdNcTvKT1K9",
-                            "phone_no" => $phone,
-                            "message" => $message2
-                        ]),
-                        CURLOPT_HTTPHEADER => array('Content-Type: application/json'),
-                    ));
-                    $response = curl_exec($curl);
-                    curl_close($curl);
-                    echo $response;
+                                $token = "rasJFCC37ewayax21uu2Caog9CCqyT3KSwBWFqQAbQMdMAefxa";
+                                $phone = $x->kontak; //untuk group pakai groupid contoh: 62812xxxxxx-xxxxx
+                                $curl = curl_init();
+                                curl_setopt_array($curl, array(
+                                    CURLOPT_URL => 'https://api.watzap.id/v1/send_message',
+                                    CURLOPT_RETURNTRANSFER => true,
+                                    CURLOPT_ENCODING => '',
+                                    CURLOPT_MAXREDIRS => 10,
+                                    CURLOPT_TIMEOUT => 0,
+                                    CURLOPT_FOLLOWLOCATION => true,
+                                    CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+                                    CURLOPT_CUSTOMREQUEST => 'POST',
+                                    CURLOPT_POSTFIELDS => '{
+                                                                "api_key": "NIIXSOGXEBJEXXAZ",
+                                                                "number_key": "BlP77cdNcTvKT1K9",
+                                                                "phone_no": "'.$phone.'",
+                                                                "message" : "' . $message3 . '"
+                                                                }',
+                                    CURLOPT_HTTPHEADER => array(
+                                        'Content-Type: application/json'
+                                    ),
+                                ));
+                                $response = curl_exec($curl);
+                                curl_close($curl);
+                                echo $response . $x->nama;
+                            }
+                        // }
+                    // }
                 }
-
-                // ambil option jam cron
-                $opt = $this->db->get_where('tb_option', ['name' => 'time_cron'])->row_array();
-
-                // cek reminder H-7 atau H-3 pada jam yang ditentukan
-                if (($day3 == date('Y-m-d') || $day7 == date('Y-m-d')) && $currentHour == $opt['value']) {
-
-                    // fungsi helper: tambah 1 bulan kalender dengan fallback ke hari terakhir bulan tujuan
-                    function add_one_month($dateStr) {
-                        // parse tanggal input
-                        $d = new DateTime($dateStr);
-                        $day = (int)$d->format('j');
-                        $month = (int)$d->format('n');
-                        $year = (int)$d->format('Y');
-
-                        // target month/year
-                        $month++;
-                        if ($month > 12) {
-                            $month = 1;
-                            $year++;
-                        }
-
-                        // jumlah hari di bulan target
-                        $daysInTarget = cal_days_in_month(CAL_GREGORIAN, $month, $year);
-
-                        // gunakan min(day, daysInTarget) supaya jika asal 31 -> jadi last day target month
-                        $targetDay = min($day, $daysInTarget);
-
-                        return (new DateTime())->setDate($year, $month, $targetDay)->format('Y-m-d');
-                    }
-
-                    $tgl_sd = add_one_month($x->due_date);
-
-                    $hasil = number_format(
-                        intval($x->harga) + intval($x->addon1) + intval($x->addon2) + intval($x->addon3) - intval($x->diskon),
-                        0,
-                        ".",
-                        "."
-                    );
-
-                    $message3 = '*Yth Bapak/Ibu ' . $x->nama . "*\n" .
-                        'No. Hp ' . $x->kontak . "\n\n" .
-                        'Terima kasih atas kepercayaan Anda untuk menggunakan layanan internet *Lintas Jaringan Nusantara*' . "\n" .
-                        'Berikut kami sampaikan informasi dan nilai tagihan Anda :' . "\n" .
-                        'Jumlah Tagihan : *Rp.' . $hasil . '*' . "\n" .
-                        'Periode Tagihan : *' . date('d F Y', strtotime($x->due_date)) . ' s/d ' . date('d F Y', strtotime($tgl_sd)) . '*' . "\n" .
-                        'Jatuh Tempo : *' . date('d F Y', strtotime($x->due_date)) . '*' . "\n\n" .
-                        'Untuk terus dapat menggunakan layanan internet anda, silahkan lakukan pembayaran melalui transfer bank ke nomor rekening berikut :' . "\n" .
-                        'BCA        : 1640314229' . "\n" .
-                        'Mandiri  : 0060005009489' . "\n" .
-                        'BRI          : 065201009279506' . "\n" .
-                        '*_a/n Tomy Nugrahadi._*' . "\n\n" .
-                        'Kirimkan bukti pembayaran melalui whatsapp ke nomor 082211661443 👈 Langsung klik' . "\n\n" .
-                        'Abaikan pesan ini jika Anda sudah melakukan pembayaran.' . "\n" .
-                        'Regards,' . "\n" . '*LJN Kantor Layanan Makasar - Jakarta Timur*' . "\n\n" .
-                        '⚠️ *Mohon untuk tidak membalas pesan ini* ⚠️';
-
-                    $phone = $x->kontak;
-                    $curl = curl_init();
-                    curl_setopt_array($curl, array(
-                        CURLOPT_URL => 'https://api.watzap.id/v1/send_message',
-                        CURLOPT_RETURNTRANSFER => true,
-                        CURLOPT_ENCODING => '',
-                        CURLOPT_MAXREDIRS => 10,
-                        CURLOPT_TIMEOUT => 0,
-                        CURLOPT_FOLLOWLOCATION => true,
-                        CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-                        CURLOPT_CUSTOMREQUEST => 'POST',
-                        CURLOPT_POSTFIELDS => json_encode([
-                            "api_key" => "NIIXSOGXEBJEXXAZ",
-                            "number_key" => "BlP77cdNcTvKT1K9",
-                            "phone_no" => $phone,
-                            "message" => $message3
-                        ]),
-                        CURLOPT_HTTPHEADER => array('Content-Type: application/json'),
-                    ));
-                    $response = curl_exec($curl);
-                    curl_close($curl);
-                    echo $response . $x->nama;
-                }
-            }
-
         
     }
 
