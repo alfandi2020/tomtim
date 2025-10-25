@@ -241,7 +241,6 @@ class Cron extends CI_Controller
                             }
                             //
                             $opt = $this->db->get_where('tb_option',['name' => 'time_cron'])->row_array();
-                            echo $day3.$day7;exit;
                             if (($day3 == date('Y-m-d') || $day7 == date('Y-m-d')) && $currentHour == $opt['value']) {
                                 $date33 = date_create($x->due_date);
                                 date_add($date33, date_interval_create_from_date_string("1 month"));
