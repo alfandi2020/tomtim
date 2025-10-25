@@ -154,14 +154,10 @@ class Cron extends CI_Controller
                     $cek_paid = $this->db->get_where('tb_cetak', ['periode' => $bulan, 'thn' => date('Y'),'id_registrasi' => $x->id_registrasi])->num_rows();
                     // if ($cek_paid == false) {//jika belum bayar
                         // $day7 = date('Y-m-d', strtotime('-7 days', strtotime($x->due_date)));
-                        // $day7 = date('Y-m-d', strtotime($x->due_date." -7 days"));
-                        // $day3 = date('Y-m-d', strtotime($x->due_date." -3 days"));
-                        $dt3 = new DateTime($x->due_date);
-                        $dt3->modify("-3 days");
-                        $day3 = $dt3->format("Y-m-d");
-                        $dt7 = new DateTime($x->due_date);
-                        $dt7->modify("-3 days");
-                        $day7 = $dt7->format("Y-m-d");
+                        // $tanggal = "2025-11-02";
+                        $day7 = date('Y-m-d', strtotime("$x->due_date -7 days"));
+                        $day3 = date('Y-m-d', strtotime("$x->due_date -3 days"));
+                        // $day3 = date('Y-m-d', strtotime('-3 days', strtotime($x->due_date)));
                         // if(){
                             if(date('Y-m-d') == $x->due_date && $cek_paid == false){//isolir
                                 //get user ppp
@@ -243,7 +239,7 @@ class Cron extends CI_Controller
                             }
                             //
                             $opt = $this->db->get_where('tb_option',['name' => 'time_cron'])->row_array();
-                            echo $day3 . $opt['value'].$currentHour;exit;
+                            echo $day7 . $opt['value'].$currentHour;exit;
                             if (($day3 == date('Y-m-d') || $day7 == date('Y-m-d')) && $currentHour == $opt['value']) {
                                 $date33 = date_create($x->due_date);
                                 date_add($date33, date_interval_create_from_date_string("1 month"));
