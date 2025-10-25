@@ -148,7 +148,7 @@ class Cron extends CI_Controller
         $tanggalx = time();
         $bulan = $this->indonesian_date($tanggalx, 'F');
             $today = date('j');
-            $currentHour = date('G');
+            $currentHour = date('g');
             // if (($today == 10 || $today == 13) && $currentHour == 9) {
          foreach ($get_client as $x) {
                 $cek_paid = $this->db->get_where('tb_cetak', [
