@@ -154,8 +154,14 @@ class Cron extends CI_Controller
                     $cek_paid = $this->db->get_where('tb_cetak', ['periode' => $bulan, 'thn' => date('Y'),'id_registrasi' => $x->id_registrasi])->num_rows();
                     // if ($cek_paid == false) {//jika belum bayar
                         // $day7 = date('Y-m-d', strtotime('-7 days', strtotime($x->due_date)));
-                        $day7 = date('Y-m-d', strtotime($x->due_date." -7 days"));
-                        $day3 = date('Y-m-d', strtotime($x->due_date." -3 days"));
+                        // $day7 = date('Y-m-d', strtotime($x->due_date." -7 days"));
+                        // $day3 = date('Y-m-d', strtotime($x->due_date." -3 days"));
+                        $dt3 = new DateTime($x->due_date);
+                        $dt3->modify("-3 days");
+                        $day3 = $dt3->format("Y-m-d");
+                        $dt7 = new DateTime($x->due_date);
+                        $dt7->modify("-3 days");
+                        $day7 = $dt7->format("Y-m-d");
                         // if(){
                             if(date('Y-m-d') == $x->due_date && $cek_paid == false){//isolir
                                 //get user ppp
