@@ -156,7 +156,7 @@ class Cron extends CI_Controller
                     // if ($cek_paid == false) {//jika belum bayar
                         // $day7 = date('Y-m-d', strtotime('-7 days', strtotime($x->due_date)));
                         // $tanggal = "2025-11-02";
-                        echo date('Y-m-d', strtotime("2025-11-02 -7 days"));exit;
+                        $day7 = date('Y-m-d', strtotime("$x->due_date -7 days"));
                         $day3 = date('Y-m-d', strtotime("$x->due_date -3 days"));
                         // $day3 = date('Y-m-d', strtotime('-3 days', strtotime($x->due_date)));
                         // if(){
@@ -240,7 +240,6 @@ class Cron extends CI_Controller
                             }
                             //
                             $opt = $this->db->get_where('tb_option',['name' => 'time_cron'])->row_array();
-                            echo $day7 . $opt['value'].$currentHour;exit;
                             if (($day3 == date('Y-m-d') || $day7 == date('Y-m-d')) && $currentHour == $opt['value']) {
                                 $date33 = date_create($x->due_date);
                                 date_add($date33, date_interval_create_from_date_string("1 month"));
