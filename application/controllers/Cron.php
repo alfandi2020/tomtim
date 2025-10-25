@@ -139,6 +139,7 @@ class Cron extends CI_Controller
     }
     public function reminder()
     {
+        date_default_timezone_set('Asia/Jakarta');
         $client = $this->config_routeros();
         $this->db->where('b.id_ppp !=',NULL);
         $this->db->where('a.is_blocked', 0);
